@@ -7,6 +7,7 @@ Interactive 3D lessons for first-year biology on the molecular and cellular mech
 | Page | What it is |
 |---|---|
 | [The Molecular Game of Addiction](https://gladcolor.github.io/addiction-3d-lessons/Molecular_Game_of_Addiction.html) | A 50-minute active-learning session: 3D synapse, real opioid receptor structure, body explorer, team design challenge |
+| [The Dopamine Pathway](https://gladcolor.github.io/addiction-3d-lessons/Dopamine_Pathway_3D.html) | One dopamine pathway in 3D and six ways addictive drugs and behaviors break into it, compared side by side |
 | [Opioids in 3D](https://gladcolor.github.io/addiction-3d-lessons/Opioids_3D_Lesson.html) | A guided 40-minute lesson, from the whole body down to single proteins |
 | [Opioids: Cells and Molecules](https://gladcolor.github.io/addiction-3d-lessons/Opioids_Cells_Molecules_3D.html) | Meet dopamine, five cell types and three molecule classes in 3D, and the [Brake Game](https://gladcolor.github.io/addiction-3d-lessons/Opioids_Cells_Molecules_3D.html#game) |
 
