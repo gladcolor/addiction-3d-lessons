@@ -38,3 +38,14 @@ Two independent reviews checked all student-facing text (captions, tips, tables,
 - Glossary: varicosities, reward prediction error (burst vs pause), D2 receptors (incl. autoreceptors), Parkinson's (substantia nigra), hippocampus (places and situations), pacemaker firing, cell body.
 - Tetrabenazine question: "imagine it does nothing else"; answer note adds MAO breakdown and the meth contrast.
 - "Two kinds of doors" card: cocaine keeps dopamine longer; meth pushes it out even when the neuron is quiet.
+
+## Machine tab, 2026-10-27: seesaw brake, nicotine rockets, story notes
+
+- GABA brake: a GABA pulse is drawn as the operator stepping on a seesaw pedal; the far end presses a red pad on the rim of the rotor hub. Opioids, alcohol and cannabis put the operator to sleep: the foot comes off and the pad drops (disinhibition; Johnson & North 1992 for opioids).
+- Nicotine: nicotinic receptors (mainly α4β2) are drawn as small rockets on three rotor arms; nicotine is a copy of acetylcholine's key. Lit rocket = open channel, Na⁺ and Ca²⁺ flow in, the neuron fires more.
+- New story step "Minutes later": the rockets burn out (desensitization of α4β2 on the dopamine neuron) while dopamine stays up, because α7 receptors on glutamate terminals keep adding glutamate (the glove pushes more often) and the GABA neurons' own α4β2 receptors desensitize (the operator brakes less). Mansvelder & McGehee 2000; Mansvelder, Keath & McGehee 2002; Pidoplichko et al. 1997.
+- In the model this step sets desSet = 1: no direct push, drive +20 percent, GABA rate −35 percent, plus a two-spike glutamate burst every 3 to 5 s, so firing stays about where it was in the first seconds. The long-run numbers in captions and tables still use the acute model.
+- Hours later: nicotine is turned into cotinine in the liver (mainly CYP2A6); cotinine has little action on these receptors.
+- After months of smoking: up-regulation, a rocket on every arm, but between cigarettes many stay desensitized (Benwell et al. 1988; Perry et al. 1999; Staley et al. 2006 for SPECT imaging in smokers).
+- The rocket flame stands for the push from ions flowing in. No "+" signs are drawn in the flame, because the ions move into the cell, not out of it.
+- Story notes flash only for what the picture cannot show (calcium, VMAT2, receptor binding, where each drug binds and what it changes), one at a time, next to the part.

@@ -758,6 +758,35 @@ body.tab-gloss .hero, body.tab-gloss #map, body.tab-gloss #cases, body.tab-gloss
 .mx-toast.out{opacity:0; transform:translateY(-4px); transition:opacity .4s, transform .4s}
 @keyframes mxtoast{from{opacity:0; transform:translateY(6px)}}
 .mx-bar{margin-top:0; margin-bottom:12px}
+/* --- seesaw brake, rockets, switch, story notes --- */
+.mxsvg .padheat{opacity:0; filter:drop-shadow(0 0 9px #ff5a1f)}
+.mxsvg .opleg{fill:none; stroke:#35609f; stroke-width:16; stroke-linecap:round; stroke-linejoin:round}
+.mxsvg .opshoe{fill:#35609f}
+.mxsvg .swl{fill:#9fd8ff; filter:drop-shadow(0 0 6px #6ec1ff)}
+.mxsvg .ph.lever{cursor:ns-resize}
+.mxsvg .rk{display:none}
+.mxsvg .rk.shown{display:inline}
+.mxsvg .rk-fl, .mxsvg .rk-sm, .mxsvg .rk-k, .mxsvg .rk-x{display:none}
+.mxsvg .rk.on .rk-fl{display:inline; filter:drop-shadow(0 0 5px #ffd23f)}
+.mxsvg .rk.key .rk-k{display:inline}
+.mxsvg .rk.out .rk-sm, .mxsvg .rk.out .rk-x{display:inline}
+.mxsvg .rk-b{fill:#e8eef5; stroke:#95aac0; stroke-width:1}
+.mxsvg .rk-fin{fill:#5d82aa; stroke:#5d82aa; stroke-width:1.4; stroke-linejoin:round}
+.mxsvg .rk-bd{fill:#5d82aa}
+.mxsvg .rk-nz{fill:#3b5e84}
+.mxsvg .rk-slot{fill:#1d2b3d}
+.mxsvg .rk.out .rk-b{fill:#6b7787; stroke:#3d4756}
+.mxsvg .rk.out .rk-fin, .mxsvg .rk.out .rk-bd{fill:#4a5462; stroke:#4a5462}
+.mxsvg .rk-sm circle{fill:#8a96a6; opacity:.5}
+.mxsvg .rk-x{font:800 9px Inter, sans-serif; fill:#e6edf5; text-anchor:middle}
+.mxsvg .rk-k rect, .mxsvg .rk-k circle{fill:#8be36b; stroke:#0b0f1d; stroke-width:0.8}
+.mxsvg .flash{opacity:0; transition:opacity .35s ease; pointer-events:none}
+.mxsvg .flash.on{opacity:1}
+.mxsvg .fl-b{fill:rgba(9,16,28,.94); stroke:#ffd166; stroke-width:2}
+.mxsvg .fl-t{font:600 22px Inter, sans-serif; fill:#fff7e0; text-anchor:middle}
+.mxsvg.compact .fl-t{font-size:30px}
+.mxsvg .fl-l{stroke:#ffd166; stroke-width:2.5; stroke-dasharray:5 5}
+.mxsvg .fl-d{fill:#ffd166}
 
 </style>
 </head>
@@ -880,7 +909,7 @@ body.tab-gloss .hero, body.tab-gloss #map, body.tab-gloss #cases, body.tab-gloss
   <div class="mx-pick" id="mxPick" role="radiogroup" aria-label="Pick a case"></div>
   <div class="mx-bar">
     <div class="mx-steps" id="mxSteps" aria-label="Story steps"></div>
-    <div class="mx-ctl"><button type="button" class="btn" id="mxBetter" title="A reward that is better than expected: the dopamine neuron fires a burst">Better than expected</button><button type="button" class="btn" id="mxWorse" title="A reward that is worse than expected: GABA input clamps the dopamine neuron, which pauses">Worse than expected</button><button type="button" class="btn" id="mxPrev" aria-label="Previous">‹ Back</button><button type="button" class="btn primary" id="mxPlay">Pause</button><button type="button" class="btn" id="mxNext" aria-label="Next">Next ›</button><button type="button" class="btn" id="mxReplay">Replay</button><button type="button" class="btn" id="mxReset">Reset</button><button type="button" class="btn" id="mxTips" aria-pressed="false" title="Show what each part of the machine really is when you point at it">Tips: off</button></div>
+    <div class="mx-ctl"><button type="button" class="btn" id="mxBetter" title="A reward that is better than expected: the dopamine neuron fires a burst">Better than expected</button><button type="button" class="btn" id="mxWorse" title="A reward that is worse than expected: GABA input brakes the dopamine neuron, which pauses">Worse than expected</button><button type="button" class="btn" id="mxPrev" aria-label="Previous">‹ Back</button><button type="button" class="btn primary" id="mxPlay">Pause</button><button type="button" class="btn" id="mxNext" aria-label="Next">Next ›</button><button type="button" class="btn" id="mxReplay">Replay</button><button type="button" class="btn" id="mxReset">Reset</button><button type="button" class="btn" id="mxTips" aria-pressed="false" title="Show what each part of the machine really is when you point at it">Tips: off</button></div>
   </div>
   <div class="mx-scroll"><div class="mx-stage" id="mxStage"></div></div>
   <div class="mx-scen" id="mxScen" role="radiogroup" aria-label="Situation"></div>
@@ -901,7 +930,8 @@ body.tab-gloss .hero, body.tab-gloss #map, body.tab-gloss #cases, body.tab-gloss
     <ul>
       <li><i class="k-ico" style="--c:#c9ced8"></i><span><b>Rotor:</b> the <span class="t">dopamine neuron</span>. It turns on its own; each hammer tap on the contact is one <span class="t">action potential</span></span></li>
       <li><i class="k-ico" style="--c:#f4f6f8"></i><span><b>White glove:</b> <span class="t">glutamate</span>. A hard push makes a burst of taps</span></li>
-      <li><i class="k-ico" style="--c:#5b8ee6"></i><span><b>Blue operator:</b> a <span class="t" data-k="gaba neuron">GABA</span> neuron. He presses the brake clamp</span></li>
+      <li><i class="k-ico" style="--c:#5b8ee6"></i><span><b>Blue operator:</b> a <span class="t" data-k="gaba neuron">GABA</span> neuron. He steps on the seesaw brake: its red pad presses the hub</span></li>
+      <li><i class="k-ico" style="--c:#e8eef5"></i><span><b>Rockets (nicotine cases):</b> <span class="t">nicotinic receptors</span> on the rotor arms. Nicotine is the key that lights them</span></li>
       <li><i class="k-dot" style="background:#9fd8ff"></i><span><b>Blue-white sparks on the cable:</b> electricity along the <span class="t">axon</span>, not dopamine</span></li>
       <li><i class="k-ico" style="--c:#4a6d93"></i><span><b>Warehouse and factory:</b> one <span class="t">axon terminal</span>; the faint copies are thousands more. The factory makes dopamine; the little gumball machines riding the conveyor belt are <span class="t">vesicles</span>, each refilled through its cyan lid (<span class="t" data-k="vmat2">VMAT2</span>); a pulse opens the gate under the belt and the package over it empties all at once</span></li>
       <li><i class="k-ico" style="--c:#2db2a6"></i><span><b>Gate and teal RECYCLE pumps:</b> release into the gap, and recycling by <span class="t" data-k="dat">DAT</span>, which pulls dopamine back to be packed again</span></li>
@@ -985,6 +1015,8 @@ window.DICT = {
   'receptors': ['受体', '/rɪˈsɛptərz/', 'Proteins that signaling molecules fit into, like keys into locks.'],
   'd1/d2 receptors': ['D1/D2 多巴胺受体', '/ˌdi ˈwʌn ˌdi ˈtu rɪˈsɛptərz/', 'The two main kinds of dopamine receptors on neurons in the nucleus accumbens.'],
   'd2 receptors': ['D2 受体', '/ˌdi ˈtu rɪˈsɛptərz/', 'One kind of dopamine receptor. Brain scans of people with long-term drug use often show fewer of them. Dopamine neurons also carry D2 receptors (autoreceptors) that slow their own firing when dopamine is high.'],
+  'acetylcholine': ['乙酰胆碱', '/əˌsitəlˈkoʊlin/', 'A neurotransmitter: the body’s own key for nicotinic receptors. It opens them only for a moment.'],
+  'desensitization': ['失敏', '/diˌsɛnsətəˈzeɪʃən/', 'A receptor stops responding although its key is still bound. It recovers slowly after the drug is gone.'],
   'nicotinic receptors': ['烟碱型受体', '/ˌnɪkəˈtɪnɪk rɪˈsɛptərz/', 'Ion channels normally opened by acetylcholine. Nicotine opens them too.'],
   'nicotinic receptor': ['烟碱型受体', '/ˌnɪkəˈtɪnɪk rɪˈsɛptər/', 'An ion channel normally opened by acetylcholine. Nicotine opens it too.'],
   'μ-opioid receptors': ['μ 阿片受体', '/mju ˈoʊpiˌɔɪd rɪˈsɛptərz/', 'Receptors for the body’s own endorphins. Heroin, fentanyl and morphine bind them.'],
@@ -1286,8 +1318,12 @@ window.BRAIN = {"telencephalon":{"lo":[-70.26,1513.52,-10.46],"hi":[69.1,1630.66
     if (k === 'meth'){ this.methIn += (3 * d - 0.5 * this.methIn) * dt; this.rev = this.methIn / (this.methIn + 1.5); }
     else { this.methIn = 0; this.rev = this.revSet || 0; }
     // the brake and the firing rate: rate = drive / (1 + brake), calibrated so no drug gives F0
-    this.grate = G0 * (this.gabaMul || 1) * (BRK[k] ? Math.max(0, 1 - TUNE.opi * BRK[k] * (this.opiMul || 1) * occ(this.mb)) : 1);
-    const drive = 2 * F0 * (this.driveMul || 1) * (k === 'nicotine' ? 1 + 1.0 * occ(this.nb) : k === 'alcohol' ? 1 + 0.25 * d : 1);
+    // nicotine: once its receptors desensitize (desSet = 1, the story's "minutes later" step), the direct push stops, but firing stays up:
+    // α7 receptors on glutamate terminals keep adding glutamate, and the GABA neurons' own α4β2 receptors desensitize, so they brake less
+    const nic = k === 'nicotine' ? occ(this.nb) : 0, des = k === 'nicotine' ? (this.desSet || 0) : 0, late = des * Math.min(1, 2 * nic);
+    this.grate = G0 * (this.gabaMul || 1) * (BRK[k] ? Math.max(0, 1 - TUNE.opi * BRK[k] * (this.opiMul || 1) * occ(this.mb)) : 1) * (1 - 0.35 * late);
+    const drive = 2 * F0 * (this.driveMul || 1) * (k === 'nicotine' ? 1 + nic * (1 - des) + 0.2 * late : k === 'alcohol' ? 1 + 0.25 * d : 1);
+    if (late > 0.4){ this.gluT = (this.gluT == null ? 1.5 : this.gluT) - dt; if (this.gluT <= 0){ this.gluT = 3 + 2 * Math.random(); for (let i = 0; i < 2; i++) this.burstQ.push(this.t + 0.05 + i * 0.09); } }
     this.fire = drive / (1 + this.grate / G0) / (1 + TUNE.auto * Math.max(0, this.ema / baseline - 1));
     if (Math.random() < this.grate * dt) this.gspk.push({ u: 0 });
     for (const s of this.gspk){ s.u += dt / 0.42; if (s.u >= 1){ this.gbFlash = 0.25; this.brake = 0.3; } }
@@ -1921,7 +1957,7 @@ window.BRAIN = {"telencephalon":{"lo":[-70.26,1513.52,-10.46],"hi":[69.1,1630.66
     // two balance scales: p = pivot, l and r = arm lengths, a = beam angle (degrees) from empty to full
     scale1: { p: [840, 712], l: 50, r: 60, a: [-16, 6] },
     scale2: { p: [1040, 712], l: 70, r: 70, a: [-12, 28] },
-    dial: [1405, 936], cableG: 'M900 914 V946 H1296', cableB: 'M1124 914 V922 H1296', shaftY: 930, cal: [RX + 101 * Math.cos(163 * Math.PI / 180), RY + 101 * Math.sin(163 * Math.PI / 180)], lever: [122, 446],
+    dial: [1405, 936], cableG: 'M900 914 V946 H1296', cableB: 'M1124 914 V922 H1296', shaftY: 930, cal: [RX + 102 * Math.cos(113 * Math.PI / 180), RY + 102 * Math.sin(113 * Math.PI / 180)],
     mu: [[52, 424], [72, 424], [52, 442], [72, 442], [52, 460], [72, 460]]
   };
   // a point along the belt loop: front run left to right, round the right end, back run right to left, round the left end
@@ -1956,9 +1992,7 @@ window.BRAIN = {"telencephalon":{"lo":[-70.26,1513.52,-10.46],"hi":[69.1,1630.66
   p1 += circ(RX, RY, 186, DEEP.front) + circ(RX, RY, 186, 'none', { stroke: DEEP.edge, 'stroke-width': 2, opacity: 0.7 }) + circ(RX, RY, 174, '#101d2e');
   p1 += circ(RX, RY, 38, '#0a1422');
   // contact switch: the hammer taps the plunger, the box sends the pulse down the cable
-  p1 += box(388, 524, 48, 32, 20, STEEL) + ln(G.tip[0], G.tip[1], 400, 530, '#c8d4e1', 6) + circ(G.tip[0], G.tip[1], 6.5, '#e8eef5') + circ(424, 540, 4, '#9fd8ff', { opacity: 0.6 });
-  // the brake lever the GABA operator pulls
-  p1 += box(116, 556, 34, 10, 14, STEEL) + ln(134, 560, G.lever[0], G.lever[1], '#93a8be', 7) + circ(G.lever[0], G.lever[1], 9, '#c8d4e1');
+  p1 += box(388, 524, 48, 32, 20, STEEL);
 
   /* ---------- ② the cable (axon) ---------- */
   const p2 = path(G.cable, 'none', { stroke: '#0b1522', 'stroke-width': 15, 'stroke-linecap': 'round' }) + path(G.cable, 'none', { stroke: '#2e4867', 'stroke-width': 9, 'stroke-linecap': 'round' })
@@ -2045,19 +2079,53 @@ window.BRAIN = {"telencephalon":{"lo":[-70.26,1513.52,-10.46],"hi":[69.1,1630.66
   let rotor = `<g transform="translate(${RX} ${RY})">`;
   HEADS.forEach(a => { rotor += `<g transform="rotate(${a})">` + rect(88, -10, 50, 20, '#9fb2c6') + rect(88, -3, 50, 6, '#b9c8d7') + rect(132, -25, 36, 50, '#d9e3ec', { rx: 7 }) + rect(136, -20, 24, 40, '#edf2f7', { rx: 5 }) + rect(161, -25, 7, 50, '#a9bbcd', { rx: 3 }) + '</g>'; });
   rotor += circ(0, 0, 96, '#aebfd0') + circ(0, 0, 89, '#cdd9e4') + circ(0, 0, 33, '#aebfd0') + circ(0, 0, 24, '#e4ebf2') + circ(0, 0, 7, '#6c8199');
-  SOCK.forEach(([x, y]) => { rotor += circ(x, y, 13.5, '#8ea2b7') + circ(x, y, 10, '#33465c'); });
   rotor += '</g>';
   const gloss = path(`M${RX - 86} ${RY - 14} A88 88 0 0 1 ${RX + 14} ${RY - 86} A100 100 0 0 0 ${RX - 86} ${RY - 14} Z`, '#ffffff', { opacity: 0.35 });
 
   const blue = { base: '#4a79d0', lit: '#6293e8', dark: '#35609f' };
+  // the GABA operator: body, back leg and a hanging arm; the front leg rests on the brake pedal and moves, so mach.js draws it
   let operator = '<g class="opb">';
-  operator += ln(84, 466, 90, 552, blue.dark, 16) + rect(80, 548, 26, 10, blue.dark, { rx: 4 });
-  operator += '<g class="arm-on">' + ln(92, 394, 121, 441, blue.dark, 12) + circ(121, 443, 8, blue.dark) + '</g><g class="arm-off">' + ln(92, 394, 100, 462, blue.dark, 12) + circ(100, 465, 8, blue.dark) + '</g>';
+  operator += ln(64, 466, 58, 550, blue.base, 16) + rect(42, 546, 28, 10, blue.base, { rx: 4 });
   operator += rect(46, 376, 56, 96, blue.base, { rx: 16 }) + rect(46, 376, 40, 94, blue.lit, { rx: 15 });
-  operator += ln(62, 466, 58, 552, blue.base, 16) + rect(42, 548, 26, 10, blue.base, { rx: 4 });
   operator += rect(66, 366, 16, 14, blue.dark) + circ(74, 348, 23, blue.base) + circ(71, 345, 19.5, blue.lit);
-  operator += `<g class="arm-on"><path d="M66 396 L96 420 L118 446" fill="none" stroke="${blue.lit}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>${circ(119, 447, 8, blue.lit)}</g><g class="arm-off"><path d="M66 396 L58 436 L62 468" fill="none" stroke="${blue.lit}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>${circ(62, 471, 8, blue.lit)}</g>`;
+  operator += path('M66 398 L52 440 L50 470', 'none', { stroke: blue.lit, 'stroke-width': 12, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
   operator += '</g>';
+
+  // the GABA brake, a seesaw under the hub: step on the pedal and the far end lifts a curved pad against the hub rim.
+  // saw is drawn at the pressed position; mach.js tilts it about the pivot. heat = glow and sparks where the pad grips.
+  const HUB = 96, rim = (r, a) => [RX + r * Math.cos(a * Math.PI / 180), RY + r * Math.sin(a * Math.PI / 180)];
+  G.saw = { P: [178, 500], E: rim(HUB + 12, 113), pad: [96, 130] };
+  { const [px, py] = G.saw.P, [ex, ey] = G.saw.E, L = Math.hypot(ex - px, ey - py); G.saw.ped = [px - 60 * (ex - px) / L, py - 60 * (ey - py) / L]; }
+  const band = (r0, r1, c) => { const [a0, a1] = G.saw.pad, p0 = rim(r0, a0), p1 = rim(r0, a1), p2 = rim(r1, a1), p3 = rim(r1, a0); return path(`M${f(p0[0])} ${f(p0[1])} A${r0} ${r0} 0 0 1 ${f(p1[0])} ${f(p1[1])} L${f(p2[0])} ${f(p2[1])} A${r1} ${r1} 0 0 0 ${f(p3[0])} ${f(p3[1])} Z`, c); };
+  const [SPX, SPY] = G.saw.P, SE = G.saw.E, SPD = G.saw.ped, sawA = Math.atan2(SE[1] - SPY, SE[0] - SPX) * 180 / Math.PI;
+  const sawPost = path(`M${SPX - 7} ${SPY} L${SPX - 16} 558 H${SPX + 16} L${SPX + 7} ${SPY} Z`, PED.side, { stroke: '#1b2c42', 'stroke-width': 1.5 });
+  const saw = ln(SPD[0], SPD[1], SE[0], SE[1], '#1b2c42', 11) + ln(SPD[0], SPD[1], SE[0], SE[1], '#8fa6be', 6)
+    + band(HUB + 1, HUB + 7, '#1b2533') + band(HUB + 7, HUB + 16, '#e8505b')
+    + rect(SPD[0] - 22, SPD[1] - 4, 40, 9, '#e8505b', { rx: 3, transform: `rotate(${f(sawA)} ${f(SPD[0])} ${f(SPD[1])})` });
+  const sawPin = circ(SPX, SPY, 6, '#c8d4e1', { stroke: '#2c3e55', 'stroke-width': 2 });
+  const heat = (() => {
+    const r0 = HUB - 1, a = rim(r0, 98), b = rim(r0, 128), [cx, cy] = rim(HUB + 4, 130);
+    return path(`M${f(a[0])} ${f(a[1])} A${r0} ${r0} 0 0 1 ${f(b[0])} ${f(b[1])}`, 'none', { stroke: '#ff7a3d', 'stroke-width': 7, 'stroke-linecap': 'round', class: 'hglow' })
+      + [[-4, 2, -30, 10], [-2, 6, -26, 26], [-6, -2, -36, -6], [0, 8, -14, 32]].map(([x1, y1, x2, y2]) => ln(cx + x1, cy + y1, cx + x2, cy + y2, '#ffd166', 2.6)).join('');
+  })();
+  // the contact switch: a lever the passing hammers knock (it springs back); mach.js rotates it about its base
+  const sw = ln(G.tip[0], G.tip[1], 400, 530, '#c8d4e1', 6) + circ(G.tip[0], G.tip[1], 6.5, '#e8eef5');
+  // nicotinic receptors as small rockets lying across the rotor arms, nose along the spin; nicotine is the key (inner side).
+  // parts carry classes so mach.js and the stylesheet can light them (.on), burn them out (.out) or show the key (.key)
+  const rocket = a => {
+    const [x, y] = rim(112, a);
+    let o = `<g class="rk" data-r="rk" transform="translate(${f(x)} ${f(y)}) rotate(${f(a + 90)}) scale(1.75)">`;
+    o += '<g class="rk-fl"><path d="M-17.5 -3.4 Q-70 0 -17.5 3.4 Z" fill="#ffb347"/><path d="M-17.5 -2 Q-46 0 -17.5 2 Z" fill="#fff6c2"/></g>';
+    o += '<g class="rk-sm"><circle cx="-22" cy="-1" r="3.6"/><circle cx="-28" cy="-4" r="2.8"/><circle cx="-33" cy="-1" r="2"/></g>';
+    o += '<path class="rk-nz" d="M-12 -2.8 L-16.4 -3.8 Q-17.4 -3.8 -17.4 -2.8 V2.8 Q-17.4 3.8 -16.4 3.8 L-12 2.8 Z"/>';
+    o += '<path class="rk-fin" d="M-10.5 -4.2 H-5.5 L-12 -9.6 H-14.6 Z M-10.5 4.2 H-5.5 L-12 9.6 H-14.6 Z"/>';
+    o += '<path class="rk-b" d="M-10 -4.6 H17 C23.5 -4.6 28.5 -2.2 30 0 C28.5 2.2 23.5 4.6 17 4.6 H-10 Q-12.6 4.6 -12.6 2 V-2 Q-12.6 -4.6 -10 -4.6 Z"/>';
+    o += '<rect class="rk-bd" x="4" y="-4.6" width="3.4" height="9.2"/><rect class="rk-slot" x="9" y="3" width="4" height="2.4" rx="1"/>';
+    o += '<text class="rk-x" x="-2.5" y="3.3">×</text>';
+    o += '<g class="rk-k" transform="translate(11 5.2) rotate(90)"><rect x="0" y="-1.3" width="6" height="2.6"/><circle cx="9.5" cy="0" r="4"/><circle cx="13" cy="-3.4" r="2.8"/><circle cx="13" cy="3.6" r="2.6"/></g>';
+    return o + '</g>';
+  };
+  const rockets = HEADS.map(rocket).join('');
 
   let hand = '<g transform="translate(120 172) rotate(24) scale(1.25)">';
   hand += rect(-230, -22, 230, 44, '#7d6b4c') + rect(-230, -22, 230, 11, '#978561') + rect(-230, 12, 230, 10, '#5e5038') + rect(-12, -24, 12, 48, '#6b5b40');
@@ -2087,7 +2155,7 @@ window.BRAIN = {"telencephalon":{"lo":[-70.26,1513.52,-10.46],"hi":[69.1,1630.66
 
   window.MXART = {
     defs: '<symbol id="mxBall" overflow="visible"><circle r="7" fill="#ff4fa3" stroke="#2a0a1a" stroke-width="0.8"/><path d="M4.95 -4.95 A7 7 0 0 1 -4.95 4.95 A5.4 5.4 0 0 0 4.95 -4.95 Z" fill="#c92d7c"/><circle cx="-2.3" cy="-2.4" r="2.1" fill="#ffe0f0"/></symbol><radialGradient id="mxBg" cx="0.55" cy="0.42" r="0.85"><stop offset="0" stop-color="#0d1b2c"/><stop offset="0.55" stop-color="#08121e"/><stop offset="1" stop-color="#04080f"/></radialGradient>',
-    bg, p1, p2, p3, p3g, p5, front, rotor, gloss, operator, hand, padG, padB, pan1, pan2, cw1, boot2,
+    bg, p1, p2, p3, p3g, p5, front, rotor, gloss, operator, hand, padG, padB, pan1, pan2, cw1, boot2, sawPost, saw, sawPin, heat, sw, rockets,
     beam1: beam(G.scale1), beam2: beam(G.scale2), piv1: pivot(G.scale1), piv2: pivot(G.scale2)
   };
   window.MXG = G;
@@ -2101,15 +2169,15 @@ window.STORY = {
   tour: [
     { spot: 1, en: 'This rotor is a <span class="t">dopamine neuron</span> in the VTA. It turns on its own, like a clock, and other neurons can speed it up or slow it down. Every hammer tap sends one electrical pulse, an <span class="t">action potential</span>.',
       zh: '转轮 = VTA 里的多巴胺神经元，它像钟表一样自己会转（自发放电）。每敲一下，就发出一个电脉冲，也就是一个动作电位 (action potential)。' },
-    { spot: 1, en: 'Two other neurons control its speed. A hand (<span class="t">glutamate</span>) can push it hard, which makes several quick taps in a row (a <b>burst</b>). A brake operator (a <span class="t" data-k="gaba neuron">GABA</span> neuron) presses a brake clamp to slow it down.',
-      zh: '另外两种神经元控制它的速度：glutamate 像一只手，用力一推就转得更快；GABA 神经元像刹车手，压下刹车夹就让它慢下来。' },
+    { spot: 1, en: 'Two other neurons control its speed. A hand (<span class="t">glutamate</span>) can push it hard, which makes several quick taps in a row (a <b>burst</b>). A brake operator (a <span class="t" data-k="gaba neuron">GABA</span> neuron) steps on a seesaw pedal: the red pad presses the hub and slows it down.', tips: [[84, 440, 200, 712, 'GABA inhibits: it slows the neuron']],
+      zh: '另外两种神经元控制它的速度：glutamate 像一只手，用力一推就转得更快；GABA 神经元像刹车手，一踩跷跷板踏板，红色刹车皮就顶住轮毂，让它慢下来。' },
     { spot: 2, en: 'The pulse runs along the cable, the <span class="t">axon</span>, to a warehouse in the nucleus accumbens. Electricity travels here, not dopamine.',
       zh: '电脉冲沿电线（轴突 axon）跑到伏隔核里的仓库。这一段走的是电，不是多巴胺。' },
-    { spot: 3, en: 'The end of the axon, the <span class="t">axon terminal</span>, is a factory and a warehouse. The factory makes dopamine, drawn here as pink marbles (a real package holds thousands of dopamine molecules), and feeds it to the warehouse through a short tube. The warehouse keeps them in many small packages, the <span class="t">vesicles</span>, riding a slow conveyor belt; each is like a little gumball machine, refilled through its cyan lid (<span class="t" data-k="vmat2">VMAT2</span>). The faint copies show there are thousands of terminals.',
+    { spot: 3, tips: [[925, 446, 930, 300, 'VMAT2 pumps dopamine into each package']], en: 'The end of the axon, the <span class="t">axon terminal</span>, is a factory and a warehouse. The factory makes dopamine, drawn here as pink marbles (a real package holds thousands of dopamine molecules), and feeds it to the warehouse through a short tube. The warehouse keeps them in many small packages, the <span class="t">vesicles</span>, riding a slow conveyor belt; each is like a little gumball machine, refilled through its cyan lid (<span class="t" data-k="vmat2">VMAT2</span>). The faint copies show there are thousands of terminals.',
       zh: '轴突的末端（轴突末梢）= 工厂 + 仓库。工厂生产多巴胺，这里画成粉色弹球（真实的一个包裹里有几千到几万个多巴胺分子），经一根短管送进仓库。仓库把它们装进很多个小包裹（囊泡），放在一条慢慢转的传送带上；每个包裹都像一台小扭蛋机，顶上的青色盖子 = VMAT2，负责装货。后面的淡影表示这样的末梢有成千上万个。' },
-    { spot: 4, en: 'When a pulse reaches the warehouse, it opens the gate under the belt, and the package standing over the gate empties all at once (the package stays on the belt and rides on to be refilled). Dopamine spills into the <span class="t">synaptic cleft</span> (the gap, drawn far wider than its real 20 nanometers). The molecules do not fall: they spread out in all directions at random, and nothing aims them. Two recycling pumps (<span class="t" data-k="dat">DAT</span>, the dopamine transporter) pull it back into the warehouse, where most of it is packed again.',
+    { spot: 4, tips: [[925, 522, 1010, 655, 'Calcium (Ca²⁺) opens the gate']], en: 'When a pulse reaches the warehouse, it opens the gate under the belt, and the package standing over the gate empties all at once (the package stays on the belt and rides on to be refilled). Dopamine spills into the <span class="t">synaptic cleft</span> (the gap, drawn far wider than its real 20 nanometers). The molecules do not fall: they spread out in all directions at random, and nothing aims them. Two recycling pumps (<span class="t" data-k="dat">DAT</span>, the dopamine transporter) pull it back into the warehouse, where most of it is packed again.',
       zh: '电脉冲到达仓库，打开传送带下面的闸门，站在闸门上的那个包裹一次倒空（包裹本身留在传送带上，继续走，再被补满）。多巴胺撒进突触间隙（图里画得比真实的约 20 纳米宽得多）。分子不会往下掉，而是向各个方向随机扩散，没有谁在瞄准。两台回收泵 (DAT) 把多巴胺抽回仓库，大部分重新装进包裹，所以平时多巴胺不会积累。' },
-    { spot: 5, en: 'Some marbles happen to land in <span class="t">receptors</span>, the cups on the pans of two balance scales, one on each kind of receiving cell; each sits a moment, then pops out. The scale tips by how many cups are full right now. The <b>D1</b> scale carries a heavy weight: only when many cups are full at once does its pan sink and press the go pedal (so at normal levels it stays up). The <b>D2</b> scale carries the stop boot: a few full cups keep the boot lifted; when dopamine dips, the boot drops onto the stop pedal. In short: dopamine presses GO (“do that again”) and keeps STOP (“hold back”) off; the green and red lines carry each cell’s output to the BEHAVIOR dial, whose needle swings toward DO IT AGAIN or HOLD BACK (the middle means no change). Try it: press “Better than expected” under the picture for a burst, or “Worse than expected” for a pause (the GABA operator clamps the rotor). Behavior follows the dial: "That was better than expected. Do it again." Dopamine is this signal, not the pleasure itself.',
+    { spot: 5, tips: [[900, 780, 1010, 650, 'Dopamine binds, then leaves: it never enters']], en: 'Some marbles happen to land in <span class="t">receptors</span>, the cups on the pans of two balance scales, one on each kind of receiving cell; each sits a moment, then pops out. The scale tips by how many cups are full right now. The <b>D1</b> scale carries a heavy weight: only when many cups are full at once does its pan sink and press the go pedal (so at normal levels it stays up). The <b>D2</b> scale carries the stop boot: a few full cups keep the boot lifted; when dopamine dips, the boot drops onto the stop pedal. In short: dopamine presses GO (“do that again”) and keeps STOP (“hold back”) off; the green and red lines carry each cell’s output to the BEHAVIOR dial, whose needle swings toward DO IT AGAIN or HOLD BACK (the middle means no change). Try it: press “Better than expected” under the picture for a burst, or “Worse than expected” for a pause (the GABA operator stamps on the brake). Behavior follows the dial: "That was better than expected. Do it again." Dopamine is this signal, not the pleasure itself.',
       zh: '弹球随机乱窜，有的碰巧落进两台天平托盘上的小杯子（受体）里，停一会儿又弹出来。天平倾斜多少，取决于此刻有几个杯子里有弹球。D1 天平另一头挂着很重的配重：要很多杯子同时有弹球，托盘才会沉下去踩下"走"踏板（所以平时它悬着）。D2 天平另一头挂着靴子：只要一两个杯子有弹球，就能把靴子翘起来；多巴胺一下降，靴子落下，踩住"停"踏板。一句话：多巴胺踩下"走"（"再来一次"），同时挡住"停"（"先别做"）；绿线和红线把两种细胞的输出送到右边的行为表（BEHAVIOR）：指针摆向 DO IT AGAIN（再来一次）或 HOLD BACK（先别做），中间 no change 表示不变。试一试：点画面下方的「Better than expected」让转轮连敲，D1 托盘沉下去；点「Worse than expected」让转轮停一下，靴子落下。行为跟着表针走，意思是"这比预期的好，再来一次"。多巴胺是这个信号，不是快乐本身。' }
   ],
   recap: { spot: 0, recap: true, en: 'First, the machine running normally: steady hammer taps, a little dopamine in the gap, the D1 scale stays up (go pedal barely pressed), and the D2 scale keeps the boot lifted.',
@@ -2117,19 +2185,25 @@ window.STORY = {
   cases: {
     normal: { steps: [] },
     nicotine: { steps: [
-      { k: 'arrive', spot: 1, en: '<b>Nicotine</b> arrives and plugs into the sockets on the rotor itself: <span class="t">nicotinic receptors</span> on the dopamine neuron.',
-        zh: '尼古丁到达，直接插进转轮上的插座：多巴胺神经元自己身上的烟碱型受体。' },
-      { k: 'change', spot: 1, en: 'Each plug gives the rotor an extra push. It turns faster, and the hammers tap more often.',
-        zh: '每插上一个，转轮就多一份推力，转得更快，锤子敲得更密，发出更多电脉冲。' },
+      { k: 'arrive', spot: 1, en: '<b>Nicotine</b> arrives. Three arms of the rotor carry small rockets: <span class="t">nicotinic receptors</span> on the dopamine neuron itself. Nicotine is a copy of the key that normally lights them for a moment, <span class="t">acetylcholine</span>.',
+        tips: [['rk', 0, 600, 290, 'Rocket = nicotinic receptor (an ion channel)'], ['rk', 0, 600, 290, 'Nicotine copies the body’s key, acetylcholine']],
+        zh: '尼古丁到达。转轮的三条转臂上装着小火箭：多巴胺神经元自己身上的烟碱型受体。尼古丁是平时只把它们点燃一瞬间的那把钥匙（乙酰胆碱）的复制品。' },
+      { k: 'change', spot: 1, en: 'Each key lights a rocket: positive ions rush into the neuron, and the rockets push the rotor faster. The hammers tap more often.',
+        tips: [['rk', 0, 600, 290, 'Na⁺ and Ca²⁺ flow in: it fires faster']],
+        zh: '每插进一把钥匙，就点燃一个火箭：正离子涌进神经元，火箭推着转轮转得更快，锤子敲得更密。' },
+      { k: 'later', spot: 1, en: '<b>Minutes later</b> the rockets burn out (<span class="t">desensitization</span>): the keys are still in, but there is no push. Dopamine stays up anyway. Nicotine also makes the glove push more often (more <span class="t">glutamate</span>), and the brake operator’s own nicotinic receptors burn out too, so he brakes less. Hours later the liver has turned nicotine into cotinine, which hardly acts here, and the rockets are ready again.',
+        tips: [['rk', 0, 600, 290, 'Burnt out = desensitized: key in, no push'], [215, 215, 650, 118, 'Nicotine also boosts glutamate release'], [84, 440, 200, 712, 'The GABA cells’ receptors burn out too']],
+        zh: '几分钟后，火箭烧完了（失敏）：钥匙还插着，但不再推。多巴胺却仍然偏高：尼古丁还让手套推得更勤（谷氨酸增多），刹车手身上的烟碱型受体也失敏了，所以刹车踩得更少。几小时后，肝脏把尼古丁变成可替宁（cotinine），它在这里几乎不起作用，火箭又恢复了。' },
       { k: 'result', spot: 5, en: 'More pulses open the gate more often. More dopamine reaches the receiving cells, and the go pedal is pressed harder. For smoking this means: however the cigarette really felt, the brain gets “better than expected: do it again”, and in this circuit HOLD BACK loses. (Conscious self-control comes from the prefrontal cortex, which is not drawn here.)',
         zh: '脉冲多了，闸门开得更勤，到达接收细胞的多巴胺更多，"走"踏板踩得更深。对吸烟来说：不管这支烟实际感觉如何，大脑收到的都是"比预期好，再来一次"，在这个回路里 HOLD BACK（先别做）赢不了。HOLD BACK 是一个自动的学习信号，不是有意识地决定戒烟；有意识的控制主要靠前额叶皮层，这台机器里没有画。' },
-      { k: 'long', spot: 5, en: 'One dose is not addiction. With repeated use, the brain changes: <b>ΔFosB</b> (say "delta FosB": a protein that switches genes on or off and stays for weeks) builds up in D1 cells, and the brain makes extra nicotinic receptors. Brain scans do not clearly show fewer D2 receptors in smokers. Everyday rewards then feel weaker, and the cigarette feels more necessary.',
-        zh: '一次用药还不是成瘾。反复使用后，大脑会改变：D1 细胞里 ΔFosB（一种能开关基因、持续数周的蛋白）积累，大脑还会多长出烟碱型受体。脑成像并没有清楚显示吸烟者的 D2 受体减少。日常的奖励显得更弱，香烟显得更必要。' } ] },
+      { k: 'long', spot: 0, en: 'One dose is not addiction. With months of smoking the brain makes extra nicotinic receptors: now every arm carries a rocket (<span class="t">up-regulation</span>), but between cigarettes many stay burnt out, and the person feels the urge for the next one. <b>ΔFosB</b> (say "delta FosB": a protein that switches genes on or off and stays for weeks) builds up in D1 cells. Brain scans do not clearly show fewer D2 receptors in smokers. Everyday rewards then feel weaker, and the cigarette feels more necessary.',
+        tips: [['rk', 0, 600, 290, 'More receptors, but many burnt out']],
+        zh: '一次用药还不是成瘾。抽烟几个月后，大脑多长出烟碱型受体：每条转臂都装上了火箭（上调），但两支烟之间很多处于"烧完了"（失敏）的状态，人就想抽下一支。D1 细胞里 ΔFosB（一种能开关基因、持续数周的蛋白）积累。脑成像并没有清楚显示吸烟者的 D2 受体减少。日常的奖励显得更弱，香烟显得更必要。' } ] },
     opioid: { steps: [
-      { k: 'arrive', spot: 1, en: '<b>Opioids</b> (heroin, fentanyl, oxycodone, morphine) arrive, but they do not touch the rotor. They attach to the brake operator: <span class="t">μ-opioid receptors</span> on the GABA neuron.',
+      { k: 'arrive', spot: 1, tips: [[84, 440, 200, 712, 'μ-opioid receptors sit on the GABA cell']], en: '<b>Opioids</b> (heroin, fentanyl, oxycodone, morphine) arrive, but they do not touch the rotor. They attach to the brake operator: <span class="t">μ-opioid receptors</span> on the GABA neuron.',
         zh: '阿片类（海洛因、芬太尼、羟考酮、吗啡）到达，但它们不碰转轮，而是结合在刹车手身上：GABA 神经元上的 μ 阿片受体。' },
-      { k: 'change', spot: 1, en: 'The operator "falls asleep" (the GABA neuron goes quiet) and stops braking. With the brake off, the rotor turns faster. This is called <span class="t">disinhibition</span> (removing a brake). Opioids also act directly on the receiving cells in the nucleus accumbens, so part of their reward does not need dopamine.',
-        zh: '刹车手睡着了，不再压刹车。刹车一松，转轮就转快了。这叫解除抑制 (disinhibition)，也就是"去掉刹车"。阿片类还直接作用在伏隔核的接收细胞上，所以它们的奖励效果有一部分不需要多巴胺。' },
+      { k: 'change', spot: 1, tips: [[84, 440, 200, 712, 'Inhibit the inhibitor = disinhibition']], en: 'The operator "falls asleep" (the GABA neuron goes quiet) and stops braking. With the brake off, the rotor turns faster. This is called <span class="t">disinhibition</span> (removing a brake). Opioids also act directly on the receiving cells in the nucleus accumbens, so part of their reward does not need dopamine.',
+        zh: '刹车手睡着了，不再踩刹车。刹车一松，转轮就转快了。这叫解除抑制 (disinhibition)，也就是"去掉刹车"。阿片类还直接作用在伏隔核的接收细胞上，所以它们的奖励效果有一部分不需要多巴胺。' },
       { k: 'result', spot: 5, en: 'More pulses, more dopamine in the gap, and the go pedal is pressed harder.',
         zh: '脉冲多了，窄缝里的多巴胺多了，"走"踏板踩得更深。' },
       { k: 'long', spot: 5, en: 'One dose is not addiction. With repeated use, the receiving cells change: <b>ΔFosB</b> (say "delta FosB": a protein that switches genes on or off and stays for weeks) builds up (with opioids, in both D1 and D2 cells), and D2 receptors decrease. Everyday rewards then feel weaker, and the drug feels more necessary.',
@@ -2137,16 +2211,16 @@ window.STORY = {
     alcohol: { steps: [
       { k: 'arrive', spot: 1, en: '<b>Alcohol</b> arrives. It acts on many targets in the brain at once. Here we show its main effect on this pathway, at station 1.',
         zh: '酒精到达。它同时作用在大脑里的很多目标上，这里只展示它在这条通路上的主要作用，在 ① 站。' },
-      { k: 'change', spot: 1, en: 'Alcohol pushes the rotor directly, and it also quiets the brake operator (the GABA neurons), partly by releasing the body’s own opioids. With a push and less braking, the rotor turns faster.',
+      { k: 'change', spot: 1, tips: [[273, 368, 600, 290, 'Alcohol excites the dopamine neuron directly'], [84, 440, 200, 712, 'It quiets the GABA cells (via endorphins)']], en: 'Alcohol pushes the rotor directly, and it also quiets the brake operator (the GABA neurons), partly by releasing the body’s own opioids. With a push and less braking, the rotor turns faster.',
         zh: '酒精直接推转轮，同时让刹车手（GABA 神经元）安静下来，部分是通过释放身体自己的阿片物质。推力多了、刹车少了，转轮就转快了。' },
       { k: 'result', spot: 5, en: 'Dopamine rises, but less than with cocaine or meth. The go pedal is pressed harder.',
         zh: '多巴胺升高，但比可卡因和冰毒少。"走"踏板踩得更深。' },
       { k: 'long', spot: 5, en: 'One dose is not addiction. With repeated use, the receiving cells change: <b>ΔFosB</b> (say "delta FosB": a protein that switches genes on or off and stays for weeks) builds up in D1 cells, and D2 receptors decrease. Everyday rewards then feel weaker, and the drink feels more necessary.',
         zh: '一次喝酒不等于成瘾。反复饮用后，接收细胞会改变：D1 细胞里 ΔFosB（一种能开关基因、持续数周的蛋白）积累，D2 受体变少。日常的奖励显得更弱，酒显得更必要。' } ] },
     cannabis: { steps: [
-      { k: 'arrive', spot: 1, en: '<b>Cannabis</b> arrives. Its main drug, <b>THC</b>, attaches to <span class="t" data-k="cb1 receptors">CB1 receptors</span> on the brake operator (the GABA neurons).',
+      { k: 'arrive', spot: 1, tips: [[84, 440, 200, 712, 'THC binds CB1 receptors on the GABA cell']], en: '<b>Cannabis</b> arrives. Its main drug, <b>THC</b>, attaches to <span class="t" data-k="cb1 receptors">CB1 receptors</span> on the brake operator (the GABA neurons).',
         zh: '大麻到达。它的主要成分 THC 结合在刹车手（GABA 神经元）的 CB1 受体上。' },
-      { k: 'change', spot: 1, en: 'The brake operator releases less GABA, so the brake is pressed less often and the rotor turns a little faster. This is <span class="t">disinhibition</span>, like opioids, but weaker.',
+      { k: 'change', spot: 1, tips: [[233, 462, 200, 712, 'Less GABA released: a looser brake']], en: 'The brake operator releases less GABA, so the brake is pressed less often and the rotor turns a little faster. This is <span class="t">disinhibition</span>, like opioids, but weaker.',
         zh: '刹车手释放的 GABA 变少，刹车压得少了，转轮转得稍快一点。这也是解除抑制，和阿片类一样，但更弱。' },
       { k: 'result', spot: 5, en: 'Dopamine rises a little, less than with alcohol or opioids. The go pedal is pressed a bit harder.',
         zh: '多巴胺稍微升高，比酒精和阿片类少。"走"踏板踩得稍深一点。' },
@@ -2155,25 +2229,25 @@ window.STORY = {
     gamble: { steps: [
       { k: 'arrive', spot: 1, en: '<b>Gambling and games</b>: no drug enters the body. The game starts, and every spin is uncertain. The letters under the slot machine show the last spins: W = win, N = near-miss, L = loss.',
         zh: '赌博和游戏：没有任何药物进入身体，起作用的是大脑自己的物质。游戏开始，每一次结果都不确定。老虎机下面的字母是最近几次结果：W 赢，N 差一点赢，L 输。' },
-      { k: 'change', spot: 1, en: 'A win gives a quick <b>burst</b>: the glutamate hand pushes the rotor hard. Brain scans suggest a near-miss (almost a win) acts like a smaller win, so the model gives it a smaller burst. A loss: the brake clamp presses and the rotor stops for a moment.',
-        zh: '赢了：glutamate 的手用力一推，锤子连敲几下（连发放电）。差一点赢：脑成像提示它的反应像一次小一点的赢，所以模型里也给它一个小一些的连发。输了：刹车夹压下，转轮停一下。' },
+      { k: 'change', spot: 1, en: 'A win gives a quick <b>burst</b>: the glutamate hand pushes the rotor hard. Brain scans suggest a near-miss (almost a win) acts like a smaller win, so the model gives it a smaller burst. A loss: the operator stamps on the brake and the rotor stops for a moment.', tips: [[406, 60, 720, 60, 'A near-miss acts like a small win'], [233, 462, 200, 712, 'A loss: GABA input pauses the neuron']],
+        zh: '赢了：glutamate 的手用力一推，锤子连敲几下（连发放电）。差一点赢：脑成像提示它的反应像一次小一点的赢，所以模型里也给它一个小一些的连发。输了：刹车手一脚踩下刹车，转轮停一下。' },
       { k: 'result', spot: 5, en: 'On average only a little more dopamine, but it goes up and down. After a loss, dopamine dips, the D2 pan empties, and the boot drops onto the stop pedal. Not knowing what comes next keeps people playing.',
         zh: '平均只多一点点，但忽高忽低。输了之后多巴胺下降，D2 托盘空了，靴子落下，踩住"停"踏板。正是"不知道下一次会怎样"让人停不下来。' },
-      { k: 'long', spot: 1, en: 'With repeated play, the lights and sounds of the game start to trigger dopamine bursts by themselves. These cues cause craving, even before the game starts.',
+      { k: 'long', spot: 1, tips: [[406, 60, 720, 60, 'Cues alone now trigger bursts']], en: 'With repeated play, the lights and sounds of the game start to trigger dopamine bursts by themselves. These cues cause craving, even before the game starts.',
         zh: '反复玩之后，游戏的声音和灯光本身就会引发多巴胺爆发。这些提示 (cue) 会在开始玩之前就引起渴求。' } ] },
     cocaine: { steps: [
-      { k: 'arrive', spot: 4, en: '<b>Cocaine</b> arrives and blocks the two return pumps (<b>DAT</b>).',
+      { k: 'arrive', spot: 4, tips: [[745, 590, 925, 662, 'Cocaine jams the DAT pump']], en: '<b>Cocaine</b> arrives and blocks the two return pumps (<b>DAT</b>).',
         zh: '可卡因到达，堵住两台回收泵 (DAT)。' },
-      { k: 'change', spot: 4, en: 'Cocaine does not act on the rotor itself. The extra dopamine can even slow it a little: the rotor has its own dopamine sensors that slow it down when dopamine is high. But dopamine released into the gap is no longer pulled back, so it builds up.',
+      { k: 'change', spot: 4, tips: [[925, 600, 925, 662, 'No recycling: dopamine lingers in the gap']], en: 'Cocaine does not act on the rotor itself. The extra dopamine can even slow it a little: the rotor has its own dopamine sensors that slow it down when dopamine is high. But dopamine released into the gap is no longer pulled back, so it builds up.',
         zh: '可卡因不直接作用在转轮上。多出来的多巴胺还可能通过神经元自己的多巴胺感受器（D2 自身受体）让它稍微慢一点。但倒进窄缝的多巴胺抽不回去，越积越多。' },
       { k: 'result', spot: 5, en: 'Dopamine builds up to several times normal. The go pedal is pressed hard.',
         zh: '多巴胺积累到平时的好几倍（模型里约 3 倍；大鼠实验约 3 到 4 倍）。"走"踏板被踩得很深。' },
       { k: 'long', spot: 5, en: 'One dose is not addiction. With repeated use, the receiving cells change: <b>ΔFosB</b> (say "delta FosB": a protein that switches genes on or off and stays for weeks) builds up in D1 cells, and D2 receptors decrease. Everyday rewards then feel weaker, and the drug feels more necessary.',
         zh: '一次用药还不是成瘾。反复使用后，接收细胞会改变：D1 细胞里 ΔFosB（一种能开关基因、持续数周的蛋白）积累，D2 受体变少。日常的奖励显得更弱，药物显得更必要。' } ] },
     meth: { steps: [
-      { k: 'arrive', spot: 4, en: '<b>Methamphetamine</b> arrives and gets into the terminal through the pumps.',
+      { k: 'arrive', spot: 4, tips: [[745, 590, 925, 662, 'Meth enters through the DAT pumps']], en: '<b>Methamphetamine</b> arrives and gets into the terminal through the pumps.',
         zh: '冰毒到达，顺着泵进入轴突末梢（仓库）。' },
-      { k: 'change', spot: 3, en: 'Inside, it makes the packages leak: dopamine spills out of the vesicles into the warehouse (meth acts on <b>VMAT2</b>, the cyan lids that fill them). Then it runs the return pumps backward, pushing dopamine out even when no pulse arrives.',
+      { k: 'change', spot: 3, tips: [[925, 446, 930, 300, 'Packages leak dopamine (VMAT2)'], [745, 520, 930, 300, 'DAT runs backward: release with no pulse']], en: 'Inside, it makes the packages leak: dopamine spills out of the vesicles into the warehouse (meth acts on <b>VMAT2</b>, the cyan lids that fill them). Then it runs the return pumps backward, pushing dopamine out even when no pulse arrives.',
         zh: '进去以后，先让包裹漏：多巴胺从囊泡里漏到仓库里（冰毒作用在 VMAT2 上，就是给包裹装货的青色盖子）；再让回收泵倒转，即使没有电脉冲，也把多巴胺往外推。' },
       { k: 'result', spot: 5, en: 'The highest level of all, many times normal. The go pedal is pressed all the way down. The rotor slows down, but now that hardly matters.',
         zh: '所有情况里最高（模型里约 9 倍；大鼠实验约 10 倍以上）。"走"踏板被踩到底。转轮反而变慢了，但这已经不重要，因为多巴胺不靠脉冲也在往外流。' },
@@ -2200,7 +2274,7 @@ window.STORY = {
   const HATCH = G.hatch, DOCK = G.dock, PUMPS = G.pumps, P_TOP = G.pTop, P_MOUTH = G.pMouth, GAS = G.gas, BRK = G.brake;
   const SPOT = { 0: [768, 512, 900, 700], 1: [228, 392, 300, 255], 2: [575, 480, 190, 125], 3: [1010, 390, 360, 190], 4: [925, 572, 300, 100], 5: [966, 760, 280, 190] };
   const zh = t => `<tspan class="zh"> ${t}</tspan>`;
-  const WHERE = { normal: 'Baseline', nicotine: 'Rotor sockets', opioid: 'Brake operator', alcohol: 'Brake operator (and more)', cannabis: 'Brake operator (CB1)', gamble: 'Hand and brake', cocaine: 'Return pumps', meth: 'Packages and pumps' };
+  const WHERE = { normal: 'Baseline', nicotine: 'Rockets on the rotor', opioid: 'Brake operator', alcohol: 'Brake operator (and more)', cannabis: 'Brake operator (CB1)', gamble: 'Hand and brake', cocaine: 'Return pumps', meth: 'Packages and pumps' };
   // two more of the most widely used substances, shown only in this tab
   const EXTRA = [
     { k: 'alcohol', name: 'Alcohol', sub: 'Quiets the brake', color: '#ff9f43', st: [1],
@@ -2212,14 +2286,14 @@ window.STORY = {
   const MC = ['normal', 'nicotine', 'opioid', 'alcohol', 'cannabis', 'gamble', 'cocaine', 'meth'].map(k => MBYK[k]);
   const BRAKE_DRUG = { opioid: 1, alcohol: 1, cannabis: 1 };
   const PIC = [null,
-    'The rotor is the <span class="t">dopamine neuron</span> in the VTA. It turns on its own, like a clock (<span class="t">pacemaker firing</span>), and each hammer tap on the contact sends one <span class="t">action potential</span>. The white glove is <span class="t">glutamate</span>: a hard push makes a burst. The blue operator is a <span class="t" data-k="gaba neuron">GABA</span> neuron: he presses the brake clamp.',
+    'The rotor is the <span class="t">dopamine neuron</span> in the VTA. It turns on its own, like a clock (<span class="t">pacemaker firing</span>), and each hammer tap on the contact sends one <span class="t">action potential</span>. The white glove is <span class="t">glutamate</span>: a hard push makes a burst. The blue operator is a <span class="t" data-k="gaba neuron">GABA</span> neuron: when it fires, he steps on the seesaw pedal and its red pad presses the hub, slowing the rotor. In the nicotine cases, small rockets on the rotor arms are <span class="t">nicotinic receptors</span>.',
     'The cable is the <span class="t">axon</span>. The blue-white sparks are electricity; dopamine does not travel here.',
     'The <span class="t">axon terminal</span> is a factory and a warehouse. The factory makes dopamine from <span class="t">tyrosine</span>; it is drawn as pink marbles (a real package holds thousands of dopamine molecules) and passes them to the warehouse through a short tube. The warehouse keeps them in many small packages, the <span class="t">vesicles</span>, riding a slow conveyor belt; each is like a little gumball machine, refilled through its cyan lid (<span class="t" data-k="vmat2">VMAT2</span>). The faint copies show there are thousands of terminals.',
     'A pulse reaches the warehouse and opens the gate under the belt (<span class="t">calcium</span> rushes in). The package standing over the gate empties all at once; the package itself stays and rides on to be refilled. Dopamine spills into the <span class="t">synaptic cleft</span> (drawn far wider than its real 20 nanometers). The molecules do not fall: they spread out in all directions at random, and nothing aims them. The two funnel pumps are <span class="t" data-k="dat">DAT</span>, the recycling pumps: they pull dopamine back into the warehouse, where most of it is packed again.',
     'Some marbles happen to land in receptors, the cups on the pans of two balance scales (one on each kind of receiving cell); each sits a moment, then pops out, and dopamine never goes inside the cell. The scale tips by how many cups are full right now. The <span class="t">D1 receptors</span> scale carries a heavy weight: only when many cups are full at once does its pan sink and press the go pedal. The <span class="t">D2 receptors</span> scale carries the stop boot: a few full cups are enough to keep the boot lifted; when dopamine dips, the boot drops onto the stop pedal, and a pressed STOP pedal means “hold back”. In short: dopamine presses GO (“do that again”) and keeps STOP (“hold back”) off; the green and red lines are the two cells’ output fibers, and the BEHAVIOR dial on the right shows which one wins: its needle swings toward DO IT AGAIN or HOLD BACK (the middle means no change). Try the two buttons under the picture. Behavior follows the dial: "That was better than expected. Do it again." With repeated drug use, <span class="t" data-k="δfosb">ΔFosB</span> (say "delta FosB"), a protein that switches genes on or off for weeks, builds up in D1 cells, and D2 receptors decrease, so the stop boot drops more easily.'
   ];
   const PICTN = [null,
-    '① 转轮 = VTA 里的多巴胺神经元，像钟表一样自己会转（自发放电）；每个锤头敲一下触点 = 一个动作电位。白手套 = glutamate，用力一推就连发；蓝色小人 = GABA 神经元，压下刹车夹让它慢下来。',
+    '① 转轮 = VTA 里的多巴胺神经元，像钟表一样自己会转（自发放电）；每个锤头敲一下触点 = 一个动作电位。白手套 = glutamate，用力一推就连发；蓝色小人 = GABA 神经元，一放电就踩下跷跷板踏板，红色刹车皮顶住轮毂，让它慢下来。尼古丁的情形里，转臂上的小火箭 = 烟碱型受体。',
     '② 电线 = 轴突。蓝白色的火花是电脉冲；这一段不运多巴胺。',
     '③ 轴突末梢 = 工厂 + 仓库。工厂用酪氨酸 (tyrosine) 生产多巴胺，多巴胺画成粉色弹球（真实的一个包裹里有几千到几万个多巴胺分子），经一根短管送进仓库；仓库把多巴胺装进很多个小包裹（囊泡），放在一条慢慢转的传送带上；每个包裹都像一台小扭蛋机，顶上的青色盖子 = VMAT2，负责装货。后面的淡影表示这样的末梢有成千上万个。',
     '④ 电脉冲到达仓库，打开传送带下面的闸门（钙离子进入），站在闸门上的那个包裹一次倒空；包裹本身不掉下去，继续随传送带走，再被补满。多巴胺撒进突触间隙（图里画得比真实的约 20 纳米宽得多）。分子不会往下掉，而是向各个方向随机扩散，没有谁在瞄准。两台漏斗泵 = DAT，就是回收站：把多巴胺抽回仓库，大部分重新装进包裹。',
@@ -2227,15 +2301,15 @@ window.STORY = {
   ];
   // before/after: the part each case acts on, and what changes there
   const CMP = {
-    nicotine: { rings: [[273, 368, 112, 112]], where: '① VTA: the rotor’s sockets (<span class="t">nicotinic receptors</span> on the dopamine neuron)',
-      before: 'The rotor turns at its own steady pace.', after: 'Nicotine plugs into the sockets and pushes the rotor faster: more pulses, so the gate opens more often.' },
+    nicotine: { rings: [[273, 368, 140, 140]], where: '① VTA: the rockets on the rotor arms (<span class="t">nicotinic receptors</span> on the dopamine neuron)',
+      before: 'The rotor turns at its own steady pace.', after: 'Nicotine is a copy of the body’s key (acetylcholine): it lights the rockets, and they push the rotor faster: more pulses, so the gate opens more often. (Within minutes the rockets burn out; the guided story shows what keeps dopamine up after that.)' },
     opioid: { rings: [[84, 452, 78, 128]], where: '① VTA: the brake operator (<span class="t">μ-opioid receptors</span> on GABA neurons)',
-      before: 'The operator presses the brake clamp now and then, which keeps the rotor in check.', after: 'The operator falls asleep. With the brake off, the rotor speeds up (<span class="t">disinhibition</span>).' },
+      before: 'The operator steps on the brake now and then, which keeps the rotor in check.', after: 'The operator falls asleep. With the brake off, the rotor speeds up (<span class="t">disinhibition</span>).' },
     alcohol: { rings: [[84, 452, 78, 128], [273, 368, 112, 112]], where: '① VTA: a direct push on the rotor, plus the brake operator (GABA neurons)',
       before: 'The operator brakes now and then.', after: 'The rotor gets a direct push and the operator brakes less, so it turns faster.' },
     cannabis: { rings: [[84, 452, 78, 128]], where: '① VTA: the brake operator (<span class="t" data-k="cb1 receptors">CB1 receptors</span> on GABA neurons)',
       before: 'The operator brakes now and then.', after: 'THC makes him brake less often, so the rotor turns a little faster.' },
-    gamble: { rings: [[190, 196, 92, 64], [CAL[0], CAL[1], 46, 46]], where: '① VTA: the glutamate hand and the brake clamp (no drug enters the body)',
+    gamble: { rings: [[190, 196, 92, 64], [CAL[0], CAL[1], 46, 46]], where: '① VTA: the glutamate hand and the GABA brake (no drug enters the body)',
       before: 'Steady taps, steady dopamine.', after: 'A win pushes the rotor into a burst; a loss stops it for a moment. Bursts are short, so on average dopamine rises only a little, but it swings up and down. (Letters under the slot machine: W = win, N = near-miss, L = loss.)' },
     cocaine: { rings: [[PUMPS[0], 560, 52, 62], [PUMPS[1], 560, 52, 62]], where: '④ release and recycling: the return pumps (<span class="t" data-k="dat">DAT</span>)',
       before: 'After each release the pumps pull dopamine back, so it never piles up.', after: 'Cocaine blocks the pumps. Dopamine stays in the gap and piles up. (The extra dopamine can slow the rotor a little: its own dopamine sensors, called autoreceptors, feel it. The drug does not damage it.)' },
@@ -2243,7 +2317,7 @@ window.STORY = {
       before: 'Dopamine stays packed until a pulse opens the gate.', after: 'Meth empties the packages into the warehouse (the packages lose their marbles, which roll loose inside), then runs the pumps backward (yellow arrows point down): dopamine pours out even without a pulse. The rotor slows, because its own dopamine sensors (autoreceptors) feel the flood.' }
   };
   const ENTRY = { nicotine: [-30, 760], opioid: [-30, 760], alcohol: [-30, 760], cannabis: [-30, 760], cocaine: [925, 1060], meth: [925, 1060] };
-  const ZONE = { nicotine: [190, 290, 170, 160], opioid: [96, 360, 80, 120], alcohol: [96, 360, 80, 120], cannabis: [96, 360, 80, 120], cocaine: [745, 556, 360, 50], meth: [745, 556, 360, 50] };
+  const ZONE = { nicotine: [350, 176, 110, 56], opioid: [96, 360, 80, 120], alcohol: [96, 360, 80, 120], cannabis: [96, 360, 80, 120], cocaine: [745, 556, 360, 50], meth: [745, 556, 360, 50] };
   const DLP = { nicotine: [392, 222, 'nicotine'], opioid: [14, 640, 'opioids bind him'], alcohol: [14, 640, 'alcohol quiets him'], cannabis: [14, 640, 'THC binds CB1 on him'], cocaine: [1150, 645, 'cocaine'], meth: [800, 168, 'meth gets inside the terminal'] };
   const toCleft = m => [G.cleft[0] + (m.x - 40) / 44 * G.cleft[2], G.cleft[1] + G.cleft[3] - (m.y + 34.4) / 4.6 * G.cleft[3]];
   const occ = a => a.reduce((s, v) => s + v, 0) / a.length;
@@ -2306,12 +2380,13 @@ window.STORY = {
     <text class="lcd" data-r="lcd" x="376" y="590">SPEED 100%</text><text class="lcd2" x="376" y="600">of normal</text>
     <g data-r="bound"></g>
     ${main ? `<g class="mlegend" transform="translate(40 990)"><use href="#mxBall" transform="translate(9 -6) scale(1.05)"/><text x="24" y="0">dopamine (marbles; a real package holds thousands)</text><line x1="480" y1="-6" x2="510" y2="-6" class="lg-pu"/><text x="520" y="0">electrical pulse (not a molecule)</text><g data-r="lgDot" transform="translate(830 -6) scale(0.8)"><circle class="lg-dr" r="6.5"/><circle class="lg-dr" cx="8" cy="-4" r="5"/><circle class="lg-dr" cx="4" cy="8" r="4.4"/></g><text x="850" y="0" data-r="lgDrug">drug molecule</text></g>` : ''}
-    <g data-r="rot">${ART.rotor}${G.sockets.map(([sx, sy]) => `<g class="plug" data-r="plug" transform="translate(${RX + sx} ${RY + sy})"><circle r="11"/><circle class="pl2" cx="-4" cy="-4" r="4"/></g>`).join('')}</g>
+    <g data-r="sw">${ART.sw}</g><circle class="swl" data-r="swl" cx="424" cy="540" r="4"/>
+    <g data-r="rot">${ART.rotor}${ART.rockets}</g>
     ${ART.gloss}
     <path class="spark" data-r="spark" d="M${G.tip[0].toFixed(0)} ${(G.tip[1] - 12).toFixed(0)} l5 9 l10 2 l-8 6 l2 10 l-9 -6 l-9 6 l2 -10 l-8 -6 l10 -2 z"/>
-    <line class="link" data-r="link" x1="${G.lever[0]}" y1="${G.lever[1]}" x2="${CAL[0].toFixed(1)}" y2="${CAL[1].toFixed(1)}"/>
-    <g data-r="cal" transform="translate(${CAL[0].toFixed(1)} ${CAL[1].toFixed(1)}) rotate(73)"><path class="cal" d="M-17 -18 H17 V24 H8 V-6 H-8 V24 H-17 Z"/><rect class="called" x="-8" y="-12" width="16" height="7" rx="3"/></g>
+    <g class="padheat" data-r="heat">${ART.heat}</g>${ART.sawPost}<g data-r="saw">${ART.saw}</g>${ART.sawPin}
     <g class="m-op" data-r="op">${ART.operator}${MU.map(([x, y]) => `<circle class="mu" data-r="mu" cx="${x}" cy="${y}" r="6"/>`).join('')}</g>
+    <path class="opleg" data-r="opLeg" d=""/><rect class="opshoe" data-r="opShoe" width="30" height="10" rx="4"/>
     <text class="zz" data-r="zz" x="98" y="326">z<tspan dy="-12" font-size="30">z</tspan><tspan dy="-14" font-size="40">Z</tspan></text>
     <g data-r="hand">${ART.hand}</g>
     <text class="dmglbl" data-r="dmg" x="0" y="0"></text>
@@ -2321,6 +2396,7 @@ window.STORY = {
     <g data-r="drug"></g>
     <text class="druglbl" data-r="drugLbl" x="0" y="0"></text>
     <g data-r="rings"></g>
+    ${main ? '<g class="flash" data-r="flash"><line class="fl-l"/><circle class="fl-d" r="6"/><rect class="fl-b" rx="16"/><text class="fl-t"></text></g>' : ''}
     ${main ? `<g class="labels">
       <g data-s="1">${label(320, 650, '① Dopamine neuron (the rotor)', 'in the VTA (midbrain)', '多巴胺神经元', 'middle')}${label(300, 140, 'Glutamate', 'a hard push = a burst', '谷氨酸')}${label(20, 250, 'GABA neuron', 'brake operator', 'GABA 神经元')}${label(150, 597, 'hammer tap = 1 pulse', '', '敲一下 = 一个脉冲', 'middle')}</g>
       <g data-s="2">${label(500, 380, '② Axon', 'electric pulses', '轴突')}</g>
@@ -2337,13 +2413,13 @@ window.STORY = {
       ${PUMPS.map((x, i) => `<ellipse class="ph" data-p="pump" data-i="${i}" cx="${x}" cy="560" rx="48" ry="62"/><text class="pblk" data-r="pblk" x="${x}" y="575">✕</text>`).join('')}
       <rect class="ph" data-p="ware" x="740" y="358" width="370" height="146" rx="12"/>
       <text class="ptag" x="300" y="208">press &amp; hold the glove: burst</text>
-      <text class="ptag" data-r="tagRot" x="430" y="292">click the rotor: + nicotine plug</text>
+      <text class="ptag" data-r="tagRot" x="430" y="292">click the rotor: + nicotine key</text>
       <text class="ptag" data-r="tagWare" x="925" y="352" text-anchor="middle">click: make the packages leak (like meth)</text>
       ${PUMPS.map(x => `<text class="ptag" data-r="tagPump" x="${x}" y="660" text-anchor="middle">click: block (like cocaine)</text>`).join('')}
       <text class="ptag" x="745" y="748" text-anchor="end">drag the scales:</text><text class="ptag" x="745" y="768" text-anchor="end">a pan, the weight or the boot</text>
-      <ellipse class="ph lever" data-p="lever" cx="150" cy="420" rx="46" ry="42" tabindex="0" role="slider" aria-label="GABA brake strength: drag the brake lever" aria-valuemin="0" aria-valuemax="400" aria-valuenow="100"/>
+      <ellipse class="ph lever" data-p="lever" cx="152" cy="512" rx="60" ry="38" tabindex="0" role="slider" aria-label="GABA brake strength: drag the brake pedal up or down" aria-valuemin="0" aria-valuemax="400" aria-valuenow="100"/>
       <text class="pslt left" data-r="brkTxt" x="20" y="712">GABA brake 100%</text>
-      <text class="pslt2" x="20" y="734" text-anchor="start">drag the brake lever: toward the rotor = tighter</text>
+      <text class="pslt2" x="20" y="734" text-anchor="start">drag the brake pedal: down = tighter</text>
     </g>
     <g>${[1, 2, 3, 4, 5].map(n => { const s = SPOT[n]; return `<ellipse class="hot" data-s="${n}" cx="${s[0]}" cy="${s[1]}" rx="${s[2] * 0.62}" ry="${s[3] * 0.62}" tabindex="0" role="button" aria-label="Station ${n}: ${X.STATIONS[n].name}"/>`; }).join('')}</g>` : ''}
   </svg>${main ? '<div class="mx-dim" data-r="dim"></div>' : ''}`.replace(/(id="|url\(#|href="#)(mx(?:Bg|Glow|Ball))\b/g, '$1$2-' + uid);
@@ -2363,10 +2439,10 @@ window.STORY = {
     { r: [330, 22, 250, 52], when: m => m.svg.classList.contains('cueon'), real: 'Conditioned drug cue', part: 'cue sign',
       en: 'After repeated pairing with the drug, the cue alone drives glutamate input that triggers dopamine bursts (cue reactivity), experienced as craving.',
       zh: '条件化线索：和用药反复配对后，线索本身就能通过谷氨酸输入引发多巴胺爆发（线索反应），表现为渴求。' },
-    { a: [273, 368, 52, 84], real: 'Nicotinic acetylcholine receptors (nAChRs)', part: 'sockets on the rotor',
-      en: 'Mainly α4β2 nAChRs on the dopamine neuron, normally opened by acetylcholine from brainstem nuclei. Nicotine opens them too, depolarizing the neuron so it fires more.',
-      zh: '多巴胺神经元上的烟碱型乙酰胆碱受体（主要是 α4β2），平时由脑干核团的乙酰胆碱打开；尼古丁也能打开，使神经元去极化、放电增多。' },
-    { c: [172, 402, 30], real: 'GABA synapse on the dopamine neuron', part: 'brake clamp',
+    { a: [273, 368, 92, 134], when: m => m.rk.show, real: 'Nicotinic acetylcholine receptors (nAChRs)', part: 'rockets on the rotor arms',
+      en: 'Mainly α4β2 nAChRs on the dopamine neuron, normally opened for a moment by acetylcholine from brainstem nuclei. Nicotine opens them too: Na⁺ and Ca²⁺ flow in, so the neuron fires more. Within minutes many desensitize (burn out) while nicotine is still bound. Smokers grow more of them (up-regulation).',
+      zh: '多巴胺神经元上的烟碱型乙酰胆碱受体（主要是 α4β2），平时由脑干核团的乙酰胆碱短暂打开；尼古丁也能打开，钠离子和钙离子流入，神经元放电增多。几分钟内很多受体在尼古丁还结合着时就失敏（“烧完了”）。吸烟者的这类受体会增多（上调）。' },
+    { c: [CAL[0], CAL[1], 30], real: 'GABA synapse on the dopamine neuron', part: 'red brake pad on the hub',
       en: 'GABA acts on GABA-A (Cl⁻) and GABA-B (K⁺, via GIRK channels) receptors, hyperpolarizing the dopamine neuron so it fires less; a strong GABA input produces the pause after a disappointment.',
       zh: 'GABA 突触：GABA 作用于 GABA-A（氯离子）和 GABA-B（经 GIRK 通道的钾离子）受体，使多巴胺神经元超极化、放电减少；强的 GABA 输入造成"失望"后的暂停。' },
     { r: [300, 577, 152, 28], real: 'Firing rate', part: 'SPEED display',
@@ -2449,11 +2525,11 @@ window.STORY = {
     const mk = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
     const pathOf = d => { const p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); return p; };
     const cable = pathOf(G.cable), CL = cable.getTotalLength(), inner = pathOf(G.inner), IL = inner.getTotalLength();
-    const rot = R('rot'), spark = R('spark'), hand = R('hand'), op = R('op'), cal = R('cal'), link = R('link'), zz = R('zz'), slot = R('slot');
+    const rot = R('rot'), spark = R('spark'), hand = R('hand'), op = R('op'), zz = R('zz'), slot = R('slot'), saw = R('saw'), heat = R('heat'), opLeg = R('opLeg'), opShoe = R('opShoe'), sw = R('sw'), swl = R('swl');
     const hole = R('hole'), holeGlow = R('holeGlow'), puff = R('puff'), lcd = R('lcd'), sigG = R('sigG'), sigB = R('sigB'), spr1 = R('spr1'), spr2 = R('spr2'), needle = R('needle');
     const padG = R('padG'), padB = R('padB'), rodG = R('rodG'), rodB = R('rodB'), dl = R('drugLbl');
     const beam1 = R('beam1'), beam2 = R('beam2'), pan1 = R('pan1'), pan2 = R('pan2'), cw1 = R('cw1'), boot2 = R('boot2'), b1 = Array.from(R('b1').children), b2 = Array.from(R('b2').children);
-    const plugs = RA('plug'), mus = RA('mu'), pumpE = RA('pump'), ves = RA('ves'), vb = ves.map(g => Array.from(g.querySelectorAll('use'))), vn = ves.map(() => 5);
+    const rks = RA('rk'), flames = rks.map(e => e.querySelector('.rk-fl')), mus = RA('mu'), pumpE = RA('pump'), ves = RA('ves'), vb = ves.map(g => Array.from(g.querySelectorAll('use'))), vn = ves.map(() => 5);
     const molecule = (parent, cls) => { const g = mk('g', { class: 'mol ' + cls }, parent); mk('circle', { r: 6.5 }, g); mk('circle', { cx: 8, cy: -4, r: 5 }, g); mk('circle', { cx: 4, cy: 8, r: 4.4 }, g); return g; };
     // a dopamine marble: passive, it only bounces where the random motion takes it
     const bot = (parent, trail) => ({ tr: trail ? mk('polyline', { class: 'trail' }, parent) : null, e: mk('use', { href: BALLREF }, parent), x: 0, y: 0, px: null, py: null, h: [], n: 0 });
@@ -2480,9 +2556,10 @@ window.STORY = {
     const drugs = Array.from({ length: 14 }, () => ({ e: molecule(R('drug'), 'free'), x: 0, y: 0, t: 1, sx: 0, sy: 0, tx: 0, ty: 0, rot: Math.random() * 360 }));
     const stuck = Array.from({ length: 6 }, () => molecule(R('drug'), 'stuck'));
     const methIn = Array.from({ length: 10 }, () => ({ e: molecule(R('drug'), 'inside'), x: 0, y: 0 }));
-    const m = { host, svg, R, sim: null, k: 'normal', drugOn: false };
+    const m = { host, svg, R, sim: null, k: 'normal', drugOn: false, rk: { show: false, n: 3, out: [] }, sawShift: 0 };
     // animation state
-    let theta = 0, strikeAt = 0, queue = 0, seen = new WeakSet(), sparkT = 0, flick = 0, brk = 0, open = 0, puffT = 0;
+    let theta = 0, strikeAt = 0, queue = 0, seen = new WeakSet(), sparkT = 0, swT = 0, flick = 0, brk = 0, open = 0, puffT = 0;
+    m.theta = () => theta;
     let daS = 14, daF = 14, braking = false, holdT = 0, n1 = 0, n2 = 2, a1 = -16, v1 = 0, a2 = -14, v2 = 0,
       cups1 = [0, 0, 0].map(() => ({ on: false, t: 9 })), cups2 = [0, 0, 0].map(() => ({ on: true, t: 9 })), sigOffG = 0, sigOffB = 0, needleA = 0, prevFlash = [], prevRel = 0, beadT = [0, 0, 0];
     let rate = 1, hist = [], lastEv = null;
@@ -2496,7 +2573,6 @@ window.STORY = {
     // a pan held by the user: its beam angle follows the pointer (D1 hangs on the right arm, D2 on the left arm)
     m.hold = [null, null];
     m.toSvg = (x, y) => { const pt = svg.createSVGPoint(); pt.x = x; pt.y = y; return pt.matrixTransform(svg.getScreenCTM().inverse()); };
-    m.calShift = 0;
     // arm: +r = right end, -l = left end (D1: pan right, weight left; D2: pan left, boot right)
     m.armY = (i, arm) => (i === 0 ? G.scale1 : G.scale2).p[1] + arm * Math.sin((i === 0 ? a1 : a2) * Math.PI / 180);
     m.holdAt = (i, hangY, arm) => { if (hangY == null){ m.hold[i] = null; return; } const S = i === 0 ? G.scale1 : G.scale2, q = (hangY - S.p[1]) / arm; const a = Math.asin(Math.max(-1, Math.min(1, q))) * 180 / Math.PI; m.hold[i] = i === 0 ? Math.max(-22, Math.min(8, a)) : Math.max(-22, Math.min(24, a)); };
@@ -2512,25 +2588,45 @@ window.STORY = {
       if (run && dt > 0){ rate += (fresh / dt - rate) * Math.min(1, dt / 4); lcd.textContent = `SPEED ${Math.round(rate * 10) * 10}%`; }
       const held = s.brake > 0 || s.pause > 0;
       if (run){
-        if (queue > 0){ theta = Math.min(strikeAt, theta + 420 * dt); if (theta >= strikeAt - 0.01){ queue--; sparkT = 0.16; strikeAt += nextGap(strikeAt); } }
+        if (queue > 0){ theta = Math.min(strikeAt, theta + 420 * dt); if (theta >= strikeAt - 0.01){ queue--; sparkT = 0.16; swT = 1; strikeAt += nextGap(strikeAt); } }
         else theta = Math.min(strikeAt - 7, theta + Math.max(0, s.fire * 58 * (s.pause > 0 ? 0 : held ? 0.12 : 1)) * dt);
       }
       rot.setAttribute('transform', `rotate(${theta.toFixed(2)} ${RX} ${RY})`);
       sparkT = Math.max(0, sparkT - dt); spark.style.opacity = sparkT > 0 ? '1' : '0';
-      plugs.forEach((p, i) => p.classList.toggle('on', !!s.nb[i]));
+      // the hammer knocks the switch lever, which springs back; the switch light flashes as the pulse leaves
+      if (run) swT = Math.max(0, swT - dt * 6);
+      sw.setAttribute('transform', `rotate(${(-24 * swT).toFixed(1)} 400 530)`); swl.style.opacity = (0.35 + 0.65 * swT).toFixed(2);
+      // nicotine: rockets on the arms (nicotinic receptors); a bound key lights one; desensitized ones burn out
+      const rk = m.rk, des = (s.desSet || 0) > 0.5;
+      rks.forEach((e, j) => {
+        const shown = rk.show && (rk.n === 6 || j % 2 === 0), key = shown && !!s.nb[j], out = shown && (des || rk.out.includes(j)), on = key && !out;
+        e.classList.toggle('shown', shown); e.classList.toggle('key', key); e.classList.toggle('out', out); e.classList.toggle('on', on);
+        if (on && run) flames[j].setAttribute('transform', `translate(-17.5 0) scale(${(0.8 + 0.35 * Math.random()).toFixed(2)} 1) translate(17.5 0)`);
+      });
       // the glutamate glove flicks the rotor once for every spike of a burst
-      if (run) flick = Math.max(0, flick - dt * 11);
-      hand.setAttribute('transform', `translate(${(20 * flick).toFixed(1)} ${(-8 * flick).toFixed(1)})`);
-      // the brake operator presses the brake clamp when a GABA pulse arrives; opioids put him to sleep
+      if (run) flick = Math.max(0, flick - dt * 4);   // springs back in about a quarter second
+      hand.setAttribute('transform', `translate(${(56 * flick).toFixed(1)} ${(25 * flick).toFixed(1)})`);   // a visible shove along the fingers, toward the rotor
+      // a GABA pulse: the operator steps on the seesaw pedal and the far end presses the pad onto the hub; opioids put him to sleep
       brk = lerp(brk, held ? 1 : 0, Math.min(1, dt * 18));
-      const asleep = BRAKE_DRUG[k] && occ(s.mb) > 0.3;
-      cal.setAttribute('transform', `translate(${(CAL[0] + 7 * brk + m.calShift).toFixed(1)} ${(CAL[1] - 2 * brk).toFixed(1)}) rotate(73)`);
-      link.setAttribute('x2', (CAL[0] + 7 * brk + m.calShift).toFixed(1)); link.setAttribute('y2', (CAL[1] - 2 * brk).toFixed(1));
-      svg.classList.toggle('braking-cal', brk > 0.5); svg.classList.toggle('stall', s.pause > 0);
-      op.setAttribute('transform', asleep ? 'rotate(-10 80 560)' : `rotate(${(2 * brk).toFixed(2)} 80 560)`);
+      const asleep = BRAKE_DRUG[k] && occ(s.mb) > 0.3, SW = G.saw;
+      const tilt = asleep ? 8 : (5 - 3 * m.sawShift) * (1 - brk);
+      saw.setAttribute('transform', `rotate(${tilt.toFixed(2)} ${SW.P[0]} ${SW.P[1]})`);
+      heat.style.opacity = asleep ? '0' : (brk * brk).toFixed(2);
+      svg.classList.toggle('stall', s.pause > 0);
+      const lean = asleep ? 5 : 6 * brk, lr = lean * Math.PI / 180;
+      op.setAttribute('transform', `rotate(${lean.toFixed(2)} 60 556)`);
       op.classList.toggle('asleep', !!asleep); zz.style.display = asleep ? 'inline' : 'none';
+      // the front leg: the hip leans with the body, the foot hovers over the pedal and comes down with each GABA pulse
+      const hip = [60 + 28 * Math.cos(lr) + 94 * Math.sin(lr), 556 + 28 * Math.sin(lr) - 94 * Math.cos(lr)];
+      const tr = tilt * Math.PI / 180, qx = SW.ped[0] - SW.P[0], qy = SW.ped[1] - SW.P[1], ped = [SW.P[0] + qx * Math.cos(tr) - qy * Math.sin(tr), SW.P[1] + qx * Math.sin(tr) + qy * Math.cos(tr)];
+      const ank = asleep ? [92, 548] : [ped[0] - 6, ped[1] - 12 - 8 * (1 - brk)];
+      const lx = ank[0] - hip[0], ly = ank[1] - hip[1], L = Math.hypot(lx, ly), bend = asleep ? 0 : Math.sqrt(Math.max(0, 46 * 46 - L * L / 4));
+      const knee = [hip[0] + lx / 2 + bend * ly / L, hip[1] + ly / 2 - bend * lx / L];
+      opLeg.setAttribute('d', `M${hip[0].toFixed(1)} ${hip[1].toFixed(1)} L${knee[0].toFixed(1)} ${knee[1].toFixed(1)} L${ank[0].toFixed(1)} ${ank[1].toFixed(1)}`);
+      opShoe.setAttribute('x', (ank[0] - 10).toFixed(1)); opShoe.setAttribute('y', (ank[1] - 2).toFixed(1));
+      opLeg.style.opacity = opShoe.style.opacity = asleep ? '0.7' : '1';
       mus.forEach((e, i) => e.classList.toggle('on', !!s.mb[i]));
-      svg.classList.toggle('show-mu', !!BRAKE_DRUG[k]); svg.classList.toggle('show-plug', k === 'nicotine');
+      svg.classList.toggle('show-mu', !!BRAKE_DRUG[k]);
       // gambling: the slot machine
       slot.style.display = k === 'gamble' && m.drugOn ? 'inline' : 'none';
       if (k === 'gamble' && s.ev && s.ev !== lastEv){ lastEv = s.ev; hist = hist.concat(s.ev.kind).slice(-5); R('hist').innerHTML = hist.map((h, i) => `<text class="h-${h}" x="${100 + i * 15}" y="91">${{ win: 'W', near: 'N', loss: 'L' }[h]}</text>`).join(''); }
@@ -2701,7 +2797,7 @@ window.STORY = {
     normal: { q: 'What travels along the cable (the axon)?', opts: ['Dopamine molecules', 'Electrical pulses'], ok: 1,
       yes: 'Right. The axon carries electrical pulses. Dopamine waits in the warehouse packages until a pulse arrives.', no: 'Not quite. Dopamine stays packed in the warehouse at the far end. What travels along the axon is electricity.',
       zh: '小测：沿电线（轴突）跑的是什么？正确答案是电脉冲；多巴胺一直装在仓库的包裹里等着。' },
-    nicotine: { click: [1], yes: 'Right. Nicotine works at station 1, on the rotor itself (nicotinic receptors on the dopamine neuron).', no: 'Not quite. Nicotine works at station 1: it plugs into the sockets on the rotor.', zh: '答案：① 站。尼古丁直接插在转轮（多巴胺神经元）上的烟碱型受体里。' },
+    nicotine: { click: [1], yes: 'Right. Nicotine works at station 1, on the rotor itself (nicotinic receptors on the dopamine neuron).', no: 'Not quite. Nicotine works at station 1: it lights the rockets on the rotor (nicotinic receptors on the dopamine neuron).', zh: '答案：① 站。尼古丁像钥匙一样点燃转轮（多巴胺神经元）转臂上的小火箭，也就是烟碱型受体。' },
     opioid: { click: [1], yes: 'Right. Opioids work at station 1, but on the brake operator (the GABA neuron), not on the rotor.', no: 'Not quite. Opioids work at station 1: they put the brake operator (the GABA neuron) to sleep.', zh: '答案：① 站，但作用在刹车手（GABA 神经元）身上，不是转轮。' },
     gamble: { click: [1], yes: 'Right. Wins and losses change the rotor at station 1: bursts and pauses. No drug is involved: the brain uses its own glutamate, GABA and dopamine.', no: 'Not quite. Gambling works at station 1: wins push the rotor into bursts, losses make it pause.', zh: '答案：① 站。赢让转轮连敲，输让它暂停；没有任何药物进入身体，起作用的是大脑自己的谷氨酸、GABA 和多巴胺。' },
     cocaine: { click: [4], yes: 'Right. Cocaine blocks the return pumps (DAT) at station 4.', no: 'Not quite. Cocaine works at station 4: it blocks the return pumps (DAT), so dopamine is not pulled back.', zh: '答案：④ 站。可卡因堵住回收泵 (DAT)。' },
@@ -2724,7 +2820,7 @@ window.STORY = {
     const intro = toured && k !== 'normal' ? [ST.recap] : ST.tour;
     nTour = intro.length;
     beats = intro.map(b => Object.assign({ step: 0 }, b)).concat(ST.cases[k].steps.map((b, i) => Object.assign({ step: i + 1 }, b)));
-    beat = 0; beatT = 0; rampT = -1; done = false; station = 0; quiz = null;
+    beat = 0; beatT = 0; rampT = -1; done = false; station = 0; quiz = null; beatState();
     renderPicker(); renderSteps(); renderCaption();
     // work out the long-run number now, right after the click, so the result step does not stall
     if (k !== 'normal') setTimeout(() => avgOf(k), 60);
@@ -2735,9 +2831,16 @@ window.STORY = {
     if (isDrug || beat >= nTour - 1) toured = true;
     if (isDrug && rampT < 0) rampT = 0;
     if (!isDrug) rampT = -1;
-    renderSteps(); renderCaption();
+    beatState(); renderSteps(); renderCaption();
   }
-  const stepNames = () => cur === 'normal' ? ['Normal operation'] : ['Normal', cur === 'gamble' ? 'The game starts' : 'Drug arrives', 'What changes', 'Result', 'Long term'];
+  const STEPN = { arrive: 'Drug arrives', change: 'What changes', later: 'Minutes later', result: 'Result', long: 'Long term' };
+  const stepNames = () => cur === 'normal' ? ['Normal operation'] : ['Normal'].concat(ST.cases[cur].steps.map(b => cur === 'gamble' && b.k === 'arrive' ? 'The game starts' : STEPN[b.k]));
+  // nicotine: three rockets; they burn out in the "minutes later" step and stay out for its result; after months every arm has one, many burnt out
+  function beatState(){
+    const b = beats[beat] || {}, nic = cur === 'nicotine', lt = nic && b.k === 'long';
+    main.rk = { show: nic, n: lt ? 6 : 3, out: lt ? [0, 2, 3, 5] : [] }; main.sawShift = 0;
+    if (main.sim) main.sim.desSet = nic && (b.k === 'later' || b.k === 'result') ? 1 : 0;
+  }
   function renderPicker(){
     const el = $('#mxPick');
     el.innerHTML = MC.map(c => `<button type="button" role="radio" class="mxp" data-k="${c.k}" aria-checked="${c.k === cur}" style="--c:${c.ui || c.color}"${mode !== 'story' && c.k === 'normal' ? ' disabled' : ''}><i class="sw"></i><span><b>${esc(c.name)}${passed[c.k] ? ' <em class="mx-ok" aria-label="checked">✓</em>' : ''}</b><small>${esc(WHERE[c.k])}</small></span></button>`).join('');
@@ -2793,7 +2896,7 @@ window.STORY = {
     const d = X.ENV.on ? X.ENV.dose : 0, a = settled('normal', 0), b = settled(k, d);
     cmpA.sim = a.s; cmpA.k = 'normal'; cmpA.drugOn = false; cmpA.reset();
     cmpB.sim = b.s; cmpB.k = k; cmpB.drugOn = d > 0; cmpB.reset(); envB = b.e; envA = a.e;
-    [cmpA, cmpB].forEach(mc => { mc.setAddicted(false); mc.setCue(''); });
+    [cmpA, cmpB].forEach(mc => { mc.setAddicted(false); mc.setCue(''); mc.rk = { show: k === 'nicotine', n: 3, out: [] }; });
     $('#mxAh').innerHTML = '<i class="sw" style="--c:#8a96a8"></i>Before: no drug';
     const c = MBYK[k], info = CMP[k];
     cmpA.rings(info.rings, '#c8d4e1', false); cmpB.rings(info.rings, c.color, true);
@@ -2822,9 +2925,9 @@ window.STORY = {
   // what repeated use changes, per drug: mods = model settings; d2 = fewer D2 receptors; rings and tag = the damaged part
   const ROT = [273, 368, 112, 112], OPR = [84, 452, 78, 128], GATE = [925, 500, 70, 26], FAC = [1215, 430, 95, 80], PMP = [[745, 560, 52, 62], [1105, 560, 52, 62]], WH = [925, 432, 196, 84], HND = [190, 196, 92, 64];
   const ADDICT = {
-    nicotine: { mods: { driveMul: 0.85, relMul: 0.85 }, d2: false, rings: [ROT], tag: ['① more sockets, many switched off', 20, 768],
-      why: 'Station ①: a smoker’s brain makes extra nicotinic receptors (they up-regulate), but many stay switched off between cigarettes. Without nicotine the rotor slows: part of withdrawal. Brain scans do not clearly show fewer D2 receptors in smokers.',
-      zh: '① 站：吸烟者的大脑会多长出烟碱型受体（上调），但两支烟之间很多处于"关闭"状态。不吸烟时转轮变慢，这是戒断的一部分。脑成像并没有清楚显示吸烟者的 D2 受体减少。' },
+    nicotine: { mods: { driveMul: 0.85, relMul: 0.85 }, d2: false, rings: [ROT], tag: ['① more rockets, many burnt out', 20, 768],
+      why: 'Station ①: a smoker’s brain makes extra nicotinic receptors (they up-regulate: a rocket on every arm), but between cigarettes many stay desensitized (burnt out). Without nicotine the rotor slows: part of withdrawal. Brain scans do not clearly show fewer D2 receptors in smokers.',
+      zh: '① 站：吸烟者的大脑会多长出烟碱型受体（上调：每条转臂都装上火箭），但两支烟之间很多处于失敏（"烧完了"）状态。不吸烟时转轮变慢，这是戒断的一部分。脑成像并没有清楚显示吸烟者的 D2 受体减少。' },
     opioid: { mods: { driveMul: 0.9, relMul: 0.75, gabaMul: 1.5, opiMul: 0.6 }, rings: [OPR], tag: ['① brake works harder, drug works less', 20, 768],
       why: 'Station ①: the μ-opioid receptors on the brake operator respond less (tolerance), so the same dose puts him to sleep less. Without the drug he over-brakes, the rotor slows and dopamine drops (withdrawal).',
       zh: '① 站：刹车手身上的 μ 阿片受体反应变弱（耐受），同样的剂量让他睡得更少。不用药时他反而刹得更狠，转轮变慢，多巴胺下降（戒断）。' },
@@ -2886,6 +2989,7 @@ window.STORY = {
     const a = settled(k, d), b = settled(k, d, AD().mods);
     cmpA.sim = a.s; cmpA.k = k; cmpA.reset(); envA = a.e; cmpB.sim = b.s; cmpB.k = k; cmpB.reset(); envB = b.e;
     cmpA.setAddicted(false); cmpB.setAddicted(true, AD()); cmpA.rings(AD().rings, '#c8d4e1', false); cmpB.rings(AD().rings, '#ff6b6b', true);
+    const nic = drugK() === 'nicotine'; cmpA.rk = { show: nic, n: 3, out: [] }; cmpB.rk = { show: nic, n: 6, out: [0, 2, 3, 5] };
     const playCue = scen === 'drug' && drugK() === 'gamble';
     [cmpA, cmpB].forEach(mc => mc.setCue(scen === 'cue' ? CUE[drugK()] : playCue ? 'the game’s lights and sounds' : '', playCue ? 520 : 330));
     $('#mxAh').innerHTML = '<i class="sw" style="--c:#2f9e6d"></i>Healthy brain';
@@ -2925,32 +3029,32 @@ window.STORY = {
     if (mode === 'add' && (aRest == null || hDrug == null || aDrug == null)) setTimeout(() => { if (mode !== 'add') return; if (aRest == null) avgOf('normal', AD().mods); else if (hDrug == null) avgOf(k); else avgOf(k, AD().mods); renderAddTable(); }, 30);
   }
   /* ---------- try it yourself: the user plays the drugs' parts on a healthy machine ---------- */
-  const pl = { plugs: 0, gaba: 1, p: 0, pumps: [false, false], leak: false };
+  const pl = { keys: 0, gaba: 1, p: 0, pumps: [false, false], leak: false };
   function applyPlay(){
     const s = main.sim; if (!s) return;
-    s.driveMul = 1 + pl.plugs / 6; s.revSet = pl.leak ? 0.6 : 0;
-    s.nb = s.nb.map((v, i) => i < pl.plugs ? 1 : 0);
+    s.driveMul = 1 + pl.keys / 3; s.revSet = pl.leak ? 0.6 : 0;
+    s.nb = s.nb.map((v, i) => i % 2 === 0 && i / 2 < pl.keys ? 1 : 0);
     s.db = s.db.map((v, j) => pl.pumps[j < 3 ? 0 : 1] ? 1 : 0);
-    pl.gaba = pl.p < 0 ? 1 + pl.p : 1 + 3 * pl.p; s.gabaMul = pl.gaba; main.calShift = 12 * pl.p;
+    pl.gaba = pl.p < 0 ? 1 + pl.p : 1 + 3 * pl.p; s.gabaMul = pl.gaba; main.sawShift = pl.p;
     main.R('brkTxt').textContent = 'GABA brake ' + Math.round(pl.gaba * 100) + '%' + (pl.gaba < 0.7 ? ' (loosened)' : pl.gaba > 1.4 ? ' (tight)' : '');
     $('#mxStage [data-p="lever"]').setAttribute('aria-valuenow', Math.round(pl.gaba * 100));
     $$('#mxStage [data-r="pblk"]').forEach((t, i) => { t.style.display = pl.pumps[i] ? '' : 'none'; });
     // the on-picture tags say what the next click will do
     main.R('tagWare').textContent = pl.leak ? 'click again: stop the leak' : 'click: make the packages leak (like meth)';
-    main.R('tagRot').textContent = pl.plugs >= 6 ? 'click the rotor: remove all plugs' : `click the rotor: + nicotine plug (${pl.plugs}/6)`;
+    main.R('tagRot').textContent = pl.keys >= 3 ? 'click the rotor: take the keys out' : `click the rotor: + nicotine key (${pl.keys}/3)`;
     $$('#mxStage [data-r="tagPump"]').forEach((t, i) => { t.textContent = pl.pumps[i] ? 'click: unblock' : 'click: block (like cocaine)'; });
     renderPlay();
   }
   function startPlay(){
     const r = settled('normal', 0); main.sim = r.s; main.k = 'normal'; main.drugOn = false; main.dc = '#8be36b'; env = r.e; rampT = -1; main.reset();
-    Object.assign(pl, { plugs: 0, gaba: 1, p: 0, pumps: [false, false], leak: false }); main.hold = [null, null];
+    Object.assign(pl, { keys: 0, gaba: 1, p: 0, pumps: [false, false], leak: false }); main.hold = [null, null]; main.rk = { show: true, n: 3, out: [] };
     svg.classList.remove('longterm', 'cue'); spotTo = SPOT[0];
     $$('#mxStage .labels > g').forEach(g => g.classList.remove('on'));
     applyPlay();
   }
   function renderPlay(){
     const like = [];
-    if (pl.plugs) like.push(`<b>nicotine</b>: ${pl.plugs} of 6 sockets plugged, so the rotor turns faster`);
+    if (pl.keys) like.push(`<b>nicotine</b>: ${pl.keys} of 3 rockets lit, so the rotor turns faster`);
     if (pl.gaba < 0.7) like.push('<b>opioids, alcohol or cannabis</b>: the brake is loosened, so the rotor turns faster');
     if (pl.gaba > 1.4) like.push('<b>withdrawal</b> after opioids or alcohol: the brake is over-tight, so the rotor slows');
     if (main.hold[0] != null && main.hold[0] > -6) like.push('<b>a D1 switch-on</b>: you are tipping the D1 scale onto the go pedal, as if many D1 receptors were switched on at once');
@@ -2960,24 +3064,24 @@ window.STORY = {
     if (pl.pumps[0] || pl.pumps[1]) like.push(`<b>cocaine</b>: ${pl.pumps[0] && pl.pumps[1] ? 'both pumps' : 'one pump'} blocked, so dopamine is not pulled back`);
     if (pl.leak) like.push('<b>methamphetamine</b>: the packages leak and the pumps run backward');
     $('#mxCap').innerHTML = `<p class="eyebrow">Try it yourself · play the drugs’ parts on a healthy machine</p>
-      ${fold('howto', 'How to use the controls', `<ul class="mx-howto"><li><b>Press the white glove</b>: glutamate flicks the rotor; hold it down to keep flicking (a burst, like a win or a nice surprise).</li><li><b>Drag the operator’s brake lever</b>: toward the rotor tightens the GABA brake, away loosens it.</li><li><b>Click the rotor</b>: plug one more nicotine socket (after 6, they all come out).</li><li><b>Click a teal pump</b>: block it, like cocaine. Click again to unblock.</li><li><b>Click the warehouse</b>: make the packages leak and the pumps run backward, like meth.</li><li><b>Drag either end of a scale</b> (a pan, the HEAVY weight or the boot) and hold it: tip D1 onto its pedal for GO, tip D2 so the boot drops for STOP. Let go and the spring takes over again.</li></ul>`, true)}
+      ${fold('howto', 'How to use the controls', `<ul class="mx-howto"><li><b>Press the white glove</b>: glutamate flicks the rotor; hold it down to keep flicking (a burst, like a win or a nice surprise).</li><li><b>Drag the brake pedal</b> under the operator’s foot: down tightens the GABA brake (the red pad waits closer to the hub), up loosens it.</li><li><b>Click the rotor</b>: put a nicotine key into one more rocket (after 3, the keys come out).</li><li><b>Click a teal pump</b>: block it, like cocaine. Click again to unblock.</li><li><b>Click the warehouse</b>: make the packages leak and the pumps run backward, like meth.</li><li><b>Drag either end of a scale</b> (a pan, the HEAVY weight or the boot) and hold it: tip D1 onto its pedal for GO, tip D2 so the boot drops for STOP. Let go and the spring takes over again.</li></ul>`, true)}
       <p class="mx-cap-t">${like.length ? 'Right now you are imitating ' + like.join('; ') + '.' : 'Right now the machine runs normally.'} Watch the BEHAVIOR dial: it shows what all of this does to behavior.</p>
-      <div class="tn"><b>讲解提示</b>让学生自己动手：按住手套 = 谷氨酸连续拨转轮，产生连发（像赢钱、惊喜）；拖小人的刹车杆，往转轮方向推 = 刹紧（像戒断时刹车反弹），往回拉 = 放松（像阿片类、酒精、大麻）；点转轮 = 插一个尼古丁插头；点青色泵 = 堵住（像可卡因）；点仓库 = 包裹漏、泵倒转（像冰毒）；天平两端（托盘、HEAVY 配重、靴子）都可以按住上下拖：让 D1 托盘压到踏板 = 好像很多 D1 受体同时被打开（GO）；让 D2 的靴子落下 = 好像 D2 受体被阻断（STOP），很多抗精神病药就是 D2 阻断剂，副作用之一是动机下降；松手后弹簧接管。每一种操作最后都体现在右下角的行为表上。按 Reset 恢复正常。</div>`;
+      <div class="tn"><b>讲解提示</b>让学生自己动手：按住手套 = 谷氨酸连续拨转轮，产生连发（像赢钱、惊喜）；拖小人脚下的跷跷板踏板，往下 = 刹紧（像戒断时刹车反弹），往上 = 放松（像阿片类、酒精、大麻）；点转轮 = 给一个小火箭插上尼古丁钥匙；点青色泵 = 堵住（像可卡因）；点仓库 = 包裹漏、泵倒转（像冰毒）；天平两端（托盘、HEAVY 配重、靴子）都可以按住上下拖：让 D1 托盘压到踏板 = 好像很多 D1 受体同时被打开（GO）；让 D2 的靴子落下 = 好像 D2 受体被阻断（STOP），很多抗精神病药就是 D2 阻断剂，副作用之一是动机下降；松手后弹簧接管。每一种操作最后都体现在右下角的行为表上。按 Reset 恢复正常。</div>`;
     X.tagTerms($('#mxCap'));
   }
   // handles: work only in the hands-on view
   const hit = (p, fn) => $$(`#mxStage [data-p="${p}"]`).forEach(e => e.addEventListener('click', ev => { if (mode !== 'play') return; ev.stopPropagation(); fn(e); }));
-  hit('rotor', () => { pl.plugs = (pl.plugs + 1) % 7; applyPlay(); if (pl.plugs) toast(273, 190, `Like nicotine: ${pl.plugs} of 6 sockets plugged`, 'Nicotine opens nicotinic receptors on the dopamine neuron, so it fires more often.'); else toast(273, 190, 'All plugs removed', 'Without nicotine the rotor goes back to its own pace.'); });
+  hit('rotor', () => { pl.keys = (pl.keys + 1) % 4; applyPlay(); if (pl.keys) toast(273, 190, `Like nicotine: ${pl.keys} of 3 rockets lit`, 'Nicotine is a copy of the key (acetylcholine) for nicotinic receptors on the dopamine neuron. They open, positive ions flow in, and the neuron fires more often. In a smoker they burn out (desensitize) within minutes.'); else toast(273, 190, 'Keys out', 'Without nicotine the rotor goes back to its own pace.'); });
   hit('pump', e => { const i = +e.dataset.i; pl.pumps[i] = !pl.pumps[i]; applyPlay(); if (pl.pumps[i]) toast(PUMPS[i], 500, 'Like cocaine: pump blocked', 'This DAT pump cannot pull dopamine back, so released dopamine stays in the gap and builds up.'); else toast(PUMPS[i], 500, 'Pump working again', 'DAT pulls dopamine back into the terminal, which ends the signal.'); });
   hit('ware', () => { pl.leak = !pl.leak; applyPlay(); if (pl.leak) toast(925, 362, 'Like methamphetamine', 'The packages (vesicles) leak dopamine into the terminal, and the DAT pumps run backward, pushing dopamine out even without a pulse.'); else toast(925, 362, 'Leak stopped', 'Dopamine stays packed until a pulse opens the gate.'); });
-  // the operator's brake lever: drag toward the rotor to tighten, away to loosen
+  // the seesaw brake pedal: drag down to tighten, up to loosen
   (() => {
     const lv = $('#mxStage [data-p="lever"]'); let x0 = 0, p0 = 0;
-    lv.addEventListener('pointerdown', e => { if (mode !== 'play') return; e.preventDefault(); lv.setPointerCapture(e.pointerId); lv.dataset.drag = '1'; x0 = main.toSvg(e.clientX, e.clientY).x; p0 = pl.p; });
-    lv.addEventListener('pointermove', e => { if (!lv.dataset.drag) return; pl.p = Math.max(-1, Math.min(1, p0 + (main.toSvg(e.clientX, e.clientY).x - x0) / 70)); applyPlay(); });
-    const say = () => { if (pl.gaba < 0.7) toast(150, 380, 'Brake loosened: like opioids, alcohol or cannabis', 'The GABA neuron brakes less, so the dopamine neuron fires more. This is disinhibition.'); else if (pl.gaba > 1.4) toast(150, 380, 'Brake tightened: like withdrawal', 'Strong GABA input slows the dopamine neuron, so dopamine falls and HOLD BACK wins.'); else toast(150, 380, 'Normal brake', 'The GABA neuron brakes now and then and keeps the dopamine neuron in check.'); };
+    lv.addEventListener('pointerdown', e => { if (mode !== 'play') return; e.preventDefault(); lv.setPointerCapture(e.pointerId); lv.dataset.drag = '1'; x0 = main.toSvg(e.clientX, e.clientY).y; p0 = pl.p; });
+    lv.addEventListener('pointermove', e => { if (!lv.dataset.drag) return; pl.p = Math.max(-1, Math.min(1, p0 + (main.toSvg(e.clientX, e.clientY).y - x0) / 40)); applyPlay(); });
+    const say = () => { if (pl.gaba < 0.7) toast(150, 440, 'Brake loosened: like opioids, alcohol or cannabis', 'The GABA neuron brakes less, so the dopamine neuron fires more. This is disinhibition.'); else if (pl.gaba > 1.4) toast(150, 440, 'Brake tightened: like withdrawal', 'Strong GABA input slows the dopamine neuron, so dopamine falls and HOLD BACK wins.'); else toast(150, 440, 'Normal brake', 'The GABA neuron brakes now and then and keeps the dopamine neuron in check.'); };
     const end = () => { if (!lv.dataset.drag) return; delete lv.dataset.drag; say(); }; lv.addEventListener('pointerup', end); lv.addEventListener('pointercancel', end);
-    lv.addEventListener('keydown', e => { if (mode !== 'play') return; if (e.key === 'ArrowLeft' || e.key === 'ArrowRight'){ e.preventDefault(); pl.p = Math.max(-1, Math.min(1, pl.p + (e.key === 'ArrowRight' ? 0.1 : -0.1))); applyPlay(); say(); } });
+    lv.addEventListener('keydown', e => { if (mode !== 'play') return; if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)){ e.preventDefault(); pl.p = Math.max(-1, Math.min(1, pl.p + (e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 0.1 : -0.1))); applyPlay(); say(); } });
   })();
   // pop-up note next to the part the user just operated; fades after a few seconds
   const toastEl = (() => { const d = document.createElement('div'); d.className = 'mx-toast'; d.hidden = true; d.setAttribute('role', 'status'); $('#mxStage').appendChild(d); return d; })();
@@ -3054,6 +3158,23 @@ window.STORY = {
     for (let i = 0; i < 4; i++){ const v = lerp(spot[i], spotTo[i], Math.min(1, dt * 4)); if (Math.abs(v - spot[i]) > 0.3){ spot[i] = v; moved = true; } else if (spot[i] !== spotTo[i] && Math.abs(spotTo[i] - spot[i]) <= 0.3){ spot[i] = spotTo[i]; moved = true; } }
     if (moved){ const st = dimC.style; st.setProperty('--cx', (spot[0] / W * 100).toFixed(2) + '%'); st.setProperty('--cy', (spot[1] / H * 100).toFixed(2) + '%'); st.setProperty('--rx', (spot[2] * 1.25 / W * 100).toFixed(2) + '%'); st.setProperty('--ry', (spot[3] * 1.25 / H * 100).toFixed(2) + '%'); }
     main.draw(dt, run);
+    flashTip(mode === 'story' && !station && !done ? beats[beat] : null);
+  }
+  // story notes: one short line at a time, next to the part it explains, only for what the picture cannot show (beat.tips:
+  // [anchor x, anchor y, box x, box y, text]; anchor 'rk' = the lit rocket nearest the box)
+  const FL = main.R('flash'), flT = FL.querySelector('.fl-t'), flB = FL.querySelector('.fl-b'), flL = FL.querySelector('.fl-l'), flD = FL.querySelector('.fl-d');
+  let flCur = null;
+  function flashTip(b){
+    const tips = (b && b.tips) || [], dur = b ? (b.step ? DUR.case : b.recap ? DUR.recap : DUR.tour) : 0, slot = Math.max(2.4, (dur - 0.6) / Math.max(1, tips.length));
+    const i = Math.floor((beatT - 0.6) / slot), tip = tips.length && i >= 0 && i < tips.length && beatT - 0.6 - i * slot < slot - 0.35 ? tips[i] : null;
+    if (tip !== flCur){
+      flCur = tip; FL.classList.toggle('on', !!tip);
+      if (tip){ const [, , bx0, by, text] = tip; flT.textContent = text; const w = flT.getComputedTextLength() + 36, h = svg.classList.contains('compact') ? 52 : 42, bx = Math.max(8 + w / 2, Math.min(W - 8 - w / 2, bx0)); flT.setAttribute('x', bx.toFixed(1)); flT.setAttribute('y', by + 8); flB.setAttribute('x', (bx - w / 2).toFixed(1)); flB.setAttribute('y', (by - h / 2).toFixed(1)); flB.setAttribute('width', w.toFixed(1)); flB.setAttribute('height', h); flL.setAttribute('x2', bx); flL.setAttribute('y2', by); }
+    }
+    if (!tip) return;
+    let [ax, ay, bx, by] = tip;
+    if (ax === 'rk'){ let best = 1e9; G.headAngles.forEach((a0, j) => { if (!(main.rk.n === 6 || j % 2 === 0)) return; const a = (a0 + main.theta()) * Math.PI / 180, x = RX + 112 * Math.cos(a), y = RY + 112 * Math.sin(a), d = Math.hypot(x - bx, y - by); if (d < best){ best = d; ax = x; ay = y; } }); }
+    flL.setAttribute('x1', ax.toFixed(1)); flL.setAttribute('y1', ay.toFixed(1)); flD.setAttribute('cx', ax.toFixed(1)); flD.setAttribute('cy', ay.toFixed(1));
   }
 
   /* readings below the picture, same model as the other tabs */
