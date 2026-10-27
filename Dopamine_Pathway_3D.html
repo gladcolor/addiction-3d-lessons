@@ -788,6 +788,15 @@ body.tab-gloss .hero, body.tab-gloss #map, body.tab-gloss #cases, body.tab-gloss
 .mxsvg .fl-l{stroke:#ffd166; stroke-width:2.5; stroke-dasharray:5 5}
 .mxsvg .fl-d{fill:#ffd166}
 
+/* --- drowsy operator, caption above the machine --- */
+.mxsvg .m-op.drowsy .opb{opacity:0.85}
+.mxsvg .zz.dz tspan{display:none}
+.mxsvg .zz.dz{animation:zdz 2.4s ease-in-out infinite}
+@keyframes zdz{0%,100%{opacity:0.4}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.mxsvg .zz.dz{animation:none}}
+.mx-cap{margin-top:0; margin-bottom:12px}
+#machine:not(.mx-cmpmode):not(.mx-playmode) .mx-cap{min-height:9.5rem}   /* story steps: a steady caption height keeps the machine from jumping */
+
 </style>
 </head>
 <body>
@@ -911,13 +920,13 @@ body.tab-gloss .hero, body.tab-gloss #map, body.tab-gloss #cases, body.tab-gloss
     <div class="mx-steps" id="mxSteps" aria-label="Story steps"></div>
     <div class="mx-ctl"><button type="button" class="btn" id="mxBetter" title="A reward that is better than expected: the dopamine neuron fires a burst">Better than expected</button><button type="button" class="btn" id="mxWorse" title="A reward that is worse than expected: GABA input brakes the dopamine neuron, which pauses">Worse than expected</button><button type="button" class="btn" id="mxPrev" aria-label="Previous">‹ Back</button><button type="button" class="btn primary" id="mxPlay">Pause</button><button type="button" class="btn" id="mxNext" aria-label="Next">Next ›</button><button type="button" class="btn" id="mxReplay">Replay</button><button type="button" class="btn" id="mxReset">Reset</button><button type="button" class="btn" id="mxTips" aria-pressed="false" title="Show what each part of the machine really is when you point at it">Tips: off</button></div>
   </div>
-  <div class="mx-scroll"><div class="mx-stage" id="mxStage"></div></div>
   <div class="mx-scen" id="mxScen" role="radiogroup" aria-label="Situation"></div>
+  <div class="mx-cap panel-c" id="mxCap" aria-live="polite"></div>
+  <div class="mx-scroll"><div class="mx-stage" id="mxStage"></div></div>
   <div class="mx-cmp" id="mxCmp">
     <div class="mx-cp"><p class="mx-ch" id="mxAh"><i class="sw" style="--c:#8a96a8"></i>Before: no drug</p><div class="mx-stage" id="mxA"></div><p class="mx-cv" id="mxAv"></p></div>
     <div class="mx-cp"><p class="mx-ch" id="mxBh">After</p><div class="mx-stage" id="mxB"></div><p class="mx-cv" id="mxBv"></p></div>
   </div>
-  <div class="mx-cap panel-c" id="mxCap" aria-live="polite"></div>
   <div class="mx-table panel-c" id="mxTable"></div>
   <div class="mx-read panel-c" aria-label="Live readings, compared with no drug">
     <span class="mx-rt">Live readings <small>vs. no drug · they move up and down, like real neurons</small></span>
@@ -930,7 +939,7 @@ body.tab-gloss .hero, body.tab-gloss #map, body.tab-gloss #cases, body.tab-gloss
     <ul>
       <li><i class="k-ico" style="--c:#c9ced8"></i><span><b>Rotor:</b> the <span class="t">dopamine neuron</span>. It turns on its own; each hammer tap on the contact is one <span class="t">action potential</span></span></li>
       <li><i class="k-ico" style="--c:#f4f6f8"></i><span><b>White glove:</b> <span class="t">glutamate</span>. A hard push makes a burst of taps</span></li>
-      <li><i class="k-ico" style="--c:#5b8ee6"></i><span><b>Blue operator:</b> a <span class="t" data-k="gaba neuron">GABA</span> neuron. He steps on the seesaw brake: its red pad presses the hub</span></li>
+      <li><i class="k-ico" style="--c:#5b8ee6"></i><span><b>Blue operator:</b> a <span class="t" data-k="gaba neuron">GABA</span> neuron. He steps on the seesaw brake: its red pad presses the hub. Opioids put him to sleep (zZ); alcohol and THC make him drowsy (z)</span></li>
       <li><i class="k-ico" style="--c:#e8eef5"></i><span><b>Rockets (nicotine cases):</b> <span class="t">nicotinic receptors</span> on the rotor arms. Nicotine is the key that lights them</span></li>
       <li><i class="k-dot" style="background:#9fd8ff"></i><span><b>Blue-white sparks on the cable:</b> electricity along the <span class="t">axon</span>, not dopamine</span></li>
       <li><i class="k-ico" style="--c:#4a6d93"></i><span><b>Warehouse and factory:</b> one <span class="t">axon terminal</span>; the faint copies are thousands more. The factory makes dopamine; the little gumball machines riding the conveyor belt are <span class="t">vesicles</span>, each refilled through its cyan lid (<span class="t" data-k="vmat2">VMAT2</span>); a pulse opens the gate under the belt and the package over it empties all at once</span></li>
@@ -1322,8 +1331,8 @@ window.BRAIN = {"telencephalon":{"lo":[-70.26,1513.52,-10.46],"hi":[69.1,1630.66
     // α7 receptors on glutamate terminals keep adding glutamate, and the GABA neurons' own α4β2 receptors desensitize, so they brake less
     const nic = k === 'nicotine' ? occ(this.nb) : 0, des = k === 'nicotine' ? (this.desSet || 0) : 0, late = des * Math.min(1, 2 * nic);
     this.grate = G0 * (this.gabaMul || 1) * (BRK[k] ? Math.max(0, 1 - TUNE.opi * BRK[k] * (this.opiMul || 1) * occ(this.mb)) : 1) * (1 - 0.35 * late);
-    const drive = 2 * F0 * (this.driveMul || 1) * (k === 'nicotine' ? 1 + nic * (1 - des) + 0.2 * late : k === 'alcohol' ? 1 + 0.25 * d : 1);
-    if (late > 0.4){ this.gluT = (this.gluT == null ? 1.5 : this.gluT) - dt; if (this.gluT <= 0){ this.gluT = 3 + 2 * Math.random(); for (let i = 0; i < 2; i++) this.burstQ.push(this.t + 0.05 + i * 0.09); } }
+    const drive = 2 * F0 * (this.driveMul || 1) * (k === 'nicotine' ? 1 + nic * (1 - des) + 0.1 * late : k === 'alcohol' ? 1 + 0.25 * d : 1);
+    if (late > 0.4){ this.gluT = (this.gluT == null ? 1.5 : this.gluT) - dt; if (this.gluT <= 0){ this.gluT = 6 + 3 * Math.random(); for (let i = 0; i < 2; i++) this.burstQ.push(this.t + 0.05 + i * 0.09); } }
     this.fire = drive / (1 + this.grate / G0) / (1 + TUNE.auto * Math.max(0, this.ema / baseline - 1));
     if (Math.random() < this.grate * dt) this.gspk.push({ u: 0 });
     for (const s of this.gspk){ s.u += dt / 0.42; if (s.u >= 1){ this.gbFlash = 0.25; this.brake = 0.3; } }
@@ -2220,8 +2229,8 @@ window.STORY = {
     cannabis: { steps: [
       { k: 'arrive', spot: 1, tips: [[84, 440, 200, 712, 'THC binds CB1 receptors on the GABA cell']], en: '<b>Cannabis</b> arrives. Its main drug, <b>THC</b>, attaches to <span class="t" data-k="cb1 receptors">CB1 receptors</span> on the brake operator (the GABA neurons).',
         zh: '大麻到达。它的主要成分 THC 结合在刹车手（GABA 神经元）的 CB1 受体上。' },
-      { k: 'change', spot: 1, tips: [[233, 462, 200, 712, 'Less GABA released: a looser brake']], en: 'The brake operator releases less GABA, so the brake is pressed less often and the rotor turns a little faster. This is <span class="t">disinhibition</span>, like opioids, but weaker.',
-        zh: '刹车手释放的 GABA 变少，刹车压得少了，转轮转得稍快一点。这也是解除抑制，和阿片类一样，但更弱。' },
+      { k: 'change', spot: 1, tips: [[233, 462, 200, 712, 'Less GABA released: a looser brake']], en: 'The brake operator gets drowsy: he releases less GABA, so he presses the brake less often and more lightly, and the rotor turns a little faster. This is <span class="t">disinhibition</span>, like opioids, but weaker: opioids put him to sleep.',
+        zh: '刹车手打起瞌睡：他释放的 GABA 变少，踩刹车更少、更轻，转轮转得稍快一点。这也是解除抑制，和阿片类一样，但更弱：阿片类让他睡着，THC 只让他打瞌睡。' },
       { k: 'result', spot: 5, en: 'Dopamine rises a little, less than with alcohol or opioids. The go pedal is pressed a bit harder.',
         zh: '多巴胺稍微升高，比酒精和阿片类少。"走"踏板踩得稍深一点。' },
       { k: 'long', spot: 5, en: 'With repeated use, the brain’s own cannabinoid system and the receiving cells adapt. Some people develop cannabis use disorder: they keep using even when it causes problems.',
@@ -2308,7 +2317,7 @@ window.STORY = {
     alcohol: { rings: [[84, 452, 78, 128], [273, 368, 112, 112]], where: '① VTA: a direct push on the rotor, plus the brake operator (GABA neurons)',
       before: 'The operator brakes now and then.', after: 'The rotor gets a direct push and the operator brakes less, so it turns faster.' },
     cannabis: { rings: [[84, 452, 78, 128]], where: '① VTA: the brake operator (<span class="t" data-k="cb1 receptors">CB1 receptors</span> on GABA neurons)',
-      before: 'The operator brakes now and then.', after: 'THC makes him brake less often, so the rotor turns a little faster.' },
+      before: 'The operator brakes now and then.', after: 'THC makes him drowsy (one z): he brakes less often and more lightly, so the rotor turns a little faster.' },
     gamble: { rings: [[190, 196, 92, 64], [CAL[0], CAL[1], 46, 46]], where: '① VTA: the glutamate hand and the GABA brake (no drug enters the body)',
       before: 'Steady taps, steady dopamine.', after: 'A win pushes the rotor into a burst; a loss stops it for a moment. Bursts are short, so on average dopamine rises only a little, but it swings up and down. (Letters under the slot machine: W = win, N = near-miss, L = loss.)' },
     cocaine: { rings: [[PUMPS[0], 560, 52, 62], [PUMPS[1], 560, 52, 62]], where: '④ release and recycling: the return pumps (<span class="t" data-k="dat">DAT</span>)',
@@ -2318,7 +2327,7 @@ window.STORY = {
   };
   const ENTRY = { nicotine: [-30, 760], opioid: [-30, 760], alcohol: [-30, 760], cannabis: [-30, 760], cocaine: [925, 1060], meth: [925, 1060] };
   const ZONE = { nicotine: [350, 176, 110, 56], opioid: [96, 360, 80, 120], alcohol: [96, 360, 80, 120], cannabis: [96, 360, 80, 120], cocaine: [745, 556, 360, 50], meth: [745, 556, 360, 50] };
-  const DLP = { nicotine: [392, 222, 'nicotine'], opioid: [14, 640, 'opioids bind him'], alcohol: [14, 640, 'alcohol quiets him'], cannabis: [14, 640, 'THC binds CB1 on him'], cocaine: [1150, 645, 'cocaine'], meth: [800, 168, 'meth gets inside the terminal'] };
+  const DLP = { nicotine: [392, 222, 'nicotine'], opioid: [14, 640, 'opioids bind him'], alcohol: [14, 640, 'alcohol quiets him'], cannabis: [14, 640, 'THC binds CB1'], cocaine: [1150, 645, 'cocaine'], meth: [800, 168, 'meth gets inside the terminal'] };
   const toCleft = m => [G.cleft[0] + (m.x - 40) / 44 * G.cleft[2], G.cleft[1] + G.cleft[3] - (m.y + 34.4) / 4.6 * G.cleft[3]];
   const occ = a => a.reduce((s, v) => s + v, 0) / a.length;
   const lerp = (a, b, k) => a + (b - a) * k;
@@ -2577,7 +2586,7 @@ window.STORY = {
     m.armY = (i, arm) => (i === 0 ? G.scale1 : G.scale2).p[1] + arm * Math.sin((i === 0 ? a1 : a2) * Math.PI / 180);
     m.holdAt = (i, hangY, arm) => { if (hangY == null){ m.hold[i] = null; return; } const S = i === 0 ? G.scale1 : G.scale2, q = (hangY - S.p[1]) / arm; const a = Math.asin(Math.max(-1, Math.min(1, q))) * 180 / Math.PI; m.hold[i] = i === 0 ? Math.max(-22, Math.min(8, a)) : Math.max(-22, Math.min(24, a)); };
     const nextGap = th => { let best = 999; for (const a of G.headAngles){ let d = ((STRIKE - (a + th)) % 360 + 360) % 360; if (d < 6) d += 360; best = Math.min(best, d); } return best; };
-    m.reset = () => { hist = []; lastEv = null; R('hist').innerHTML = ''; rate = 1; const s = m.sim; seen = new WeakSet(s.spk); queue = 0; strikeAt = theta + nextGap(theta); daS = s.ema; m.rdS = s.ema; braking = false; prevFlash = s.datFlash.slice(); prevRel = 0; drugs.forEach(d => { d.t = 1; d.x = 0; }); };
+    m.reset = () => { m.cutS = null; m.sleep = m.dzOn = false; hist = []; lastEv = null; R('hist').innerHTML = ''; rate = 1; const s = m.sim; seen = new WeakSet(s.spk); queue = 0; strikeAt = theta + nextGap(theta); daS = s.ema; m.rdS = s.ema; braking = false; prevFlash = s.datFlash.slice(); prevRel = 0; drugs.forEach(d => { d.t = 1; d.x = 0; }); };
     m.rings = (list, color, solid) => { R('rings').innerHTML = (list || []).map(([x, y, rx, ry]) => `<ellipse class="ring${solid ? ' on' : ''}" cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" style="--rc:${color}"/>`).join(''); };
 
     m.draw = (dt, run) => {
@@ -2606,16 +2615,21 @@ window.STORY = {
       // the glutamate glove flicks the rotor once for every spike of a burst
       if (run) flick = Math.max(0, flick - dt * 4);   // springs back in about a quarter second
       hand.setAttribute('transform', `translate(${(56 * flick).toFixed(1)} ${(25 * flick).toFixed(1)})`);   // a visible shove along the fingers, toward the rotor
-      // a GABA pulse: the operator steps on the seesaw pedal and the far end presses the pad onto the hub; opioids put him to sleep
-      brk = lerp(brk, held ? 1 : 0, Math.min(1, dt * 18));
-      const asleep = BRAKE_DRUG[k] && occ(s.mb) > 0.3, SW = G.saw;
+      // a GABA pulse: the operator steps on the seesaw pedal and the far end presses the pad onto the hub
+      // how much the drug has cut the brake (smoothed): a deep cut (opioids) puts him to sleep, a partial cut (alcohol, THC) makes him drowsy
+      const cut = BRAKE_DRUG[k] ? Math.max(0, 1 - s.grate / (X.G0 * (s.gabaMul || 1))) : 0;
+      m.cutS = m.cutS == null ? cut : run ? lerp(m.cutS, cut, Math.min(1, dt * 0.8)) : m.cutS;
+      m.sleep = m.sleep ? m.cutS > 0.38 : m.cutS > 0.66;   // once asleep he stays asleep through small dips in binding
+      const asleep = m.sleep, dz = asleep ? 0 : Math.max(0, Math.min(1, (m.cutS - 0.15) / 0.5)), SW = G.saw;
+      m.dzOn = !asleep && (m.dzOn ? dz > 0.2 : dz > 0.35);   // the z shows once he is clearly drowsy, and does not flicker
+      brk = lerp(brk, held ? 1 : 0, Math.min(1, dt * (18 - 9 * dz)));   // a drowsy foot comes down more slowly
       const tilt = asleep ? 8 : (5 - 3 * m.sawShift) * (1 - brk);
       saw.setAttribute('transform', `rotate(${tilt.toFixed(2)} ${SW.P[0]} ${SW.P[1]})`);
-      heat.style.opacity = asleep ? '0' : (brk * brk).toFixed(2);
+      heat.style.opacity = asleep ? '0' : (brk * brk * (1 - 0.45 * dz)).toFixed(2);   // a drowsy press is lighter
       svg.classList.toggle('stall', s.pause > 0);
-      const lean = asleep ? 5 : 6 * brk, lr = lean * Math.PI / 180;
+      const lean = asleep ? 5 : 3 * dz * (1 + 0.35 * Math.sin(s.t * 1.7)) + 6 * brk, lr = lean * Math.PI / 180;   // drowsy: slumped and slowly nodding
       op.setAttribute('transform', `rotate(${lean.toFixed(2)} 60 556)`);
-      op.classList.toggle('asleep', !!asleep); zz.style.display = asleep ? 'inline' : 'none';
+      op.classList.toggle('asleep', !!asleep); op.classList.toggle('drowsy', m.dzOn); zz.style.display = asleep || m.dzOn ? 'inline' : 'none'; zz.classList.toggle('dz', !asleep);
       // the front leg: the hip leans with the body, the foot hovers over the pedal and comes down with each GABA pulse
       const hip = [60 + 28 * Math.cos(lr) + 94 * Math.sin(lr), 556 + 28 * Math.sin(lr) - 94 * Math.cos(lr)];
       const tr = tilt * Math.PI / 180, qx = SW.ped[0] - SW.P[0], qy = SW.ped[1] - SW.P[1], ped = [SW.P[0] + qx * Math.cos(tr) - qy * Math.sin(tr), SW.P[1] + qx * Math.sin(tr) + qy * Math.cos(tr)];
@@ -2624,7 +2638,7 @@ window.STORY = {
       const knee = [hip[0] + lx / 2 + bend * ly / L, hip[1] + ly / 2 - bend * lx / L];
       opLeg.setAttribute('d', `M${hip[0].toFixed(1)} ${hip[1].toFixed(1)} L${knee[0].toFixed(1)} ${knee[1].toFixed(1)} L${ank[0].toFixed(1)} ${ank[1].toFixed(1)}`);
       opShoe.setAttribute('x', (ank[0] - 10).toFixed(1)); opShoe.setAttribute('y', (ank[1] - 2).toFixed(1));
-      opLeg.style.opacity = opShoe.style.opacity = asleep ? '0.7' : '1';
+      opLeg.style.opacity = opShoe.style.opacity = asleep ? '0.7' : m.dzOn ? '0.85' : '1';
       mus.forEach((e, i) => e.classList.toggle('on', !!s.mb[i]));
       svg.classList.toggle('show-mu', !!BRAKE_DRUG[k]);
       // gambling: the slot machine
@@ -2734,7 +2748,7 @@ window.STORY = {
       // name the drug molecules where they gather
       const DL = DLP[k], lgD = R('lgDrug');
       if (lgD){ R('lgDot').style.display = lgD.style.display = DL ? '' : 'none'; if (DL) lgD.textContent = DL[2].split(' ')[0] + ' molecule'; }
-      if (DL && m.drugOn){ dl.style.display = ''; dl.setAttribute('x', DL[0]); dl.setAttribute('y', DL[1]); dl.textContent = DL[2]; dl.style.fontSize = main && BRAKE_DRUG[k] ? '17px' : ''; } else dl.style.display = 'none';
+      if (DL && m.drugOn){ dl.style.display = ''; dl.setAttribute('x', DL[0]); dl.setAttribute('y', main && BRAKE_DRUG[k] ? DL[1] - 12 : DL[1]); dl.textContent = DL[2]; dl.style.fontSize = main && BRAKE_DRUG[k] ? '17px' : ''; } else dl.style.display = 'none';
 
       // drug molecules: fly in, then hover near their target; bound ones sit in the target
       const nf = k === 'normal' || k === 'gamble' ? 0 : Math.min(drugs.length, s.free.length);
