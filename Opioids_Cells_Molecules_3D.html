@@ -3845,27 +3845,27 @@ window.EXPLORE = {
   const PILL = { rx: { name: 'Pain pill', dose: 1 }, strong: { name: 'Strong pill', dose: 2 }, street: { name: 'Street pill', dose: 1, fdose: 4 } };
   /* real driving: speed in mph; city and highway each have a speed range */
   const SP0 = 90;   /* items appear this far ahead, so the navigation map can show them before the road does */
-  const ZONES = { city: { name: 'City', min: 15, limit: 30, icon: '🏙' }, hwy: { name: 'Highway', min: 45, limit: 65, icon: '🛣' } }, TICKET = 10;
+  const ZONES = { city: { name: 'City', min: 10, limit: 30, icon: '🏙' }, hwy: { name: 'Highway', min: 40, limit: 65, icon: '🛣' } }, TICKET = 10, SLOW_S = 10;
   const LIFE = ['Exam', 'Work shift', 'Family dinner', 'Team practice', 'Job interview', 'Friend’s birthday', 'Doctor visit', 'Rent due'];
   const NAT = [['🍎', 'Good meal'], ['🎵', 'Music'], ['⚽', 'Sports'], ['👋', 'Friends'], ['😴', 'Good sleep'], ['📚', 'Learning']];
   const TIPS = {
-    drive: 'Drive like in real life. Gas (↑) speeds up, letting go only coasts, Brake (↓) stops you. City speed: 15 to 30 mph. Sober, the car moves only when you choose: the gas pedal is your own “go” signal.',
+    drive: 'Drive like in real life. Gas (↑) speeds up, letting go only coasts, Brake (↓) stops you. City speed: 10 to 30 mph. Sober, the car moves only when you choose: the gas pedal is your own “go” signal.',
     nat: 'Everyday rewards (food, friends, music) give a small dopamine bump: dopamine cells fire a short burst.',
     pill: 'The opioid did two things: the car now pushes forward on its own (a dopamine surge you did not choose), and the brakes got weaker (μ-opioid receptors quiet the GABA brake cells: disinhibition).',
     nobrake: 'Brake failure: the opioid quieted the GABA brake cells and keeps pushing the car, so the brakes cannot hold it back. This is disinhibition.',
     hazard: 'Hazards ahead: stalled cars and road work. Brake or change lanes. A crash costs 15 points and 1 health.',
     light: 'Red light: brake to a full stop and wait for green. Stopping takes working brakes.',
     curve: 'Turn ahead: brake to the speed on the yellow sign before the turn, then steer through it. Too fast and the car slides off the road.',
-    police: 'Pulled over: police stop drivers going 10 or more mph over the limit, or crawling far below it. Keep to the speed range.',
-    hwy: 'Highway: 45 to 65 mph and no red lights. At high speed the car needs a long way to slow down, so brake early.',
-    gate: 'Gold gates are life events (an exam, a work shift). Steer through the gate at speed 60 to 140% to earn +10. Driving around it, too fast or too slow costs 20.',
+    police: 'Pulled over: police stop drivers going 10 or more mph over the limit, or crawling under the minimum for 10 seconds without pressing the gas.',
+    hwy: 'Highway: 40 to 65 mph and no red lights. At high speed the car needs a long way to slow down, so brake early.',
+    gate: 'Gold gates are life events (an exam, a work shift). Steer through the gate inside the speed range to earn +10. Driving around it, too fast or too slow costs 20.',
     crash: 'Crash! Three crashes put the driver in the hospital. Working brakes and attention keep you safe.',
     breath: 'Watch the breathing gauge. The same opioid slows the brainstem’s breathing center. That, not speed, is what makes an overdose so dangerous.',
     tol: 'Tolerance: the same pill now gives less speed. Tolerance to breathing builds more slowly, so chasing the old high gets riskier.',
     wd: 'Withdrawal: the brain adapted to the drug. Without it, the engine feels weak even at full gas, and the stress alarm (amygdala) turns on.',
     crave: 'Craving: drug memories (hippocampus) pull the steering toward pills. Steer away!',
     weak: 'Everyday rewards feel weaker now and score fewer points. Long-term opioid use leaves fewer dopamine D2 receptors.',
-    zone: 'No points right now. Points come when you drive in the speed range (city 15 to 30 mph, highway 45 to 65 mph) with breathing at least 60%. A high never scores.',
+    zone: 'No points right now. Points come when you drive in the speed range (city 10 to 30 mph, highway 40 to 65 mph) with breathing at least 60%. A high never scores.',
     pfc: 'The driver is slower to steer. Long-term use weakens the prefrontal cortex, the brain’s control center.',
     choice: 'A choice: the pill or the everyday reward in the next lane. Only the reward scores; the pill’s cost comes later.',
     fent: 'That street pill held hidden fentanyl: four doses in this game, far stronger in real life. You cannot see, smell or taste fentanyl.',
@@ -3893,7 +3893,7 @@ window.EXPLORE = {
       if (t){ it.said = true; say(t); break; }
     }
     if (G.fastT > 0.3 && !G.saidFast){ G.saidFast = true; say('Slow down.', true); } else if (G.fastT === 0) G.saidFast = false;
-    if (G.slowT > 1.5 && !G.saidSlow){ G.saidSlow = true; say('Speed up.', true); } else if (G.slowT === 0) G.saidSlow = false;
+    if (G.slowT > 4 && !G.saidSlow){ G.saidSlow = true; say('Speed up.', true); } else if (G.slowT === 0) G.saidSlow = false;
   }
   function setVoice(on){ voiceOn = on; try { localStorage.setItem('opi:voice', on ? '1' : '0'); } catch (e){} const b = $('#gVoice'); if (b){ b.setAttribute('aria-pressed', String(on)); b.textContent = on ? '🔊 Voice' : '🔇 Voice'; } if (!on && window.speechSynthesis) speechSynthesis.cancel(); }
   let G = null, cv = null, ctx = null, W = 0, H = 0, last = null, running = false, tipQ = [], tipT = 0, uiT = 0, endTimer = 0;
@@ -3951,11 +3951,11 @@ window.EXPLORE = {
     G.tooFast = G.v > Z.limit + 3 && G.hold <= 0; G.tooSlow = G.v < Z.min && !excused && G.hold <= 0;
     if (G.R < 60) G.lostBr += dt; else if (G.tooFast) G.lostHi += dt; else if (G.tooSlow || G.hold > 0) G.lostLo += dt; else G.well += dt;
     G.ok = G.R >= 60 && !G.tooFast && !G.tooSlow && G.hold <= 0; if (!G.ok && G.day > 3) tip('zone');
-    /* police: speeding for 3 s or crawling for 5 s gets you pulled over */
+    /* police: speeding for 3 s, or crawling under the minimum for 10 s without pressing the gas, gets you pulled over */
     if (G.hold <= 0 && G.day > 3){
-      G.fastT = G.v > Z.limit + 10 ? G.fastT + dt : Math.max(0, G.fastT - 2 * dt);   /* police stop you only 10+ mph over the limit */ G.slowT = G.tooSlow ? G.slowT + dt : 0;
+      G.fastT = G.v > Z.limit + 10 ? G.fastT + dt : Math.max(0, G.fastT - 2 * dt);   /* police stop you only 10+ mph over the limit */ G.slowT = !G.tooSlow ? 0 : G.gas ? Math.max(0, G.slowT - dt) : G.slowT + dt;   /* getting back up to speed with the gas is not crawling */
       if (G.fastT > 3) pullOver('Speeding', `${Math.round(G.v)} mph in a ${Z.limit} mph zone`);
-      else if (G.slowT > 5) pullOver('Driving too slowly', `under ${Z.min} mph holds up traffic`);
+      else if (G.slowT > SLOW_S) pullOver('Driving too slowly', `under ${Z.min} mph holds up traffic`);
     }
     const pfc = 1 / (1 + 0.15 * G.A); if (G.A > 1.6) tip('pfc');
     G.P = clamp(0.5 * w + 0.12 * G.M, 0, 1) * (treat ? 0.3 : 1);
@@ -4030,7 +4030,7 @@ window.EXPLORE = {
   function gate(it){
     const Zg = ZONES[G.zone], inside = G.carX > it.lane - 0.5 && G.carX < it.lane + 1.5, ok = G.v >= Zg.min - 2 && G.v <= Zg.limit + 3;
     if (inside && ok){ G.passed++; G.passedList.push(it.label); fx('+10', '#2f8f55'); log(`Passed: ${it.label}.`); bigAlert(`Passed: ${it.label}!`, '+10 points', `Life events passed: ${G.passed}`, 'good'); return; }
-    const why = !inside ? 'You drove around it' : G.v > 140 ? 'Too fast to handle it' : 'Too slow to get there';
+    const why = !inside ? 'You drove around it' : G.v > Zg.limit + 3 ? 'Too fast to handle it' : 'Too slow to get there';
     it.missed = true; G.missed.push(it.label); log(`Missed: ${it.label} (${why.toLowerCase()}).`); bigAlert('Missed: ' + it.label, `−${MISS} points`, `${why} · life events missed so far: ${G.missed.length}`);
   }
   function crash(why){
@@ -4050,7 +4050,7 @@ window.EXPLORE = {
     const el = $('#gEvent'), Z = ZONES[G.zone], secs = x => G.sp > 0.5 && x > 0 ? Math.max(1, Math.ceil(x / G.sp)) + ' s' : '';
     let cls = '', h = '';
     if (!G.over && G.fastT > 0.3){ cls = 'bad'; h = `<i>🚓</i><b>Speeding: ${Math.round(G.v)} mph</b><span>Limit ${Z.limit} mph · slow down or be pulled over (−${TICKET})</span><em>${Math.max(1, Math.ceil(3 - G.fastT))} s</em>`; }
-    else if (!G.over && G.slowT > 1.5){ cls = 'bad'; h = `<i>🚓</i><b>Too slow: ${Math.round(G.v)} mph</b><span>Minimum ${Z.min} mph · press gas or be pulled over (−${TICKET})</span><em>${Math.max(1, Math.ceil(5 - G.slowT))} s</em>`; }
+    else if (!G.over && G.slowT > 4){ cls = 'bad'; h = `<i>🚓</i><b>Too slow: ${Math.round(G.v)} mph</b><span>Minimum ${Z.min} mph · press gas or be pulled over (−${TICKET})</span><em>${Math.max(1, Math.ceil(SLOW_S - G.slowT))} s</em>`; }
     else {
       const it = ['light', 'gate', 'curve', 'zone'].map(ahead).filter(Boolean).sort((a, b) => a.s - b.s)[0];
       if (it && it.k === 'light'){
@@ -4385,7 +4385,7 @@ window.EXPLORE = {
   };
   function startHtml(){
     return `<div class="g-card"><h2>The Brake Game</h2><p>Your brain’s reward circuit is a car, and its speed is dopamine. <b>Drive like in real life:</b> keep to the speed range, stop at red lights, slow down before turns, and don’t hit anything. <b>Goal:</b> reach day 180 (about 3 minutes) with the highest life score.</p>
-      <table class="g-rules"><tbody><tr><td>+1</td><td>every day in the speed range (🏙 city 15 to 30 mph, 🛣 highway 45 to 65 mph) with breathing at least 60%</td></tr><tr><td>+5</td><td>every <b>everyday reward</b> you drive through: 🍎 🎵 ⚽ 👋</td></tr><tr><td>+10</td><td>every <b>life event</b>: drive through the gold gate in the speed range (miss it: −20)</td></tr><tr class="neg"><td>−10</td><td>pulled over by police: 10+ mph over the limit, or crawling far below it</td></tr><tr class="neg"><td>−15</td><td>every crash, including running a red light or sliding off the road in a turn. 3 crashes = hospital.</td></tr><tr><td>0</td><td>pills never score. They are your choice.</td></tr></tbody></table>
+      <table class="g-rules"><tbody><tr><td>+1</td><td>every day in the speed range (🏙 city 10 to 30 mph, 🛣 highway 40 to 65 mph) with breathing at least 60%</td></tr><tr><td>+5</td><td>every <b>everyday reward</b> you drive through: 🍎 🎵 ⚽ 👋</td></tr><tr><td>+10</td><td>every <b>life event</b>: drive through the gold gate in the speed range (miss it: −20)</td></tr><tr class="neg"><td>−10</td><td>pulled over by police: 10+ mph over the limit, or crawling under the minimum for 10 s</td></tr><tr class="neg"><td>−15</td><td>every crash, including running a red light or sliding off the road in a turn. 3 crashes = hospital.</td></tr><tr><td>0</td><td>pills never score. They are your choice.</td></tr></tbody></table>
       <p class="g-pills"><span>${PILLSVG.rx} pain pill (1 dose)</span><span>${PILLSVG.strong} strong pill (2 doses)</span><span>${PILLSVG.street} street pill (may hide fentanyl)</span></p><p class="g-fine">The label above each pill shows, in numbers, what it would do to speed and breathing right now.</p>
       <p class="g-fine">Gas ↑, brake ↓, steer ← → (or the pedals). Letting go of the gas only coasts, so brake early. P or Space pauses.</p>
       <div class="g-modes"><button type="button" class="btn primary" data-start="new">Mode 1: New driver<small>starts healthy · best score ${best('new')}</small></button><button type="button" class="btn" data-start="dep">Mode 2: Dependent driver<small>starts with tolerance · best score ${best('dep')}</small></button></div>
