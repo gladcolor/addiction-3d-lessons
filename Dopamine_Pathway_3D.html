@@ -432,9 +432,13 @@ body.tab-mach #map, body.tab-mach #cases, body.tab-mach .j3d, body.tab-mach .qui
 .mxsvg .called{fill:#9cc1ff; opacity:0.4}
 .mxsvg.braking-cal .called{fill:#7fb0ff; opacity:1; filter:drop-shadow(0 0 6px #6aa8ff)}
 .mxsvg.stall .called{fill:#ff5a5a; opacity:1; filter:drop-shadow(0 0 8px #ff3b3b)}
-.mxsvg .mu{fill:#1d2b4a; stroke:#9cc1ff; stroke-width:1.5; opacity:0}
-.mxsvg.show-mu .mu{opacity:0.9}
-.mxsvg .mu.on{fill:var(--dc); stroke:#2a0a0a; opacity:1}
+.mxsvg .mu{opacity:0}
+.mxsvg.show-mu .mu{opacity:1}
+.mxsvg .mu-p{fill:#c8d4e1; stroke:#2c3e55; stroke-width:1}
+.mxsvg .mu-s{fill:#1d2b3d}
+.mxsvg .mu-k{display:none}
+.mxsvg .mu.on .mu-k{display:inline}
+.mxsvg .mu-k rect, .mxsvg .mu-k circle{fill:var(--dc); stroke:#0b0f1d; stroke-width:0.8}
 .mxsvg .m-op.asleep .opb{opacity:0.7}
 .mxsvg .zz{font-size:24px; font-weight:800; fill:#cfe2ff; paint-order:stroke; stroke:#05070d; stroke-width:5px; display:none}
 .mxsvg .slot{fill:#7a1f2b; stroke:#ff8a8a; stroke-width:1.5}
@@ -940,6 +944,7 @@ body.tab-gloss .hero, body.tab-gloss #map, body.tab-gloss #cases, body.tab-gloss
       <li><i class="k-ico" style="--c:#c9ced8"></i><span><b>Rotor:</b> the <span class="t">dopamine neuron</span>. It turns on its own; each hammer tap on the contact is one <span class="t">action potential</span></span></li>
       <li><i class="k-ico" style="--c:#f4f6f8"></i><span><b>White glove:</b> <span class="t">glutamate</span>. A hard push makes a burst of taps</span></li>
       <li><i class="k-ico" style="--c:#5b8ee6"></i><span><b>Blue operator:</b> a <span class="t" data-k="gaba neuron">GABA</span> neuron. He steps on the seesaw brake: its red pad presses the hub. Opioids put him to sleep (zZ); alcohol and THC make him drowsy (z)</span></li>
+      <li><i class="k-ico" style="--c:#c8d4e1"></i><span><b>Sockets on the operator (opioid, alcohol and cannabis cases):</b> his receptors, <span class="t">μ-opioid receptors</span> or <span class="t" data-k="cb1 receptors">CB1 receptors</span> (for alcohol, a stand-in for its many targets). A drug molecule that binds is drawn as a key in a socket; the more keys, the less he brakes</span></li>
       <li><i class="k-ico" style="--c:#e8eef5"></i><span><b>Rockets (nicotine cases):</b> <span class="t">nicotinic receptors</span> on the rotor arms. Nicotine is the key that lights them</span></li>
       <li><i class="k-dot" style="background:#9fd8ff"></i><span><b>Blue-white sparks on the cable:</b> electricity along the <span class="t">axon</span>, not dopamine</span></li>
       <li><i class="k-ico" style="--c:#4a6d93"></i><span><b>Warehouse and factory:</b> one <span class="t">axon terminal</span>; the faint copies are thousands more. The factory makes dopamine; the little gumball machines riding the conveyor belt are <span class="t">vesicles</span>, each refilled through its cyan lid (<span class="t" data-k="vmat2">VMAT2</span>); a pulse opens the gate under the belt and the package over it empties all at once</span></li>
@@ -1967,7 +1972,7 @@ window.BRAIN = {"telencephalon":{"lo":[-70.26,1513.52,-10.46],"hi":[69.1,1630.66
     scale1: { p: [840, 712], l: 50, r: 60, a: [-16, 6] },
     scale2: { p: [1040, 712], l: 70, r: 70, a: [-12, 28] },
     dial: [1405, 936], cableG: 'M900 914 V946 H1296', cableB: 'M1124 914 V922 H1296', shaftY: 930, cal: [RX + 102 * Math.cos(113 * Math.PI / 180), RY + 102 * Math.sin(113 * Math.PI / 180)],
-    mu: [[52, 424], [72, 424], [52, 442], [72, 442], [52, 460], [72, 460]]
+    mu: [[101, 398, 1], [47, 398, -1], [101, 418, 1], [47, 418, -1], [101, 438, 1], [47, 438, -1]]
   };
   // a point along the belt loop: front run left to right, round the right end, back run right to left, round the left end
   const beltLen = 2 * (G.belt.u1 - G.belt.u0) + 2 * Math.PI * G.belt.r;
@@ -2209,7 +2214,7 @@ window.STORY = {
         tips: [['rk', 0, 600, 290, 'More receptors, but many burnt out']],
         zh: '一次用药还不是成瘾。抽烟几个月后，大脑多长出烟碱型受体：每条转臂都装上了火箭（上调），但两支烟之间很多处于"烧完了"（失敏）的状态，人就想抽下一支。D1 细胞里 ΔFosB（一种能开关基因、持续数周的蛋白）积累。脑成像并没有清楚显示吸烟者的 D2 受体减少。日常的奖励显得更弱，香烟显得更必要。' } ] },
     opioid: { steps: [
-      { k: 'arrive', spot: 1, tips: [[84, 440, 200, 712, 'μ-opioid receptors sit on the GABA cell']], en: '<b>Opioids</b> (heroin, fentanyl, oxycodone, morphine) arrive, but they do not touch the rotor. They attach to the brake operator: <span class="t">μ-opioid receptors</span> on the GABA neuron.',
+      { k: 'arrive', spot: 1, tips: [[104, 418, 200, 712, 'μ-opioid receptors sit on the GABA cell']], en: '<b>Opioids</b> (heroin, fentanyl, oxycodone, morphine) arrive, but they do not touch the rotor. They attach to the brake operator: <span class="t">μ-opioid receptors</span> on the GABA neuron.',
         zh: '阿片类（海洛因、芬太尼、羟考酮、吗啡）到达，但它们不碰转轮，而是结合在刹车手身上：GABA 神经元上的 μ 阿片受体。' },
       { k: 'change', spot: 1, tips: [[84, 440, 200, 712, 'Inhibit the inhibitor = disinhibition']], en: 'The operator "falls asleep" (the GABA neuron goes quiet) and stops braking. With the brake off, the rotor turns faster. This is called <span class="t">disinhibition</span> (removing a brake). Opioids also act directly on the receiving cells in the nucleus accumbens, so part of their reward does not need dopamine.',
         zh: '刹车手睡着了，不再踩刹车。刹车一松，转轮就转快了。这叫解除抑制 (disinhibition)，也就是"去掉刹车"。阿片类还直接作用在伏隔核的接收细胞上，所以它们的奖励效果有一部分不需要多巴胺。' },
@@ -2227,7 +2232,7 @@ window.STORY = {
       { k: 'long', spot: 5, en: 'One dose is not addiction. With repeated use, the receiving cells change: <b>ΔFosB</b> (say "delta FosB": a protein that switches genes on or off and stays for weeks) builds up in D1 cells, and D2 receptors decrease. Everyday rewards then feel weaker, and the drink feels more necessary.',
         zh: '一次喝酒不等于成瘾。反复饮用后，接收细胞会改变：D1 细胞里 ΔFosB（一种能开关基因、持续数周的蛋白）积累，D2 受体变少。日常的奖励显得更弱，酒显得更必要。' } ] },
     cannabis: { steps: [
-      { k: 'arrive', spot: 1, tips: [[84, 440, 200, 712, 'THC binds CB1 receptors on the GABA cell']], en: '<b>Cannabis</b> arrives. Its main drug, <b>THC</b>, attaches to <span class="t" data-k="cb1 receptors">CB1 receptors</span> on the brake operator (the GABA neurons).',
+      { k: 'arrive', spot: 1, tips: [[104, 418, 200, 712, 'THC binds CB1 receptors on the GABA cell']], en: '<b>Cannabis</b> arrives. Its main drug, <b>THC</b>, attaches to <span class="t" data-k="cb1 receptors">CB1 receptors</span> on the brake operator (the GABA neurons).',
         zh: '大麻到达。它的主要成分 THC 结合在刹车手（GABA 神经元）的 CB1 受体上。' },
       { k: 'change', spot: 1, tips: [[233, 462, 200, 712, 'Less GABA released: a looser brake']], en: 'The brake operator gets drowsy: he releases less GABA, so he presses the brake less often and more lightly, and the rotor turns a little faster. This is <span class="t">disinhibition</span>, like opioids, but weaker: opioids put him to sleep.',
         zh: '刹车手打起瞌睡：他释放的 GABA 变少，踩刹车更少、更轻，转轮转得稍快一点。这也是解除抑制，和阿片类一样，但更弱：阿片类让他睡着，THC 只让他打瞌睡。' },
@@ -2326,7 +2331,8 @@ window.STORY = {
       before: 'Dopamine stays packed until a pulse opens the gate.', after: 'Meth empties the packages into the warehouse (the packages lose their marbles, which roll loose inside), then runs the pumps backward (yellow arrows point down): dopamine pours out even without a pulse. The rotor slows, because its own dopamine sensors (autoreceptors) feel the flood.' }
   };
   const ENTRY = { nicotine: [-30, 760], opioid: [-30, 760], alcohol: [-30, 760], cannabis: [-30, 760], cocaine: [925, 1060], meth: [925, 1060] };
-  const ZONE = { nicotine: [350, 176, 110, 56], opioid: [96, 360, 80, 120], alcohol: [96, 360, 80, 120], cannabis: [96, 360, 80, 120], cocaine: [745, 556, 360, 50], meth: [745, 556, 360, 50] };
+  // where free drug molecules hover; for the brake drugs, just right of the operator's receptor keys so free and bound ones stay apart
+  const ZONE = { nicotine: [350, 176, 110, 56], opioid: [132, 372, 44, 84], alcohol: [132, 372, 44, 84], cannabis: [132, 372, 44, 84], cocaine: [745, 556, 360, 50], meth: [745, 556, 360, 50] };
   const DLP = { nicotine: [392, 222, 'nicotine'], opioid: [14, 640, 'opioids bind him'], alcohol: [14, 640, 'alcohol quiets him'], cannabis: [14, 640, 'THC binds CB1'], cocaine: [1150, 645, 'cocaine'], meth: [800, 168, 'meth gets inside the terminal'] };
   const toCleft = m => [G.cleft[0] + (m.x - 40) / 44 * G.cleft[2], G.cleft[1] + G.cleft[3] - (m.y + 34.4) / 4.6 * G.cleft[3]];
   const occ = a => a.reduce((s, v) => s + v, 0) / a.length;
@@ -2394,7 +2400,7 @@ window.STORY = {
     ${ART.gloss}
     <path class="spark" data-r="spark" d="M${G.tip[0].toFixed(0)} ${(G.tip[1] - 12).toFixed(0)} l5 9 l10 2 l-8 6 l2 10 l-9 -6 l-9 6 l2 -10 l-8 -6 l10 -2 z"/>
     <g class="padheat" data-r="heat">${ART.heat}</g>${ART.sawPost}<g data-r="saw">${ART.saw}</g>${ART.sawPin}
-    <g class="m-op" data-r="op">${ART.operator}${MU.map(([x, y]) => `<circle class="mu" data-r="mu" cx="${x}" cy="${y}" r="6"/>`).join('')}</g>
+    <g class="m-op" data-r="op">${ART.operator}${MU.map(([x, y, d]) => `<g class="mu" data-r="mu" transform="translate(${x} ${y}) scale(${1.4 * d} 1.4)"><rect class="mu-p" x="-7" y="-5" width="10" height="10" rx="2.5"/><rect class="mu-s" x="-3.5" y="-1.6" width="6.5" height="3.2" rx="1"/><g class="mu-k"><rect x="-2" y="-1.3" width="8.5" height="2.6"/><circle cx="10" cy="0" r="4"/><circle cx="13.5" cy="-3.4" r="2.8"/><circle cx="13.5" cy="3.6" r="2.6"/></g></g>`).join('')}</g>
     <path class="opleg" data-r="opLeg" d=""/><rect class="opshoe" data-r="opShoe" width="30" height="10" rx="4"/>
     <text class="zz" data-r="zz" x="98" y="326">z<tspan dy="-12" font-size="30">z</tspan><tspan dy="-14" font-size="40">Z</tspan></text>
     <g data-r="hand">${ART.hand}</g>
