@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Addiction in 3D</title>
+<meta name="description" content="Interactive 3D lessons for first-year biology on the molecular and cellular mechanisms of addiction, with a focus on opioids.">
+<style>
+:root{--bg:#f6f7f9; --surface:#ffffff; --ink:#111827; --ink-2:#4b5563; --muted:#6b7280; --rule:#e2e6eb; --brand:#1f56c8; --brand-soft:#e8eefb; --accent:#c2457a; --f:Inter, system-ui, -apple-system, "Segoe UI", sans-serif}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--bg:#0e1116; --surface:#151a21; --ink:#e7ebf0; --ink-2:#b3bcc7; --muted:#8a94a1; --rule:#262d37; --brand:#7ea6ff; --brand-soft:#17233c; --accent:#f0739d} }
+:root[data-theme="dark"]{--bg:#0e1116; --surface:#151a21; --ink:#e7ebf0; --ink-2:#b3bcc7; --muted:#8a94a1; --rule:#262d37; --brand:#7ea6ff; --brand-soft:#17233c; --accent:#f0739d}
+*{box-sizing:border-box}
+body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 var(--f)}
+main{max-width:980px; margin:0 auto; padding:48px 16px 40px}
+header h1{margin:0; font-size:clamp(1.9rem, 4vw, 2.6rem); line-height:1.15; letter-spacing:-0.01em}
+header p{margin:12px 0 0; max-width:680px; color:var(--ink-2); font-size:1.0625rem}
+.kicker{font-size:0.8125rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--brand); margin-bottom:10px}
+.grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(270px, 1fr)); gap:16px; margin-top:32px}
+.card{display:flex; flex-direction:column; gap:10px; background:var(--surface); border:1px solid var(--rule); border-radius:12px; padding:20px; color:inherit; text-decoration:none; transition:border-color .15s, transform .15s}
+.card:hover{border-color:var(--brand); transform:translateY(-2px)}
+.card:focus-visible{outline:2px solid var(--brand); outline-offset:2px}
+.step{display:inline-grid; place-items:center; width:28px; height:28px; border-radius:50%; background:var(--brand); color:#fff; font-weight:700; font-size:0.875rem}
+.card h2{margin:0; font-size:1.25rem; line-height:1.3}
+.card p{margin:0; color:var(--ink-2); font-size:0.9375rem}
+.meta{margin-top:auto; display:flex; flex-wrap:wrap; gap:6px}
+.meta span{font-size:0.75rem; font-weight:600; color:var(--ink-2); background:var(--brand-soft); border-radius:999px; padding:3px 10px}
+.open{font-weight:700; color:var(--brand); font-size:0.9375rem}
+.links{display:flex; flex-wrap:wrap; gap:8px 16px}
+.links a{color:var(--brand); font-weight:600; font-size:0.875rem; text-decoration:none}
+.links a:hover{text-decoration:underline}
+.note{margin-top:32px; padding:16px 18px; border-radius:12px; border-left:4px solid var(--accent); background:var(--surface); border-top:1px solid var(--rule); border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); font-size:0.9375rem; color:var(--ink-2)}
+.note b{color:var(--ink)}
+footer{margin-top:28px; font-size:0.8125rem; color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">First-year biology · interactive 3D</div>
+    <h1>Addiction in 3D</h1>
+    <p>Follow an opioid from the whole body down to single molecules, see how it releases the brain’s brakes, then feel the result behind the wheel of the Brake Game. Every term comes at three levels: everyday words, biology words and full names.</p>
+  </header>
+
+  <div class="grid">
+    <a class="card" href="Molecular_Game_of_Addiction.html">
+      <span class="step">1</span>
+      <h2>The Molecular Game of Addiction</h2>
+      <p>A full active-learning session: a 3D synapse, a real opioid receptor structure, a body explorer that zooms from organs to molecules, and a team design challenge.</p>
+      <div class="meta"><span>about 50 min</span><span>whole session</span></div>
+      <span class="open">Open the session →</span>
+    </a>
+    <a class="card" href="Dopamine_Pathway_3D.html">
+      <span class="step">2</span>
+      <h2>The Dopamine Pathway</h2>
+      <p>One dopamine pathway in a real 3D brain, a metro map and an animated machine: where nicotine, opioids, alcohol, cannabis, gambling, cocaine and methamphetamine break in, healthy and addicted brains side by side, hands-on controls, and a glossary in the six UN languages.</p>
+      <div class="meta"><span>6 cases compared</span><span>quiz included</span></div>
+      <span class="open">Open the pathway →</span>
+    </a>
+    <a class="card" href="Opioids_3D_Lesson.html">
+      <span class="step">3</span>
+      <h2>Opioids in 3D</h2>
+      <p>A guided lesson in seven short chapters: from the whole body to the reward circuit, the brake cell, the μ-opioid receptor, tolerance, withdrawal, overdose and treatment.</p>
+      <div class="meta"><span>about 40 min</span><span>guided, step by step</span></div>
+      <span class="open">Open the lesson →</span>
+    </a>
+    <div class="card">
+      <span class="step">4</span>
+      <h2>Opioids up close</h2>
+      <p>Now the Opioids tab of The Dopamine Pathway. Meet dopamine, watch five kinds of brain cells and three kinds of molecules react to an opioid, then drive the Brake Game: an opioid weakens the brakes, so the idling engine pushes the car forward, and it makes the driver drowsy.</p>
+      <div class="meta"><span>3 parts</span><span>includes the game</span></div>
+      <div class="links">
+        <a href="Dopamine_Pathway_3D.html#da">Meet dopamine →</a>
+        <a href="Dopamine_Pathway_3D.html#cx">Cells and molecules →</a>
+        <a href="Dopamine_Pathway_3D.html#game">Brake Game →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="note"><b>In real life:</b> an opioid overdose can stop a person’s breathing within minutes. If you see one, call 911 and give naloxone if you have it. Opioid use disorder is treatable. Free, confidential help in the U.S.: 1-800-662-4357 (SAMHSA, 24/7), or call or text 988.</div>
+
+  <footer>These pages are teaching models: they show the direction of each real effect, not its exact size or timing. Best viewed on a laptop or desktop browser; the 3D views load three.js from a CDN, so an internet connection is needed.</footer>
+</main>
+</body>
+</html>
