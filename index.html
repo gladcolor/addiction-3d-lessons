@@ -556,6 +556,13 @@ body.teacher .mxsvg .zh{display:inline}
 .mx-tbl thead th{font-size:0.75rem; color:var(--muted); font-weight:600; border-top:0}
 .mx-tbl tbody th{font-weight:600; white-space:nowrap}
 .mx-tbl tbody th .sw{display:inline-block; background:var(--c); margin-right:6px; vertical-align:-1px}
+.mx-mice-l{font-size:0.875rem; color:var(--ink-2)}
+.mx-mice p{font-size:0.9375rem; line-height:1.55; color:var(--ink-2); margin:6px 0}
+.mx-mice{grid-template-columns:minmax(0, 1fr)}
+.mx-mice-scroll{overflow-x:auto; min-width:0}
+.mx-mice .mx-tbl{min-width:640px}
+.mx-mice .mx-tbl tbody tr{cursor:auto}
+.mx-mice .mx-tbl tbody th{white-space:normal}
 .mx-tbl .mx-n{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
 .mx-tbl tbody tr{cursor:pointer}
 .mx-tbl tbody tr:hover, .mx-tbl tbody tr.on{background:var(--sunk)}
@@ -1994,6 +2001,25 @@ body.tab-opgame .opx .op-main{min-height:640px}
       <li><i class="k-ico" style="--c:#2f9e6d"></i><span><b>D1 scale (go):</b> receptor cups on its pan and a heavy weight on the other arm; only many full cups at once sink the pan onto the go pedal</span></li>
       <li><i class="k-ico" style="--c:#c9525a"></i><span><b>D2 scale (stop):</b> receptor cups on its pan and the stop boot on the other arm; a few full cups keep the boot lifted, a dip lets it stamp. Each scale presses its pedal through a spring; the pedals send signals along the cells’ output fibers (green and red lines) to the BEHAVIOR dial, whose needle swings between DO IT AGAIN, no change and HOLD BACK for the action just taken (for example, the next cigarette)</span></li>
     </ul>
+  </details>
+  <details class="m-key mx-mice panel-c fold" id="mxMice">
+    <summary><h3>Pair it with the mouse games</h3><span class="fold-hint">show</span></summary>
+    <p>Two free games from the University of Utah’s Learn.Genetics site zoom in on a single synapse: <a href="https://learn.genetics.utah.edu/content/addiction/mouse/" target="_blank" rel="noopener">Mouse Party</a> (seven drugs, a few slides each) and <a href="https://learn.genetics.utah.edu/content/addiction/methmouse/" target="_blank" rel="noopener">Meth Mouse</a> (methamphetamine only; you run the synapse yourself). Our machine shows the whole pathway, so each mouse fits one part of it.</p>
+    <div class="mx-mice-scroll"><table class="mx-tbl">
+      <thead><tr><th scope="col">Mouse</th><th scope="col">Our case</th><th scope="col">Part of the machine</th><th scope="col">Same idea?</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Heroin</th><td>Opioids</td><td>① the brake operator (<span class="t">μ-opioid receptors</span> on GABA neurons)</td><td>Yes. Heroin copies the body’s own opioids and switches the brake off (<span class="t">disinhibition</span>).</td></tr>
+        <tr><th scope="row">Marijuana</th><td>Cannabis (THC)</td><td>① the brake operator (<span class="t" data-k="cb1 receptors">CB1 receptors</span>)</td><td>Yes. THC copies the body’s own cannabinoid, anandamide, and loosens the brake.</td></tr>
+        <tr><th scope="row">Cocaine</th><td>Cocaine</td><td>④ the return pumps (<span class="t" data-k="dat">DAT</span>)</td><td>Yes. Cocaine blocks the pumps, so dopamine stays in the gap.</td></tr>
+        <tr><th scope="row">Meth, and the Meth Mouse game</th><td>Methamphetamine</td><td>③ the packages (<span class="t" data-k="vmat2">VMAT2</span>) and ④ the pumps</td><td>Yes. Meth enters through the pumps, empties the packages and runs the pumps backward.</td></tr>
+        <tr><th scope="row">Alcohol</th><td>Alcohol</td><td>① the brake operator, plus a push on the rotor</td><td>A different side of the same drug: see the note below.</td></tr>
+        <tr><th scope="row">Ecstasy</th><td>none</td><td>mostly off this machine</td><td>Ecstasy works mainly on serotonin transporters; the game says it adds only a milder dopamine release.</td></tr>
+        <tr><th scope="row">LSD</th><td>none</td><td>off this machine</td><td>LSD acts on serotonin receptors and hardly touches this pathway, one reason it is seldom used compulsively.</td></tr>
+        <tr><th scope="row">No mouse</th><td>Nicotine; Gambling &amp; video games</td><td>① the rockets on the rotor; the glove and the brake</td><td>Not in the mouse games.</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Alcohol only looks like a contradiction.</b> Mouse Party says alcohol makes GABA receptors more inhibitory and blocks glutamate receptors: that is why a drinker gets sleepy and forgetful. Our machine says alcohol quiets the GABA brake. Both are true. Alcohol has many targets: across the brain it strengthens inhibition and sedates, while on this pathway it quiets the brake neurons themselves and nudges the dopamine neuron, partly by releasing the body’s own opioids. A looser brake here means more dopamine, the part that makes alcohol rewarding.</p>
+    <p><b>Meth Mouse also shows long-term changes.</b> Its receiving cells remove receptors, as in our “Healthy vs addicted” view. Two of its claims go further than the evidence: it says sending cells add more transporters, but brain scans of long-term meth users show fewer <span class="t" data-k="dat">DAT</span>, a sign of damaged <span class="t" data-k="axon terminal">axon terminals</span> that partly recovers after a year or more without the drug; and it says neurons die, while human studies mainly show damaged terminals.</p>
   </details>
   <div class="tn" style="margin-top:12px"><b>讲解提示</b>使用方法：先选"No drug"，让学生跟着字幕看完一遍正常运转（转轮 → 电线 → 仓库和工厂 → 传送带闸门和回收泵 → 两台天平和踏板）；再依次选每种药物：第一次会完整导览，之后每种药物先放 5 秒正常运转回顾，再演示药物到达、哪里被改变、结果，最后是长期变化（一次用药不等于成瘾）。想直接看药物，可以点步骤条上的"2"。点画面上任何一个部件，下面会显示这一站的说明。切换到"Before &amp; after"，左右两台同样的机器同时运转：左边不用药，右边用药，圈出的是药物作用的部位；下方表格汇总所有药物。<span class="say">可以这样说："Same machine every time. Watch which part each drug tampers with."</span></div>
 </section>
@@ -3455,6 +3481,14 @@ window.STORY = {
   const HATCH = G.hatch, DOCK = G.dock, PUMPS = G.pumps, P_TOP = G.pTop, P_MOUTH = G.pMouth, GAS = G.gas, BRK = G.brake;
   const SPOT = { 0: [768, 512, 900, 700], 1: [228, 392, 300, 255], 2: [575, 480, 190, 125], 3: [1010, 390, 360, 190], 4: [925, 572, 300, 100], 5: [966, 760, 280, 190] };
   const zh = t => `<tspan class="zh"> ${t}</tspan>`;
+  // the matching mouse in the University of Utah's Mouse Party and Meth Mouse games (the full table is in #mxMice)
+  const MICE = { nicotine: 'Mouse games: Mouse Party has no nicotine mouse.',
+    opioid: 'Mouse games: the same part as Mouse Party’s <b>heroin</b> mouse.',
+    alcohol: 'Mouse games: Mouse Party’s <b>alcohol</b> mouse shows a different side of alcohol, the sedation; see “Pair it with the mouse games” below the picture.',
+    cannabis: 'Mouse games: the same part as Mouse Party’s <b>marijuana</b> mouse.',
+    gamble: 'Mouse games: not covered (no drug is involved).',
+    cocaine: 'Mouse games: the same part as Mouse Party’s <b>cocaine</b> mouse.',
+    meth: 'Mouse games: the same parts as Mouse Party’s <b>meth</b> mouse and the <b>Meth Mouse</b> game.' };
   const WHERE = { normal: 'Baseline', nicotine: 'Rockets on the rotor', opioid: 'Brake operator', alcohol: 'Brake operator (and more)', cannabis: 'Brake operator (CB1)', gamble: 'Hand and brake', cocaine: 'Return pumps', meth: 'Packages and pumps' };
   // two more of the most widely used substances, shown only in this tab
   const EXTRA = [
@@ -4094,6 +4128,7 @@ window.STORY = {
     $('#mxBh').innerHTML = `<i class="sw" style="--c:${c.ui || c.color}"></i>After: ${esc(c.name)}`;
     cap.innerHTML = `<p class="eyebrow"><i class="sw" style="--c:${c.ui || c.color}"></i>${esc(c.name)} · before and after</p>
       <p class="mx-cap-t"><b>Where it breaks in:</b> ${info.where}.</p>
+      <p class="mx-mice-l">${MICE[k]}</p>
       <div class="mx-ba"><p><b>Before</b>${info.before}</p><p><b>After</b>${info.after}</p></div>
       ${k === 'gamble' ? '' : `<p class="mx-key"><svg viewBox="-8 -9 22 20" width="22" height="20" aria-hidden="true"><g fill="${c.color}" stroke="#0b0f1d" stroke-width="1.2"><circle r="6.5"/><circle cx="8" cy="-4" r="5"/><circle cx="4" cy="8" r="4.4"/></g></svg> = ${{ nicotine: 'nicotine', opioid: 'opioid', alcohol: 'alcohol', cannabis: 'THC', cocaine: 'cocaine', meth: 'meth' }[k]} molecules in the right picture. Pink marbles = dopamine. The SPEED box in each picture shows the rotor speed right now; it jumps around, like a real neuron.</p>`}
       <div class="tn"><b>讲解提示</b>左边是不用药的同一台机器，右边是用药后；两边的圈标出的是同一个部位，让学生找出差别在哪里。下面的表格汇总了所有药物各自影响的部位。</div>`;
