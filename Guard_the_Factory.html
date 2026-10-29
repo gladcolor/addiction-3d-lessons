@@ -102,6 +102,20 @@ button{font:inherit; color:inherit}
 details.box summary{cursor:pointer; font-weight:600}
 .cheat-scroll{overflow-x:auto; margin-top:10px}
 .how{margin:0; padding-left:18px; display:grid; gap:4px; font-size:0.875rem; color:var(--ink-2)}
+details.design{margin-top:14px}
+details.design > summary{cursor:pointer; font:600 1.0625rem/1.3 var(--serif); color:var(--ink)}
+details.design > summary span{font:400 0.8125rem var(--f); color:var(--muted)}
+.dn{display:grid; gap:8px; margin-top:10px; max-width:70rem}
+.dn h3{margin:8px 0 0; font:600 0.9375rem/1.3 var(--f); color:var(--ink)}
+.dn p, .dn li{font-size:0.875rem; line-height:1.55; color:var(--ink-2)}
+.dn ul{margin:0; padding-left:18px; display:grid; gap:5px}
+.dn b{color:var(--ink)}
+.dn-scroll{overflow-x:auto}
+.dn-tbl{width:100%; min-width:760px; border-collapse:collapse; font-size:0.8125rem}
+.dn-tbl th, .dn-tbl td{text-align:left; vertical-align:top; padding:6px 6px; border-top:1px solid var(--rule); color:var(--ink-2); line-height:1.45}
+.dn-tbl thead th{font-size:0.6875rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); border-top:0}
+.dn-tbl tbody th{color:var(--ink); white-space:nowrap}
+.dn-tbl td:nth-child(3), .dn-tbl td:nth-child(4){white-space:nowrap}
 /* teacher notes in Chinese, shown in Teacher mode only */
 .tn{display:none; background:var(--teach-soft); border:1px dashed var(--teach-rule); border-radius:8px; padding:9px 12px; font-size:0.875rem; line-height:1.6; color:#f6d7a8}
 .tn b{color:var(--teach); margin-right:6px}
@@ -159,6 +173,66 @@ body.teacher .tn{display:block}
       </details>
     </section>
   </div>
+  <details class="box design" id="design">
+    <summary>Game rules and design notes <span>(for teachers; click to show)</span></summary>
+    <div class="dn">
+      <h3>What the game is for</h3>
+      <p>One goal only: after Mouse Party and the Machines tab, students should <b>remember which part of the dopamine machine each drug damages</b>. The game is not about medicines or antidotes. It takes about 5 minutes and works best right after Mouse Party.</p>
+
+      <h3>Rules</h3>
+      <ul>
+        <li><b>The factory</b> on the left is the dopamine machine from the Machines tab, cut down to the four parts these drugs act on: the rotor (dopamine neuron), the brake operator (GABA neuron), the packages (vesicles), and the recycle pumps (dopamine transporters, DAT).</li>
+        <li><b>Drugs</b> walk in as zombies from the bloodstream, in any of the five lanes, with their name above the head. Each carries one bomb for every part it damages: meth (vesicles and DAT) and alcohol (dopamine neuron and GABA) carry two.</li>
+        <li><b>Guards</b> are the four parts, labeled Dopamine neuron, GABA, Vesicles and DAT. A guard’s shots hurt only the drugs that damage its part and pass straight through all others (“no effect”). A two-bomb drug needs two kinds of guard.</li>
+        <li><b>A stopped drug</b> screams and turns to smoke (+100, +150 for a two-bomb drug). <b>A drug that reaches the factory</b> throws its bombs at its parts, and the score drops by the drug’s danger: fentanyl −300 a bomb; heroin, meth and cocaine −200; pain pill −150; alcohol −100; marijuana and nicotine −50.</li>
+        <li><b>ATP</b> pays for guards: 50 each, with 25 ATP made every 3.5 seconds. <b>Each guard works for 30 seconds</b> (the white ring), then wears out.</li>
+        <li><b>The drug list</b> on the start screen picks the drugs (default: alcohol, cocaine, and the three opioids). They arrive one kind at a time in Mouse Party order, then all together; new drugs stop after 4.5 minutes.</li>
+        <li><b>Help</b> without leaving the game: a <b>Hint</b> button after each “New drug … Which part will it bomb?” message, one-line explanations in Field notes, and a cheat sheet. The end screen lists the parts that were bombed and every drug with its part.</li>
+      </ul>
+
+      <h3>Design choices, and why</h3>
+      <ul>
+        <li><b>A familiar layout, our own pictures.</b> Lanes on a lawn, a card bar and enemies walking in from the right are common to many lane-defense games, so students can play without instructions. The factory parts are drawn with the Machines tab’s own drawing code, so they look exactly as in the lesson. The zombie art is a free CC0 set (Kenney).</li>
+        <li><b>Only parts that exist in our machine.</b> Ecstasy and LSD from Mouse Party are left out: they act mainly on serotonin, which is not part of this machine. The D1 and D2 scales are not guards: none of these drugs acts directly on D1 or D2, and fewer D2 receptors is a long-term change, not a direct hit.</li>
+        <li><b>The guard is the part, not a medicine.</b> To place the right guard, a student has to recall the part. A wrong guard does nothing, which is immediate feedback, and Field notes says which part the drug really damages.</li>
+        <li><b>Guards wear out after 30 seconds.</b> With permanent guards, students filled every lane with all four and stopped thinking. Now ATP runs out that way (see the numbers below).</li>
+        <li><b>One new drug at a time, slow at first.</b> Each drug gets its own stretch before the next one arrives, in the order of the lesson (Mouse Party, Meth Mouse, then our own lessons), so a beginner learns one part at a time.</li>
+        <li><b>Danger follows real data.</b> The drugs that kill most easily in one dose take more hits and cost more when they bomb the factory: fentanyl is the hardest, based on CDC overdose deaths for 2022 (about 74,000 involved synthetic opioids, mainly fentanyl). Common drugs come more often: alcohol and marijuana most, nicotine in groups of three. <i>Tell students that marijuana is the easiest to stop because fatal overdose is very rare, not because it is harmless: about 1 in 10 people who use it develop cannabis use disorder, more if they start young.</i></li>
+        <li><b>First-year words.</b> Labels use the words students meet in Mouse Party: vesicles and dopamine transporters. VMAT2 appears only in small print, and the pumps are “Recycle pumps”, as in the Machines tab.</li>
+        <li><b>Sound that laptops can play.</b> Effects sit above about 200 Hz, because laptop speakers play almost nothing lower. The explosion is soft and low on purpose. The background music is an original loop at one steady tempo. Effects and Music have separate switches.</li>
+      </ul>
+
+      <h3>The numbers, and why</h3>
+      <p>Each drug’s numbers follow three questions: how easily one dose can kill (hits to stop it, points lost), how common it is (how often it comes), and how fast it acts (how fast it walks).</p>
+      <div class="dn-scroll"><table class="dn-tbl">
+        <thead><tr><th scope="col">Drug</th><th scope="col">Bombs (parts)</th><th scope="col">Hits per bomb</th><th scope="col">Points lost per bomb</th><th scope="col">How often</th><th scope="col">Speed</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Fentanyl (opioid)</th><td>1 (GABA)</td><td>10</td><td>−300</td><td>rare</td><td>fast</td><td>The deadliest: synthetic opioids, mainly fentanyl, were involved in about 74,000 of 108,000 U.S. overdose deaths in 2022, and about 2 mg can kill. Ten hits also echo “it can take more than one dose of naloxone”.</td></tr>
+          <tr><th scope="row">Heroin (opioid)</th><td>1 (GABA)</td><td>6</td><td>−200</td><td>rare</td><td>medium</td><td>A high overdose risk in one dose; used less now, as fentanyl has largely replaced it.</td></tr>
+          <tr><th scope="row">Pain pill (opioid)</th><td>1 (GABA)</td><td>4</td><td>−150</td><td>medium</td><td>slow</td><td>The same receptor as heroin but usually a lower, slower dose by mouth; misused more often than heroin.</td></tr>
+          <tr><th scope="row">Meth</th><td>2 (Vesicles, DAT)</td><td>4 each</td><td>−200</td><td>rare</td><td>medium</td><td>Second in U.S. overdose deaths; it acts on two parts, and long use damages the terminals.</td></tr>
+          <tr><th scope="row">Cocaine</th><td>1 (DAT)</td><td>4</td><td>−200</td><td>medium</td><td>fast</td><td>Third in overdose deaths; it acts within minutes and wears off fast, so it walks fast.</td></tr>
+          <tr><th scope="row">Alcohol</th><td>2 (Dopamine neuron, GABA)</td><td>4 each</td><td>−100</td><td>most common</td><td>slow</td><td>The most used drug. It kills mostly over years (about 178,000 U.S. deaths a year, from liver disease, cancer and injuries) and by poisoning at very high doses; it builds up slowly, so it walks slowly.</td></tr>
+          <tr><th scope="row">Marijuana</th><td>1 (GABA)</td><td>2</td><td>−50</td><td>most common</td><td>slow</td><td>Very common, and a fatal overdose is very rare, so it is easy to stop but comes often. Not harmless: about 1 in 10 people who use it develop cannabis use disorder.</td></tr>
+          <tr><th scope="row">Nicotine</th><td>1 (Dopamine neuron)</td><td>1</td><td>−50</td><td>common, in threes</td><td>fastest</td><td>The highest share of users who become dependent (about 1 in 3). Each puff is weak but arrives fast and in a row, as smoking does; its many deaths come from decades of smoking, not overdose.</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li><b>Guard cost and ATP:</b> a guard costs 50 ATP and the factory makes 25 ATP every 3.5 seconds, so a player can afford about one guard every 7 seconds, close to how often drugs arrive (every 6 to 11 seconds, every 4 to 6 at the end). Each guard is a choice. The game starts with 200 ATP, enough for the first four guards.</li>
+        <li><b>Guard life, 30 seconds:</b> long enough to stop the drug a guard was placed for, and often the next one in that lane, but too short to fill every lane in advance. In testing with the default drugs, reading each name and placing the right guard scored about +3,850 (36 of 38 stopped); filling every lane with all four guards scored about −6,050; no guards scored −7,700.</li>
+        <li><b>Shots:</b> a guard fires every 0.9 seconds. A drug takes 25 seconds (nicotine) to 55 seconds (alcohol) to cross the lawn, so one guard placed early stops anything but fentanyl comfortably; fentanyl (10 hits) needs an early guard or two.</li>
+        <li><b>Points:</b> +100 for a stopped drug, +150 for a two-bomb drug; the losses (−50 to −300 a bomb) are larger, so letting a deadly drug through hurts more than stopping a mild one helps.</li>
+        <li><b>Pace:</b> one game is about 5 minutes. Each picked drug gets 25 to 45 seconds on its own, in lesson order, then all come together; the first drug arrives at 6 seconds, gaps shrink from 8–11 to 4–6 seconds, and walking speed rises from 85% to 110%. New drugs stop at 4.5 minutes so the last walkers can finish.</li>
+      </ul>
+
+      <h3>Simplifications to mention in class</h3>
+      <ul>
+        <li>Drugs do not carry bombs or walk in lanes: “bombs the brake operator” means “acts on the GABA neuron”, not “destroys it”.</li>
+        <li>Guards are not medicines, and ATP does not buy receptors; ATP is simply the cell’s energy currency, made by mitochondria.</li>
+        <li>Points, hit counts and speeds are game rules chosen to reflect relative danger and how common each drug is, not measured values.</li>
+      </ul>
+    </div>
+  </details>
   <p style="margin:10px 0 0; font-size:0.75rem; color:var(--muted)">Zombie art: Toon Characters 1 by <a href="https://kenney.nl/assets/toon-characters-1" target="_blank" rel="noopener">Kenney</a> (CC0).</p>
   <div class="tn" style="margin-top:14px"><b>讲解提示</b>这个游戏只练一件事：记住每种毒品破坏机器的哪个部位。左边工厂的四个部位就是 Machines 里的部件：转轮 = 多巴胺神经元（尼古丁作用的烟碱型受体），刹车手 = GABA 神经元（阿片和 THC 作用的受体），包裹 = 囊泡 (VMAT2)，回收泵 = DAT。每个守卫只保护一个部位，它的子弹只打破坏这个部位的毒品。毒品背上的炸弹数 = 它破坏的部位数（冰毒、酒精各两个），需要两种守卫。Mouse Party 里的摇头丸和 LSD 没有放进游戏：它们主要作用于血清素，不在我们的多巴胺机器上，讲 Mouse Party 时口头带过即可。每个守卫只工作 30 秒（白色圆环倒计时），这样学生不能把 4 种守卫铺满所有跑道，只能看清每个毒品的名字再放对守卫。难打程度、扣分和出现频率都按真实情况设定：一次用药越容易致死，血条越长、炸到工厂扣分越多（芬太尼最难打，扣 300，依据 CDC 2022 年过量死亡数据）；越常见的出现得越多（酒精、大麻最多）。大麻血条最短、扣分最少，要提醒学生：大麻几乎不会致命过量，但约十分之一的使用者会成瘾，青少年开始使用风险更高。D1/D2 天平没有做成守卫：这些毒品都不直接作用在 D1/D2 上，D2 受体减少是长期用药后的变化。一局约 5 分钟（2× 速度约 2.5 分钟），毒品按 Mouse Party 的顺序登场，最后是我们自己课上的尼古丁、止痛药和芬太尼。</div>
 </main>
@@ -176,10 +250,10 @@ body.teacher .tn{display:block}
 
   /* ---------- the parts of the factory: the four parts of the Machines tab's dopamine machine that these drugs damage ---------- */
   const PT = [
-    { name: 'Rotor', short: 'Rotor', tag: 'Dopamine neuron', real: 'dopamine neuron', say: 'the rotor (dopamine neuron)', col: '#c9ced8', x: 136, y: TOP + 86 },
-    { name: 'Brake operator', short: 'Brake', tag: 'GABA', real: 'GABA neuron', say: 'the brake operator (GABA neuron)', col: '#5b8ee6', x: 136, y: TOP + 226 },
-    { name: 'Packages', short: 'Packages', tag: 'Vesicles', real: 'vesicles (VMAT2)', say: 'the packages (vesicles)', col: '#ff7fb0', x: 136, y: TOP + 366 },
-    { name: 'Recycle pumps', short: 'Pumps', tag: 'DAT', real: 'transporters (DAT)', say: 'the recycle pumps (dopamine transporters, DAT)', col: '#2db2a6', x: 136, y: TOP + 506 }
+    { name: 'Rotor', short: 'Rotor', tag: 'Dopamine neuron', real: 'dopamine neuron', say: 'the rotor (dopamine neuron)', col: '#c9ced8', x: 136, y: TOP + 83 },
+    { name: 'Brake operator', short: 'Brake', tag: 'GABA', real: 'GABA neuron', say: 'the brake operator (GABA neuron)', col: '#5b8ee6', x: 136, y: TOP + 225 },
+    { name: 'Packages', short: 'Packages', tag: 'Vesicles', real: 'vesicles (VMAT2)', say: 'the packages (vesicles)', col: '#ff7fb0', x: 136, y: TOP + 367 },
+    { name: 'Recycle pumps', short: 'Pumps', tag: 'DAT', real: 'transporters (DAT)', say: 'the recycle pumps (dopamine transporters, DAT)', col: '#2db2a6', x: 136, y: TOP + 509 }
   ];
 
   /* ---------- drugs: parts = what each one damages (one bomb per part); hp = hits per bomb, longer for the drugs that kill most easily;
@@ -505,8 +579,8 @@ body.teacher .tn{display:block}
   const PIMG = {}; Object.entries(window.__PARTS || {}).forEach(([k, src]) => { const im = new Image(); im.onload = () => { if (S) renderCards(); }; im.src = src; PIMG[k] = im; });
   const ready = im => im && im.complete && im.naturalWidth;
   const GUARD_PIC = ['rotor', 'brake', 'ves', 'pump'], TILE_PIC = ['rotor', 'brake', 'pack', 'pump'];   // the guard shows one package; its tile shows the warehouse
-  // four tiles, top to bottom: rotor, brake operator, packages, recycle pumps; each picture fits a 228 x 100 box
-  const TILE = i => [16, TOP + 32 + i * 140, 240, 136];
+  // four tiles, top to bottom: rotor, brake operator, packages, recycle pumps, with gaps between them; each picture fits a 180 x 74 box
+  const TILE = i => [16, TOP + 36 + i * 142, 240, 126];
   function pumps(g, x, y, s, c, dark){
     [-15, 15].forEach(u => {
       g.fillStyle = c; g.strokeStyle = dark; g.lineWidth = 2 * s;
@@ -529,11 +603,11 @@ body.teacher .tn{display:block}
     ctx.fillText('DOPAMINE MACHINE', 26, TOP + 24);
     const pics = TILE_PIC.every(k => ready(PIMG[k]));
     if (pics) PT.forEach((P, i) => {
-      const [x, y, w, h] = TILE(i), im = PIMG[TILE_PIC[i]], k = Math.min(228 / im.naturalWidth, 100 / im.naturalHeight), iw = im.naturalWidth * k, ih = im.naturalHeight * k;
+      const [x, y, w, h] = TILE(i), im = PIMG[TILE_PIC[i]], k = Math.min(180 / im.naturalWidth, 74 / im.naturalHeight), iw = im.naturalWidth * k, ih = im.naturalHeight * k;
       ctx.fillStyle = '#13243a'; rr(x, y, w, h, 8); ctx.fill(); ctx.strokeStyle = '#2b4560'; ctx.lineWidth = 1.2; ctx.stroke();
-      ctx.drawImage(im, P.x - iw / 2, y + 4 + (100 - ih) / 2, iw, ih);
-      ctx.textAlign = 'center'; ctx.fillStyle = '#d6e0ea'; ctx.font = '600 11.5px Inter, sans-serif'; ctx.fillText(P.name, P.x, y + 117);
-      ctx.fillStyle = '#7f93a6'; ctx.font = '500 10px Inter, sans-serif'; ctx.fillText(P.real, P.x, y + 130);
+      ctx.drawImage(im, P.x - iw / 2, y + 10 + (74 - ih) / 2, iw, ih);
+      ctx.textAlign = 'center'; ctx.fillStyle = '#d6e0ea'; ctx.font = '600 11.5px Inter, sans-serif'; ctx.fillText(P.name, P.x, y + 101);
+      ctx.fillStyle = '#7f93a6'; ctx.font = '500 10px Inter, sans-serif'; ctx.fillText(P.real, P.x, y + 115);
     });
     PT.forEach((P, i) => {
       if (S && S.flash[i] > 0){ ctx.fillStyle = `rgba(255,90,90,${S.flash[i] * 0.5})`; circle(P.x, P.y, 60); ctx.fill(); }
@@ -544,7 +618,7 @@ body.teacher .tn{display:block}
       else if (shake){ ctx.strokeStyle = `rgba(255,120,120,${S.flash[i]})`; ctx.lineWidth = 3; circle(P.x + shake, P.y, 30); ctx.stroke(); }
       if (S && S.hits[i]){
         ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 1.6;
-        for (let c = 0; c < Math.min(S.hits[i], 4); c++){ const cx = P.x - 60 + c * 38; ctx.beginPath(); ctx.moveTo(cx, P.y - 36); ctx.lineTo(cx + 7, P.y - 22); ctx.lineTo(cx + 1, P.y - 10); ctx.lineTo(cx + 9, P.y + 4); ctx.stroke(); }
+        for (let c = 0; c < Math.min(S.hits[i], 4); c++){ const cx = P.x - 50 + c * 32; ctx.beginPath(); ctx.moveTo(cx, P.y - 36); ctx.lineTo(cx + 7, P.y - 22); ctx.lineTo(cx + 1, P.y - 10); ctx.lineTo(cx + 9, P.y + 4); ctx.stroke(); }
         ctx.fillStyle = '#ff8c8c'; ctx.font = '700 11px Inter, sans-serif'; ctx.textAlign = pics ? 'right' : 'center'; ctx.fillText('hit × ' + S.hits[i], pics ? 250 : P.x, pics ? TILE(i)[1] + 14 : P.y - 46);
       }
     });
