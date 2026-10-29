@@ -32,17 +32,23 @@ For commercial use, please contact Huan Ning through [huanning.me](https://huann
 
 ### Third-party material
 
-The items below keep their own licenses and are not covered by CC BY-NC-SA 4.0.
+The items below keep their own licenses and are not covered by CC BY-NC-SA 4.0. The changes made for these lessons are noted in the first column.
 
 | Material | Where | Source | License |
 |---|---|---|---|
-| Human anatomy meshes | 3D lessons | [BodyParts3D](https://dbarchive.biosciencedbc.jp/en/bodyparts3d/), © The Database Center for Life Science | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| Protein structures (4DKL, 5C1M, 6DDE, 6HUP, 2HHB, 9EO4, 5KXI and others) | 3D lessons | [RCSB Protein Data Bank](https://www.rcsb.org) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
-| Predicted protein structures | 3D lessons | [AlphaFold Protein Structure Database](https://alphafold.ebi.ac.uk), Google DeepMind and EMBL-EBI | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Human anatomy meshes (simplified and compressed) | 3D lessons | [BodyParts3D](https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html), © The Database Center for Life Science | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Protein structures, reduced to Cα traces or one bead per residue (4DKL, 5C1M, 6DDE, 6HUP, 2HHB, 9EO4, 5KXI) | 3D lessons | [RCSB Protein Data Bank](https://www.rcsb.org) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Predicted protein structures, reduced to one bead per residue | 3D lessons | [AlphaFold Protein Structure Database](https://alphafold.ebi.ac.uk), Google DeepMind and EMBL-EBI | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Small-molecule 3D structures and properties | 3D lessons | [PubChem](https://pubchem.ncbi.nlm.nih.gov), NCBI | Public domain |
-| Brain slice photo (Real size tab) | The Dopamine Pathway | John A. Beal, LSU Health Sciences Center Shreveport, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Human_brain_frontal_(coronal)_section.JPG) | [CC BY 2.5](https://creativecommons.org/licenses/by/2.5/) |
+| Photo "Human brain frontal (coronal) section", with labels, outline and ruler added | The Dopamine Pathway, Real size tab | John A. Beal, LSU Health Sciences Center Shreveport, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Human_brain_frontal_(coronal)_section.JPG) | [CC BY 2.5](https://creativecommons.org/licenses/by/2.5/) |
 | Zombie sprites | Guard the Dopamine Factory | [Toon Characters 1](https://kenney.nl/assets/toon-characters-1) by Kenney | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
 | three.js r128, loaded from cdnjs | 3D lessons | [three.js authors](https://github.com/mrdoob/three.js) | MIT |
+| SmilesDrawer 1.0.10, loaded from jsDelivr | The Molecular Game of Addiction | [Daniel Probst and contributors](https://github.com/reymond-group/smilesDrawer) | MIT |
 | Inter and Source Serif 4 fonts, loaded from Google Fonts | All pages | Rasmus Andersson; Adobe | SIL Open Font License 1.1 |
 
-The nucleus accumbens slice in the Real size tab is an AI-generated image (OpenAI image generation through Codex) and is labeled as such on the page. Mouse Party and Meth Mouse (Genetic Science Learning Center, University of Utah) are linked, not copied. Facts and figures from the CDC, NIDA and published papers are cited where they are used.
+Other notes:
+
+- The nucleus accumbens slice in the Real size tab is an AI-generated image (OpenAI image generation through Codex). It is labeled as such on the page.
+- Mouse Party and Meth Mouse (Genetic Science Learning Center, University of Utah) and the YouTube videos are linked, not copied.
+- Short quotations from published papers are cited where they appear and remain under their publishers' copyright.
+- Facts and figures come from the CDC, NIDA, the DEA and published papers, and the pages cite their sources.
