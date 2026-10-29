@@ -55,6 +55,9 @@ button{font:inherit; color:inherit}
 #cv{display:block; width:100%; height:auto; aspect-ratio:1280/650; touch-action:manipulation; cursor:pointer}
 .toast{min-height:3.1em; margin-top:8px; padding:8px 14px; border-radius:10px; background:var(--panel); border:1px solid var(--rule); font-size:0.9375rem; line-height:1.45; color:var(--muted); transition:color .25s}
 .toast.on{color:var(--ink)}
+.hint{margin-left:8px; padding:1px 10px; border-radius:999px; border:1px solid var(--gold); background:rgba(255,216,77,0.12); color:var(--gold); font-size:0.8125rem; font-weight:600; cursor:pointer; vertical-align:1px}
+.hint:hover, .hint:focus-visible{background:rgba(255,216,77,0.28)}
+.hint-a{margin-left:6px; color:var(--gold)}
 .toast b{color:var(--gold)}
 .over{position:absolute; inset:0; display:none; place-items:center; padding:16px; background:rgba(4,9,15,0.72); overflow:auto}
 .over.on{display:grid}
@@ -79,6 +82,12 @@ button{font:inherit; color:inherit}
 .fb.ok{color:var(--good)} .fb.no{color:#ffb3b3}
 .row{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
 .opt{display:flex; gap:8px; align-items:center; font-size:0.875rem; color:var(--ink-2)}
+.pickd{margin:0; padding:10px 12px 12px; border:1px solid var(--rule); border-radius:10px; display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:6px 14px}
+.pickd legend{padding:0 6px; font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted)}
+.pickd label{display:flex; align-items:center; gap:8px; font-size:0.9375rem; cursor:pointer}
+.pickd i{width:10px; height:10px; border-radius:50%; background:var(--c); flex:none}
+.pickd small{color:var(--muted)}
+.btn:disabled{opacity:0.45; cursor:not-allowed}
 .recap{width:100%; border-collapse:collapse; font-size:0.875rem}
 .recap th, .recap td{text-align:left; vertical-align:top; padding:6px 5px; border-top:1px solid var(--rule)}
 .recap thead th{font-size:0.6875rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); border-top:0}
@@ -163,10 +172,10 @@ body.teacher .tn{display:block}
 
   /* ---------- the parts of the factory: the four parts of the Machines tab's dopamine machine that these drugs damage ---------- */
   const PT = [
-    { name: 'Rotor', short: 'Rotor', tag: 'DA neuron', real: 'dopamine neuron', col: '#c9ced8', x: 80, y: TOP + 150 },
-    { name: 'Brake operator', short: 'Brake', tag: 'GABA', real: 'GABA neuron', col: '#5b8ee6', x: 198, y: TOP + 150 },
-    { name: 'Packages', short: 'Packages', tag: 'VMAT2', real: 'vesicles · VMAT2', col: '#ff7fb0', x: 80, y: TOP + 420 },
-    { name: 'Return pumps', short: 'Pumps', tag: 'DAT', real: 'DAT', col: '#2db2a6', x: 198, y: TOP + 420 }
+    { name: 'Rotor', short: 'Rotor', tag: 'Dopamine neuron', real: 'dopamine neuron', say: 'the rotor (dopamine neuron)', col: '#c9ced8', x: 80, y: TOP + 150 },
+    { name: 'Brake operator', short: 'Brake', tag: 'GABA', real: 'GABA neuron', say: 'the brake operator (GABA neuron)', col: '#5b8ee6', x: 198, y: TOP + 150 },
+    { name: 'Packages', short: 'Packages', tag: 'Vesicles', real: 'vesicles (VMAT2)', say: 'the packages (vesicles)', col: '#ff7fb0', x: 80, y: TOP + 420 },
+    { name: 'Recycle pumps', short: 'Pumps', tag: 'DAT', real: 'transporters (DAT)', say: 'the recycle pumps (dopamine transporters, DAT)', col: '#2db2a6', x: 198, y: TOP + 420 }
   ];
 
   /* ---------- drugs: parts = what each one damages (one bomb per part); hp = hits per bomb; speed in px/s ---------- */
@@ -176,9 +185,9 @@ body.teacher .tn{display:block}
     thc: { name: 'Marijuana', from: 'Mouse Party', parts: [1], hp: 4, spd: 22, col: '#a78bfa',
       boom: { 1: 'Marijuana bombed the brake operator: THC copies anandamide at CB1 receptors and loosens the brake.' } },
     cocaine: { name: 'Cocaine', from: 'Mouse Party', parts: [3], hp: 3, spd: 32, col: '#f4f4f4',
-      boom: { 3: 'Cocaine bombed the return pumps: it blocks DAT, so dopamine is trapped in the gap.' } },
+      boom: { 3: 'Cocaine bombed the recycle pumps: it blocks DAT, so dopamine is trapped in the gap.' } },
     meth: { name: 'Meth', from: 'Mouse Party and Meth Mouse', parts: [2, 3], hp: 3, spd: 24, col: '#ffd84d',
-      boom: { 2: 'Meth bombed the packages: it gets inside and pushes dopamine out of the vesicles.', 3: 'Meth bombed the return pumps: it enters through DAT and runs the pumps backward.' } },
+      boom: { 2: 'Meth bombed the packages: it gets inside and pushes dopamine out of the vesicles.', 3: 'Meth bombed the recycle pumps: it enters through DAT and runs the pumps backward.' } },
     alcohol: { name: 'Alcohol', from: 'Mouse Party', parts: [0, 1], hp: 4, spd: 20, col: '#ff9f43',
       boom: { 0: 'Alcohol bombed the rotor: it pushes the dopamine neuron directly.', 1: 'Alcohol bombed the brake operator: it quiets the GABA brake (and sedates the whole brain).' } },
     nicotine: { name: 'Nicotine', from: 'our Machines lesson', parts: [0], hp: 1, spd: 36, col: '#8be36b', pair: 2,
@@ -188,18 +197,31 @@ body.teacher .tn{display:block}
     fentanyl: { name: 'Fentanyl', from: 'our Opioids lesson', parts: [1], hp: 10, spd: 28, col: '#d63a3a',
       boom: { 1: 'Fentanyl bombed the brake operator: the same receptors as heroin, but far stronger, so it takes many more hits.' } }
   };
-  const nameParts = k => DR[k].parts.map(p => `the ${PT[p].name.toLowerCase()} (${PT[p].tag})`).join(' and ');
+  const nameParts = k => DR[k].parts.map(p => PT[p].say).join(' and ');
 
-  /* ---------- one game of about 7 minutes: Mouse Party first, then Meth Mouse, then our own lessons ---------- */
-  const MP1 = ['heroin', 'thc'], MP2 = MP1.concat('cocaine', 'meth'), MP3 = MP2.concat('alcohol'), ALL = Object.keys(DR);
-  const PH = [
-    { until: 70, drugs: MP1, fresh: MP1, gap: [8, 11], mul: 0.85, label: 'Mouse Party: heroin and marijuana' },
-    { until: 150, drugs: MP2, fresh: ['cocaine', 'meth'], gap: [7, 10], mul: 0.92, label: 'Mouse Party and Meth Mouse: cocaine and meth' },
-    { until: 240, drugs: MP3, fresh: ['alcohol'], gap: [6, 9], mul: 1, label: 'Mouse Party: alcohol' },
-    { until: 330, drugs: ALL, fresh: ['nicotine', 'pill', 'fentanyl'], gap: [5.5, 8], mul: 1.05, label: 'Our lessons: nicotine, pain pills and fentanyl' },
-    { until: 420, drugs: ALL, fresh: [], gap: [4, 6], mul: 1.1, label: 'The whole party' }
+  /* ---------- the drugs in this game: picked on the start screen; they arrive one by one in Mouse Party order, then all together ---------- */
+  const ORDER = ['heroin', 'thc', 'cocaine', 'meth', 'alcohol', 'nicotine', 'pill', 'fentanyl'];
+  const GROUPS = [
+    { id: 'alcohol', label: 'Alcohol', keys: ['alcohol'] },
+    { id: 'cocaine', label: 'Cocaine', keys: ['cocaine'] },
+    { id: 'thc', label: 'Marijuana', keys: ['thc'] },
+    { id: 'heroin', label: 'Opioid: Heroin', keys: ['heroin'] },
+    { id: 'pill', label: 'Opioid: Pain pill', keys: ['pill'] },
+    { id: 'fentanyl', label: 'Opioid: Fentanyl', keys: ['fentanyl'] },
+    { id: 'meth', label: 'Meth', keys: ['meth'] },
+    { id: 'nicotine', label: 'Nicotine', keys: ['nicotine'] }
   ];
-  const END = PH[PH.length - 1].until, COST = 75, RATE = 1.1;
+  let picked = ['alcohol', 'cocaine', 'heroin', 'pill', 'fentanyl'];
+  try { const v = JSON.parse(localStorage.getItem('gf-drugs') || 'null'); if (Array.isArray(v)){ if (v.includes('opioids')) v.push('heroin', 'pill', 'fentanyl'); const ok = v.filter(id => GROUPS.some(g => g.id === id)); if (ok.length) picked = ok; } } catch (e) {}
+  const pickedKeys = () => ORDER.filter(k => GROUPS.some(g => picked.includes(g.id) && g.keys.includes(k)));
+  const COST = 75, RATE = 1.1;
+  // each picked drug gets its own stretch (35 to 75 s), then about 2 minutes of everything at once; about 7 minutes in all
+  function phases(){
+    const keys = pickedKeys(), n = keys.length, L = Math.max(35, Math.min(75, 300 / n)), ph = []; let t = 0;
+    keys.forEach((k, i) => { t += L; const f = i / n; ph.push({ until: Math.round(t), drugs: keys.slice(0, i + 1), fresh: [k], gap: [8 - 2.5 * f, 11 - 3 * f], mul: 0.85 + 0.2 * f, label: `${DR[k].name}, from ${DR[k].from}` }); });
+    ph.push({ until: Math.max(420, Math.round(t) + 60), drugs: keys, fresh: [], gap: [4, 6], mul: 1.1, label: n > 1 ? 'Everything at once' : DR[keys[0]].name + ', faster' });
+    return ph;
+  }
 
   /* ---------- state ---------- */
   let S = null, speed = 1, best = null;
@@ -207,7 +229,7 @@ body.teacher .tn{display:block}
   try { best = JSON.parse(localStorage.getItem('gf-best2') || 'null'); } catch (e) { best = null; }
   let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
 
-  function schedule(){
+  function schedule(PH){
     const q = []; let t = 6, prev = -1;
     PH.forEach((ph, i) => {
       const fresh = ph.fresh.slice();
@@ -222,7 +244,8 @@ body.teacher .tn{display:block}
   }
   function start(opts){
     seed = 11;
-    S = { t: 0, atp: 200, atpT: 0, score: 0, hits: [0, 0, 0, 0], flash: [0, 0, 0, 0], q: schedule(), drugs: [], guards: [], shots: [], bombs: [], fx: [],
+    const PH = phases();
+    S = { PH, END: PH[PH.length - 1].until, keys: pickedKeys(), t: 0, atp: 200, atpT: 0, score: 0, hits: [0, 0, 0, 0], flash: [0, 0, 0, 0], q: schedule(PH), drugs: [], guards: [], shots: [], bombs: [], fx: [],
       sel: null, rm: false, paused: false, modal: false, over: false, stopped: {}, bombed: {}, met: {}, id: 0, hover: null, ph: 0 };
     renderCards(); hud(); $('#log').innerHTML = '';
     if (!(opts && opts.silent)) closeOver();
@@ -286,10 +309,10 @@ body.teacher .tn{display:block}
     S.atpT += dt; while (S.atpT >= 5){ S.atpT -= 5; S.atp += 25; }
     while (S.q.length && S.q[0].t <= S.t){
       const e = S.q.shift(), D = DR[e.k];
-      if (e.ph !== S.ph){ S.ph = e.ph; sfx('wave'); note(`<b>Now arriving:</b> ${esc(PH[e.ph].label)}.`); }
-      if (!S.met[e.k]){ S.met[e.k] = 1; note(`New drug: <b>${esc(D.name)}</b>, from ${esc(D.from)}. Which part will it bomb?`); }
+      if (e.ph !== S.ph){ S.ph = e.ph; sfx('wave'); note(`<b>Now arriving:</b> ${esc(S.PH[e.ph].label)}.`); }
+      if (!S.met[e.k]){ S.met[e.k] = 1; note(`New drug: <b>${esc(D.name)}</b>, from ${esc(D.from)}. Which part will it bomb? <button type="button" class="hint" data-k="${e.k}" title="Click to see which part it bombs">Hint</button>`); }
       sfx('groan', 2500);
-      S.drugs.push({ id: ++S.id, k: e.k, lane: e.lane, x: W - 46, bombs: D.parts.map(p => ({ p, hp: D.hp })), ph: rnd() * 6, nofit: 0, hitT: 0, die: 0, mul: PH[e.ph].mul });
+      S.drugs.push({ id: ++S.id, k: e.k, lane: e.lane, x: W - 46, bombs: D.parts.map(p => ({ p, hp: D.hp })), ph: rnd() * 6, nofit: 0, hitT: 0, die: 0, mul: S.PH[e.ph].mul });
     }
     S.drugs.forEach(d => {
       d.ph += dt; d.nofit = Math.max(0, d.nofit - dt); d.hitT = Math.max(0, d.hitT - dt);
@@ -319,7 +342,7 @@ body.teacher .tn{display:block}
               S.fx.push({ x: d.x, y: laneY(d.lane) - 76, txt: '+' + pts, col: '#5ec8ff', life: 1.4, vy: -18 });
               if (!said['stop-' + d.k]){ said['stop-' + d.k] = 1; note(`<b>${esc(DR[d.k].name)}</b> stopped: it damages ${nameParts(d.k)}.`); }
             } else sfx('defuse');
-            if (d.bombs.length && !said['half-' + d.k]){ said['half-' + d.k] = 1; note(`${esc(DR[d.k].name)} lost one bomb, but it still carries another: it also damages the ${PT[d.bombs[0].p].name.toLowerCase()} (${PT[d.bombs[0].p].tag}).`); }
+            if (d.bombs.length && !said['half-' + d.k]){ said['half-' + d.k] = 1; note(`${esc(DR[d.k].name)} lost one bomb, but it still carries another: it also damages ${PT[d.bombs[0].p].say}.`); }
           }
           break;
         }
@@ -398,7 +421,7 @@ body.teacher .tn{display:block}
         g.fillStyle = '#46d1e0'; rr(x + (u - 5) * s, y - 14 * s, 10 * s, 4 * s, 2, g); g.fill();
       });
     },
-    (g, x, y, s) => pumps(g, x, y, s, '#2db2a6', '#1b6f68'),   // return pumps: DAT
+    (g, x, y, s) => pumps(g, x, y, s, '#2db2a6', '#1b6f68'),   // recycle pumps: DAT
   ];
   function pumps(g, x, y, s, c, dark){
     [-15, 15].forEach(u => {
@@ -496,7 +519,7 @@ body.teacher .tn{display:block}
     ctx.fillStyle = 'rgba(255,210,210,0.6)'; ctx.font = '600 11px Inter, sans-serif'; ctx.textAlign = 'center'; ctx.fillText('BLOODSTREAM', BX + 80, TOP - 10);
   }
   // a guard: the machine part itself on a plinth, with a cannon and its name on top (for example GABA)
-  function drawGuard(g, gd, x, y, a){
+  function drawGuard(g, gd, x, y, a, noTag){
     const P = PT[gd.p], k = gd.kick || 0; g.globalAlpha = a == null ? 1 : a;
     g.fillStyle = 'rgba(0,0,0,0.3)'; g.beginPath(); g.ellipse(x, y + 38, 26, 7, 0, 0, Math.PI * 2); g.fill();
     g.fillStyle = '#2f4a66'; rr(x - 22, y + 28, 44, 9, 3, g); g.fill();
@@ -504,6 +527,7 @@ body.teacher .tn{display:block}
     g.fillStyle = '#0b0f1d'; rr(x + 38 - k * 5, y - 7, 6, 17, 2, g); g.fill();
     circle(x, y + 2, 27, g); g.fillStyle = 'rgba(11,22,34,0.9)'; g.fill(); g.strokeStyle = P.col; g.lineWidth = 3; g.stroke();
     ICON[gd.p](g, x, y + 3, 0.86, 0);
+    if (noTag){ g.globalAlpha = 1; return; }
     g.font = '700 12px Inter, sans-serif'; const tw = g.measureText(P.tag).width + 14;
     g.fillStyle = P.col; rr(x - tw / 2, y - 46, tw, 18, 9, g); g.fill();
     g.fillStyle = '#0b0f1d'; g.textAlign = 'center'; g.fillText(P.tag, x, y - 33);
@@ -598,7 +622,7 @@ body.teacher .tn{display:block}
       const b = document.createElement('button');
       b.type = 'button'; b.className = 'card'; b.dataset.p = p; b.title = `${P.tag} guard: its shots hit only the drugs that damage the ${P.name.toLowerCase()} (${P.real}).`; b.setAttribute('aria-pressed', 'false');
       b.innerHTML = `<span class="key">${p + 1}</span><span class="nm">${esc(P.tag)}</span><span class="rl">${esc(P.name)}</span><span class="cost">${COST} ATP</span>`;
-      const c = document.createElement('canvas'), d = 2; c.width = 52 * d; c.height = 58 * d; const g = c.getContext('2d'); g.scale(d, d); g.scale(0.66, 0.66); drawGuard(g, { p }, 36, 50, 1);
+      const c = document.createElement('canvas'), d = 2; c.width = 52 * d; c.height = 58 * d; const g = c.getContext('2d'); g.scale(d, d); g.scale(0.66, 0.66); drawGuard(g, { p }, 36, 40, 1, true);
       b.insertBefore(c, b.querySelector('.nm'));
       b.addEventListener('click', () => pick(p));
       box.appendChild(b);
@@ -612,8 +636,8 @@ body.teacher .tn{display:block}
   function hud(){
     if (!S) return;
     $('#atp').textContent = S.atp; $('#score').textContent = S.score;
-    $('#phase').innerHTML = `<b>Now arriving:</b> ${esc(PH[S.ph].label)}`;
-    const left = Math.max(0, Math.ceil(END - S.t)); $('#clock').textContent = left ? `New drugs for another ${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')}` : 'Last drugs on the way';
+    $('#phase').innerHTML = `<b>Now arriving:</b> ${esc(S.PH[S.ph].label)}`;
+    const left = Math.max(0, Math.ceil(S.END - S.t)); $('#clock').textContent = left ? `New drugs for another ${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')}` : 'Last drugs on the way';
     document.querySelectorAll('.card').forEach(b => { const p = +b.dataset.p; b.disabled = S.atp < COST && S.sel !== p; b.setAttribute('aria-pressed', S.sel === p ? 'true' : 'false'); });
     $('#bPause').textContent = S.paused ? 'Resume' : 'Pause';
   }
@@ -635,10 +659,14 @@ body.teacher .tn{display:block}
   function welcome(){
     openOver(`<p class="eyebrow">A lane-defense game on the dopamine pathway</p><h2>Guard the Dopamine Factory</h2>
       <p>The dopamine machine from our lesson is now a factory. Drugs from <a href="https://learn.genetics.utah.edu/content/addiction/mouse/" target="_blank" rel="noopener">Mouse Party</a>, <a href="https://learn.genetics.utah.edu/content/addiction/methmouse/" target="_blank" rel="noopener">Meth Mouse</a> and our own lessons walk in from the bloodstream. Each carries a bomb for every part it damages.</p>
-      <p><b>Your job:</b> read each drug’s name and put the guard of the part it damages in its lane. A guard’s shots hit only the drugs that damage its part. About 7 minutes; Speed 2× makes it shorter.</p>
+      <p><b>Your job:</b> read each drug’s name and put the guard of the part it damages in its lane. A guard’s shots hit only the drugs that damage its part. Tick the drugs you want below. About 7 minutes; Speed 2× makes it shorter.</p>
+      <fieldset class="pickd"><legend>Drugs in this game</legend>${GROUPS.map(g => `<label><input type="checkbox" value="${g.id}" ${picked.includes(g.id) ? 'checked' : ''}><i style="--c:${DR[g.keys[0]].col}"></i>${esc(g.label)}${g.note ? ` <small>(${esc(g.note)})</small>` : ''}</label>`).join('')}</fieldset>
       <div class="row"><button type="button" class="btn primary" id="go">Start</button>${best != null ? `<span class="opt">Best score on this computer: ${best}</span>` : ''}</div>
-      <div class="tn"><b>讲解提示</b>先讲 Mouse Party，再开始。毒品按 Mouse Party 的顺序登场：先海洛因和大麻（都炸刹车手），再可卡因和冰毒（冰毒背两个炸弹），再酒精（也是两个炸弹），最后是我们课上的尼古丁、止痛药和芬太尼。摇头丸和 LSD 主要作用于血清素，不在这台机器上，所以没有出现。随时可以按 Pause 停下来问：“这个毒品破坏哪个部位？”</div>`);
-    $('#go').addEventListener('click', () => { audio(); start(); });
+      <div class="tn"><b>讲解提示</b>开始前在 Drugs in this game 里勾选这一局出现的毒品（默认：酒精、可卡因，以及三种阿片类：海洛因、止痛药、芬太尼；会记在这台电脑上）。毒品按 Mouse Party 的顺序一种一种登场，最后一段全部混在一起，一局约 7 分钟。全部勾选时的顺序：先海洛因和大麻（都炸刹车手），再可卡因和冰毒（冰毒背两个炸弹），再酒精（也是两个炸弹），最后是我们课上的尼古丁、止痛药和芬太尼。摇头丸和 LSD 主要作用于血清素，不在这台机器上，所以没有出现。随时可以按 Pause 停下来问：“这个毒品破坏哪个部位？”</div>`);
+    const boxes = [...over.querySelectorAll('.pickd input')];
+    const sync = () => { picked = boxes.filter(b => b.checked).map(b => b.value); $('#go').disabled = !picked.length; if (picked.length) try { localStorage.setItem('gf-drugs', JSON.stringify(picked)); } catch (e) {} };
+    boxes.forEach(b => b.addEventListener('change', sync));
+    $('#go').addEventListener('click', () => { if (!picked.length) return; audio(); start(); });
   }
   function end(){
     S.over = true; S.sel = null; sfx('end'); hud();
@@ -648,7 +676,7 @@ body.teacher .tn{display:block}
     openOver(`<p class="eyebrow">Game over</p><h2>Score: ${S.score}</h2>
       <p>Drugs stopped: <b>${n}</b>. Parts bombed: <b>${S.hits.reduce((a, b) => a + b, 0)}</b>.</p>
       ${hit ? `<p class="eyebrow">Parts that were bombed</p><table class="recap"><tbody>${hit}</tbody></table>` : '<p class="fb ok">No part of the factory was bombed.</p>'}
-      <p class="eyebrow">Remember: which part each drug damages</p>${recap(Object.keys(DR))}
+      <p class="eyebrow">Remember: which part each drug damages</p>${recap(S.keys)}
       <div class="row"><button type="button" class="btn primary" id="again">Play again</button></div>`);
     $('#again').addEventListener('click', () => { audio(); start(); });
   }
@@ -684,10 +712,18 @@ body.teacher .tn{display:block}
     else if (/^[1-4]$/.test(e.key)) pick(+e.key - 1);
   });
 
+  // the Hint button after a new drug's question shows which part it bombs and which guard stops it
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.hint'); if (!b) return;
+    const k = b.dataset.k, D = DR[k], a = document.createElement('span'); a.className = 'hint-a';
+    a.innerHTML = `It bombs ${nameParts(k)}: use the ${D.parts.map(p => '<b>' + esc(PT[p].tag) + '</b>').join(' and ')} guard${D.parts.length > 1 ? 's' : ''}.`;
+    b.replaceWith(a);
+  });
+
   $('#cheat').innerHTML = recap(Object.keys(DR), false);
 
   // hooks for tests: start, run the clock, place guards
-  window.GF = { start, step, place, audio, sfx, SFX, state: () => S, DR, PT, PH, sim(sec, dt = 0.05){ for (let t = 0; t < sec && S && !S.over; t += dt) step(dt); hud(); return S.over; }, close: closeOver };
+  window.GF = { start, step, place, audio, sfx, SFX, state: () => S, DR, PT, GROUPS, setPicked(v){ picked = v.slice(); }, sim(sec, dt = 0.05){ for (let t = 0; t < sec && S && !S.over; t += dt) step(dt); hud(); return S.over; }, close: closeOver };
   setMute(muted, true); start({ silent: true }); welcome();
 })();
 </script>
