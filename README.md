@@ -7,11 +7,11 @@ Interactive 3D lessons for first-year biology on the molecular and cellular mech
 | Page | What it is |
 |---|---|
 | [The Molecular Game of Addiction](https://gladcolor.github.io/addiction-3d-lessons/Molecular_Game_of_Addiction.html) | A 50-minute active-learning session: 3D synapse, real opioid receptor structure, body explorer, team design challenge |
-| [The Dopamine Pathway](https://gladcolor.github.io/addiction-3d-lessons/Dopamine_Pathway_3D.html) | One dopamine pathway in 3D, as a metro map and as an animated machine: where seven drugs and gambling break in, healthy vs addicted brains, a 3D brain of the three addiction systems (reward, control, stress and habit) with real specimen photos, a hands-on view, the Opioids tab (molecule, cells and the Brake Game), and a glossary in the six UN languages ([accuracy notes](Dopamine_Pathway_accuracy_notes.md)) |
+| [The Dopamine Pathway](https://gladcolor.github.io/addiction-3d-lessons/Dopamine_Pathway_3D.html) | One dopamine pathway in 3D, as a metro map and as an animated machine: where seven drugs and gambling break in, healthy vs addicted brains, a 3D brain of the three addiction systems (reward, control, stress and habit) with real specimen photos, a brain atlas of 49 regions with names in six languages, name origins, pronunciation and everyday activities, a hands-on view, the Opioids tab (molecule, cells and the Brake Game), and a glossary in the six UN languages ([accuracy notes](Dopamine_Pathway_accuracy_notes.md)) |
 | [Opioids in 3D](https://gladcolor.github.io/addiction-3d-lessons/Opioids_3D_Lesson.html) | A guided 40-minute lesson, from the whole body down to single proteins |
 | [Opioids up close](https://gladcolor.github.io/addiction-3d-lessons/Dopamine_Pathway_3D.html#da) | The Opioids tab of The Dopamine Pathway: meet dopamine, five cell types and three molecule classes in 3D, and the [Brake Game](https://gladcolor.github.io/addiction-3d-lessons/Dopamine_Pathway_3D.html#game). The older standalone page, [Opioids_Cells_Molecules_3D.html](https://gladcolor.github.io/addiction-3d-lessons/Opioids_Cells_Molecules_3D.html), still works |
 
-Each page is a single standalone HTML file. The 3D views load three.js from a CDN, so an internet connection is needed. The pages are teaching models: they show the direction of each real effect, not its exact size or timing.
+Each page is a single standalone HTML file, except that the Brain atlas tab of The Dopamine Pathway loads its 3D model from `brain_atlas_mesh.js`, which must stay next to the page. The 3D views load three.js from a CDN, so an internet connection is needed. The pages are teaching models: they show the direction of each real effect, not its exact size or timing.
 
 ## License
 
