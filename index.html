@@ -770,9 +770,9 @@ body.tab-gloss .hero, body.tab-gloss #map, body.tab-gloss #cases, body.tab-gloss
 .mxsvg.compact .ptag{font-size:18px}
 
 /* hands-on pop-ups, and the control bar now sitting above the picture */
-.mx-toast{position:absolute; z-index:7; max-width:300px; padding:10px 13px; border-radius:12px; background:rgba(255,248,224,0.97); color:#2a2010; box-shadow:0 10px 28px rgba(0,0,0,0.45); border:1px solid #ffd84d; display:grid; gap:3px; font-size:0.8125rem; line-height:1.45; pointer-events:none; animation:mxtoast .18s ease-out}
-.mx-toast b{font-size:0.875rem; color:#1a1405}
-.mx-toast.out{opacity:0; transform:translateY(-4px); transition:opacity .4s, transform .4s}
+.mx-toast{position:absolute; z-index:7; max-width:300px; padding:8px 12px; border-radius:12px; background:rgba(6,12,22,0.32); color:#fff6d8; border:1px solid rgba(255,216,77,0.55); display:grid; gap:3px; font-size:0.8125rem; line-height:1.45; pointer-events:none; text-shadow:0 1px 2px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.85); animation:mxtoast .18s ease-out}
+.mx-toast b{font-size:0.875rem; color:#ffd84d}
+.mx-toast.out{opacity:0; transform:translateY(-4px); transition:opacity .6s, transform .6s}
 @keyframes mxtoast{from{opacity:0; transform:translateY(6px)}}
 .mx-bar{margin-top:0; margin-bottom:12px}
 /* --- seesaw brake, rockets, switch, story notes --- */
@@ -4528,7 +4528,7 @@ window.STORY = {
     const end = () => { if (!lv.dataset.drag) return; delete lv.dataset.drag; say(); }; lv.addEventListener('pointerup', end); lv.addEventListener('pointercancel', end);
     lv.addEventListener('keydown', e => { if (mode !== 'play') return; if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)){ e.preventDefault(); pl.p = Math.max(-1, Math.min(1, pl.p + (e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 0.1 : -0.1))); applyPlay(); say(); } });
   })();
-  // pop-up note next to the part the user just operated; fades after a few seconds
+  // see-through pop-up note next to the part the user just operated; fades after 3 seconds
   const toastEl = (() => { const d = document.createElement('div'); d.className = 'mx-toast'; d.hidden = true; d.setAttribute('role', 'status'); $('#mxStage').appendChild(d); return d; })();
   let toastT = null;
   function toast(x, y, title, text){
@@ -4539,7 +4539,7 @@ window.STORY = {
     let lx = q.x - hb.left - w / 2, ly = q.y - hb.top - h - 16;
     if (ly < 6) ly = q.y - hb.top + 20;
     toastEl.style.left = Math.max(6, Math.min(hb.width - w - 6, lx)) + 'px'; toastEl.style.top = Math.max(6, Math.min(hb.height - h - 6, ly)) + 'px';
-    clearTimeout(toastT); toastT = setTimeout(() => { toastEl.classList.add('out'); toastT = setTimeout(() => { toastEl.hidden = true; }, 450); }, 4200);
+    clearTimeout(toastT); toastT = setTimeout(() => { toastEl.classList.add('out'); toastT = setTimeout(() => { toastEl.hidden = true; }, 650); }, 3000);
   }
   // the glove: a click gives a quick burst; holding it down keeps flicking (one spike every 80 ms, up to 4 s)
   (() => {
