@@ -770,7 +770,7 @@ body.tab-gloss .hero, body.tab-gloss #map, body.tab-gloss #cases, body.tab-gloss
 .mxsvg.compact .ptag{font-size:18px}
 
 /* hands-on pop-ups, and the control bar now sitting above the picture */
-.mx-toast{position:absolute; z-index:7; max-width:300px; padding:8px 12px; border-radius:12px; background:rgba(6,12,22,0.32); color:#fff6d8; border:1px solid rgba(255,216,77,0.55); display:grid; gap:3px; font-size:0.8125rem; line-height:1.45; pointer-events:none; text-shadow:0 1px 2px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.85); animation:mxtoast .18s ease-out}
+.mx-toast{position:absolute; z-index:7; max-width:300px; padding:8px 12px; border-radius:12px; background:rgba(6,12,22,0.72); color:#fff6d8; border:1px solid rgba(255,216,77,0.55); display:grid; gap:3px; font-size:0.8125rem; line-height:1.45; pointer-events:none; text-shadow:0 1px 2px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.85); animation:mxtoast .18s ease-out}
 .mx-toast b{font-size:0.875rem; color:#ffd84d}
 .mx-toast.out{opacity:0; transform:translateY(-4px); transition:opacity .6s, transform .6s}
 @keyframes mxtoast{from{opacity:0; transform:translateY(6px)}}
@@ -4528,7 +4528,7 @@ window.STORY = {
     const end = () => { if (!lv.dataset.drag) return; delete lv.dataset.drag; say(); }; lv.addEventListener('pointerup', end); lv.addEventListener('pointercancel', end);
     lv.addEventListener('keydown', e => { if (mode !== 'play') return; if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)){ e.preventDefault(); pl.p = Math.max(-1, Math.min(1, pl.p + (e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 0.1 : -0.1))); applyPlay(); say(); } });
   })();
-  // see-through pop-up note next to the part the user just operated; fades after 3 seconds
+  // pop-up note next to the part the user just operated: 72% dark backing (measured: text contrast >= 6:1 over the white rotor, the machine still shows through); fades after 3 seconds
   const toastEl = (() => { const d = document.createElement('div'); d.className = 'mx-toast'; d.hidden = true; d.setAttribute('role', 'status'); $('#mxStage').appendChild(d); return d; })();
   let toastT = null;
   function toast(x, y, title, text){
