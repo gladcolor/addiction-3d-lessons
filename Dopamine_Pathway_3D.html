@@ -2031,6 +2031,8 @@ body.tab-brain .hero, body.tab-brain #map, body.tab-brain #cases, body.tab-brain
 .b3-hint{position:absolute; left:50%; top:12px; transform:translateX(-50%); margin:0; padding:5px 12px; border-radius:999px; background:rgba(8,14,24,0.72); color:#cfdbe8; font-size:0.75rem; pointer-events:none; transition:opacity .6s; z-index:2; max-width:calc(100% - 190px); text-align:center}
 .b3-hint.gone{opacity:0}
 @media (max-width:640px){ .b3-hint{left:10px; transform:none; max-width:calc(100% - 150px); border-radius:10px; text-align:left; line-height:1.35} }
+/* on wide screens the 3D view fills the window down to its bottom edge, so the toolbar is never below the fold */
+@media (min-width:1100px){ .b3-view:not(:fullscreen):not(.at-view) > .b3-stage{height:max(420px, calc(100vh - var(--b3Top, 255px) - 14px)); min-height:0} }
 
 </style>
 <!--B3:css:end-->
@@ -10454,6 +10456,10 @@ window.B3PHOTOS = {"lat":{"src":"data:image/webp;base64,UklGRgSKAABXRUJQVlA4IPiJ
   Object.entries(PHOTOS).forEach(([k, P]) => Object.keys(P.marks || {}).forEach(id => { if (RID[id]) (RID[id].photo = RID[id].photo || []).push(k); }));
   preset('A');
   requestAnimationFrame(frame);
+  // the 3D view ends at the bottom of the window, so its toolbar (Turn, Move, the arrows, Reset view) is always in sight
+  const fit = () => { if (!document.body.classList.contains('tab-brain') || document.fullscreenElement) return; host.style.setProperty('--b3Top', Math.round(host.getBoundingClientRect().top + window.scrollY) + 'px'); };
+  new MutationObserver(fit).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  window.addEventListener('resize', fit); document.addEventListener('fullscreenchange', () => setTimeout(fit, 60)); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit); fit();
   window.B3 = { preset, select, setOn, showPhoto, view, R, PATHS, goTo, pan, at: id => { const p = project(RID[id].anchors[0]); return [p.x, p.y]; } };
 })();
 
