@@ -7,7 +7,7 @@ Interactive 3D lessons for first-year biology on the molecular and cellular mech
 | Page | What it is |
 |---|---|
 | [The Molecular Game of Addiction](https://gladcolor.github.io/addiction-3d-lessons/Molecular_Game_of_Addiction.html) | A 50-minute active-learning session: 3D synapse, real opioid receptor structure, body explorer, team design challenge |
-| [The Dopamine Pathway](https://gladcolor.github.io/addiction-3d-lessons/Dopamine_Pathway_3D.html) | One dopamine pathway in 3D, as a metro map and as an animated machine: where seven drugs and gambling break in, healthy vs addicted brains, a hands-on view, the Opioids tab (molecule, cells and the Brake Game), and a glossary in the six UN languages ([accuracy notes](Dopamine_Pathway_accuracy_notes.md)) |
+| [The Dopamine Pathway](https://gladcolor.github.io/addiction-3d-lessons/Dopamine_Pathway_3D.html) | One dopamine pathway in 3D, as a metro map and as an animated machine: where seven drugs and gambling break in, healthy vs addicted brains, a 3D brain of the three addiction systems (reward, control, stress and habit) with real specimen photos, a hands-on view, the Opioids tab (molecule, cells and the Brake Game), and a glossary in the six UN languages ([accuracy notes](Dopamine_Pathway_accuracy_notes.md)) |
 | [Opioids in 3D](https://gladcolor.github.io/addiction-3d-lessons/Opioids_3D_Lesson.html) | A guided 40-minute lesson, from the whole body down to single proteins |
 | [Opioids up close](https://gladcolor.github.io/addiction-3d-lessons/Dopamine_Pathway_3D.html#da) | The Opioids tab of The Dopamine Pathway: meet dopamine, five cell types and three molecule classes in 3D, and the [Brake Game](https://gladcolor.github.io/addiction-3d-lessons/Dopamine_Pathway_3D.html#game). The older standalone page, [Opioids_Cells_Molecules_3D.html](https://gladcolor.github.io/addiction-3d-lessons/Opioids_Cells_Molecules_3D.html), still works |
 
@@ -41,6 +41,11 @@ The items below keep their own licenses and are not covered by CC BY-NC-SA 4.0. 
 | Predicted protein structures, reduced to one bead per residue | 3D lessons | [AlphaFold Protein Structure Database](https://alphafold.ebi.ac.uk), Google DeepMind and EMBL-EBI | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Small-molecule 3D structures and properties | 3D lessons | [PubChem](https://pubchem.ncbi.nlm.nih.gov), NCBI | Public domain |
 | Photo "Human brain frontal (coronal) section", with labels, outline and ruler added | The Dopamine Pathway, Real size tab | John A. Beal, LSU Health Sciences Center Shreveport, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Human_brain_frontal_(coronal)_section.JPG) | [CC BY 2.5](https://creativecommons.org/licenses/by/2.5/) |
+| Brain specimen photos (lateral, inferior and midline views; coronal section; insula dissection), with circles added | The Dopamine Pathway, 3D brain tab | John A. Beal, LSU Health Sciences Center Shreveport, via Wikimedia Commons: [lateral](https://commons.wikimedia.org/wiki/File:Human_brain_lateral_view.JPG), [inferior](https://commons.wikimedia.org/wiki/File:Human_brain_inferior_view.JPG), [midline](https://commons.wikimedia.org/wiki/File:Human_brain_midsagittal_cut.JPG), [insula](https://commons.wikimedia.org/wiki/File:Human_brain_view_on_transverse_temporal_and_insular_gyri.JPG) | [CC BY 2.5](https://creativecommons.org/licenses/by/2.5/) |
+| Photo "Cut section of human brain", with circles added | The Dopamine Pathway, 3D brain tab | Dr. Roshan Nasimudeen, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Cut_section_of_human_brain.jpg) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
+| Photo "Hippocampus and seahorse" | The Dopamine Pathway, 3D brain tab | Professor László Seress, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hippocampus_and_seahorse.JPG) | [CC BY-SA 1.0](https://creativecommons.org/licenses/by-sa/1.0/) |
+| Photo "Formalin-fixated human brain 3" (nucleus accumbens), with a circle added | The Dopamine Pathway, 3D brain tab | Mavridis IN and Anagnostopoulou S, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Formalin-fixated_human_brain3.jpg) | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) |
+| Photo "Slide3HOM" (substantia nigra), with circles added | The Dopamine Pathway, 3D brain tab | Anatomist90, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Slide3HOM.JPG) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
 | Zombie sprites | Guard the Dopamine Factory | [Toon Characters 1](https://kenney.nl/assets/toon-characters-1) by Kenney | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
 | three.js r128, loaded from cdnjs | 3D lessons | [three.js authors](https://github.com/mrdoob/three.js) | MIT |
 | SmilesDrawer 1.0.10, loaded from jsDelivr | The Molecular Game of Addiction | [Daniel Probst and contributors](https://github.com/reymond-group/smilesDrawer) | MIT |
@@ -48,7 +53,7 @@ The items below keep their own licenses and are not covered by CC BY-NC-SA 4.0. 
 
 Other notes:
 
-- The nucleus accumbens slice in the Real size tab is an AI-generated image (OpenAI image generation through Codex). It is labeled as such on the page.
+- The nucleus accumbens slice in the Real size tab and the 3D brain tab is an AI-generated image (OpenAI image generation through Codex). It is labeled as such on the page.
 - Mouse Party and Meth Mouse (Genetic Science Learning Center, University of Utah) and the YouTube videos are linked, not copied.
 - Short quotations from published papers are cited where they appear and remain under their publishers' copyright.
 - Facts and figures come from the CDC, NIDA, the DEA and published papers, and the pages cite their sources.
