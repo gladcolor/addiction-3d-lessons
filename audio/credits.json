@@ -6,8 +6,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:En-ca-abducens.ogg",
   "original": "File:En-ca-abducens.ogg",
-  "seconds": 0.73,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.99,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "accessory",
@@ -16,8 +16,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:En-us-accessory.ogg",
   "original": "File:En-us-accessory.ogg",
-  "seconds": 0.97,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.99,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "amygdala",
@@ -26,8 +26,8 @@
   "license": "CC BY-SA 3.0",
   "source": "https://commons.wikimedia.org/wiki/File:En-us-amygdala.ogg",
   "original": "File:En-us-amygdala.ogg",
-  "seconds": 0.73,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.38,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "angular",
@@ -36,8 +36,8 @@
   "license": "CC BY-SA 3.0",
   "source": "https://commons.wikimedia.org/wiki/File:En-us-angular.ogg",
   "original": "File:En-us-angular.ogg",
-  "seconds": 0.91,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.1,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "arachnoid",
@@ -46,8 +46,8 @@
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-arachnoid.wav",
   "original": "File:LL-Q1860 (eng)-Wodencafe-arachnoid.wav",
-  "seconds": 0.71,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.94,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "auditory",
@@ -56,8 +56,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-auditory.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-auditory.wav",
-  "seconds": 0.71,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.25,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "bodies",
@@ -66,8 +66,8 @@
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-bodies.wav",
   "original": "File:LL-Q1860 (eng)-Grendelkhan-bodies.wav",
-  "seconds": 0.52,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.65,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "cerebellum",
@@ -76,8 +76,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-cerebellum.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-cerebellum.wav",
-  "seconds": 0.86,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.12,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "choroid",
@@ -86,8 +86,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-choroid.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-choroid.wav",
-  "seconds": 0.81,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.12,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "corpus callosum",
@@ -96,8 +96,8 @@
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Ne%C3%B8n-corpus_callosum.wav",
   "original": "File:LL-Q1860 (eng)-Neøn-corpus callosum.wav",
-  "seconds": 1.38,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.7,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "cortex",
@@ -106,8 +106,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-cortex.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-cortex.wav",
-  "seconds": 0.78,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.02,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "dentate",
@@ -116,8 +116,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-dentate.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-dentate.wav",
-  "seconds": 0.57,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.94,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "dura mater",
@@ -126,8 +126,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Persent101-dura_mater.wav",
   "original": "File:LL-Q1860 (eng)-Persent101-dura mater.wav",
-  "seconds": 0.84,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.04,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "eyes",
@@ -136,8 +136,8 @@
   "license": "CC BY-SA 3.0",
   "source": "https://commons.wikimedia.org/wiki/File:En-us-eyes.ogg",
   "original": "File:En-us-eyes.ogg",
-  "seconds": 0.55,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.73,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "facial",
@@ -146,8 +146,8 @@
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-facial.wav",
   "original": "File:LL-Q1860 (eng)-Wodencafe-facial.wav",
-  "seconds": 0.5,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.68,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "frontal",
@@ -156,8 +156,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-frontal.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-frontal.wav",
-  "seconds": 0.52,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.86,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "frontal lobe",
@@ -166,8 +166,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-frontal_lobe.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-frontal lobe.wav",
-  "seconds": 0.81,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.18,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "gyrus",
@@ -176,8 +176,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-gyrus.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-gyrus.wav",
-  "seconds": 0.78,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.94,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "hippocampus",
@@ -186,8 +186,8 @@
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Flame,_not_lame-hippocampus.wav",
   "original": "File:LL-Q1860 (eng)-Flame, not lame-hippocampus.wav",
-  "seconds": 1.02,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.36,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "hypothalamus",
@@ -196,8 +196,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-hypothalamus.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-hypothalamus.wav",
-  "seconds": 1.28,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.59,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "inferior",
@@ -207,7 +207,7 @@
   "source": "https://commons.wikimedia.org/wiki/File:En-us-inferior.ogg",
   "original": "File:En-us-inferior.ogg",
   "seconds": 1.28,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "insula",
@@ -216,8 +216,8 @@
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Sumxr-insula.wav",
   "original": "File:LL-Q1860 (eng)-Sumxr-insula.wav",
-  "seconds": 0.73,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.91,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "limbic",
@@ -226,8 +226,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-limbic.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-limbic.wav",
-  "seconds": 0.6,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.94,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "lobe",
@@ -236,8 +236,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-lobe.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-lobe.wav",
-  "seconds": 0.5,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.02,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "lobule",
@@ -246,8 +246,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-lobule.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-lobule.wav",
-  "seconds": 0.65,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.1,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "mammillary",
@@ -256,8 +256,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-mammillary.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-mammillary.wav",
-  "seconds": 0.81,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.15,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "mater",
@@ -266,8 +266,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-mater.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-mater.wav",
-  "seconds": 0.68,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.18,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "medulla oblongata",
@@ -276,8 +276,8 @@
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-medulla_oblongata.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-medulla oblongata.wav",
-  "seconds": 1.83,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 2.06,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "midbrain",
@@ -286,8 +286,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-midbrain.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-midbrain.wav",
-  "seconds": 0.76,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.1,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "middle",
@@ -296,8 +296,8 @@
   "license": "CC BY-SA 3.0",
   "source": "https://commons.wikimedia.org/wiki/File:En-us-middle.ogg",
   "original": "File:En-us-middle.ogg",
-  "seconds": 0.57,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.55,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "motor",
@@ -306,8 +306,8 @@
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-motor.wav",
   "original": "File:LL-Q1860 (eng)-Grendelkhan-motor.wav",
-  "seconds": 0.55,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.68,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "nerve",
@@ -316,8 +316,8 @@
   "license": "CC BY-SA 3.0",
   "source": "https://commons.wikimedia.org/wiki/File:En-us-nerve.ogg",
   "original": "File:En-us-nerve.ogg",
-  "seconds": 0.78,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.81,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "nerves",
@@ -327,7 +327,7 @@
   "source": "https://commons.wikimedia.org/wiki/File:En-us-nerves.ogg",
   "original": "File:En-us-nerves.ogg",
   "seconds": 1.1,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "occipital lobe",
@@ -336,8 +336,8 @@
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-occipital_lobe.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-occipital lobe.wav",
-  "seconds": 1.31,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.57,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "oculomotor",
@@ -346,8 +346,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-oculomotor.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-oculomotor.wav",
-  "seconds": 1.02,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.23,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "optic",
@@ -356,8 +356,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-optic.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-optic.wav",
-  "seconds": 0.78,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.1,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "parietal",
@@ -366,8 +366,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-parietal.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-parietal.wav",
-  "seconds": 0.89,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.25,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "parietal lobe",
@@ -376,8 +376,8 @@
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Eleanorrrrrrrrrr-parietal_lobe.wav",
   "original": "File:LL-Q1860 (eng)-Eleanorrrrrrrrrr-parietal lobe.wav",
-  "seconds": 1.1,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.28,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "pineal gland",
@@ -386,8 +386,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-pineal_gland.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-pineal gland.wav",
-  "seconds": 1.04,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.36,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "pituitary gland",
@@ -396,8 +396,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-pituitary_gland.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-pituitary gland.wav",
-  "seconds": 1.23,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.44,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "plexus",
@@ -406,8 +406,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-plexus.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-plexus.wav",
-  "seconds": 0.81,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.15,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "pons",
@@ -416,8 +416,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-pons.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-pons.wav",
-  "seconds": 0.6,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.89,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "prefrontal cortex",
@@ -426,8 +426,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-prefrontal_cortex.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-prefrontal cortex.wav",
-  "seconds": 1.49,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.83,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "primary",
@@ -437,7 +437,7 @@
   "source": "https://commons.wikimedia.org/wiki/File:En-us-primary.ogg",
   "original": "File:En-us-primary.ogg",
   "seconds": 1.33,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "spinal cord",
@@ -446,8 +446,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-spinal_cord.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-spinal cord.wav",
-  "seconds": 1.04,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.18,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "superior",
@@ -456,8 +456,8 @@
   "license": "CC BY-SA 3.0",
   "source": "https://commons.wikimedia.org/wiki/File:En-us-superior.ogg",
   "original": "File:En-us-superior.ogg",
-  "seconds": 0.76,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.23,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "temporal",
@@ -466,8 +466,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-temporal.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-temporal.wav",
-  "seconds": 0.71,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.99,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "temporal lobe",
@@ -476,8 +476,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-temporal_lobe.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-temporal lobe.wav",
-  "seconds": 0.99,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.33,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "thalamus",
@@ -486,8 +486,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-NaomiAmethyst-thalamus.wav",
   "original": "File:LL-Q1860 (eng)-NaomiAmethyst-thalamus.wav",
-  "seconds": 0.73,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.12,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "tracts",
@@ -497,7 +497,7 @@
   "source": "https://commons.wikimedia.org/wiki/File:En-us-tracts.ogg",
   "original": "File:En-us-tracts.ogg",
   "seconds": 1.1,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "trigeminal",
@@ -506,8 +506,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-trigeminal.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-trigeminal.wav",
-  "seconds": 1.1,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 1.25,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "vagus",
@@ -516,8 +516,8 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-vagus.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-vagus.wav",
-  "seconds": 0.71,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.84,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
   "term": "visual",
@@ -526,7 +526,7 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-visual.wav",
   "original": "File:LL-Q1860 (eng)-Vealhurl-visual.wav",
-  "seconds": 0.63,
-  "changes": "silence trimmed, level adjusted, converted to MP3"
+  "seconds": 0.81,
+  "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  }
 ]
