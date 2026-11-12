@@ -232,11 +232,11 @@
  {
   "term": "lobe",
   "file": "lobe.mp3",
-  "speaker": "Vealhurl",
-  "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-lobe.wav",
-  "original": "File:LL-Q1860 (eng)-Vealhurl-lobe.wav",
-  "seconds": 1.02,
+  "speaker": "Paul2520",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:En-us-lobe.oga",
+  "original": "File:En-us-lobe.oga",
+  "seconds": 0.81,
   "changes": "leading and trailing silence shortened, level adjusted, converted to MP3"
  },
  {
